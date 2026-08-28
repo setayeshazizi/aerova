@@ -156,3 +156,90 @@
     renderFlights();
     document.getElementById("results").scrollIntoView({ behavior: "smooth" });
   });
+   /* ============================================================
+     RENDER FLIGHT CARDS (with filtering + sorting)
+     ============================================================ */
+  function getActiveFilters(scope) {
+    const maxPrice = parseInt(scope.querySelector(".filter-price").value, 10);
+    const airlines = Array.from(scope.querySelectorAll(".filter-airline:checked")).map((c) => c.dataset.airline);
+    const stops = Array.from(scope.querySelectorAll(".filter-stop:checked")).map((c) => parseInt(c.dataset.stops, 10));
+    const times = Array.from(scope.querySelectorAll(".filter-time:checked")).map((c) => c.dataset.slot);
+    const classes = Array.from(scope.querySelectorAll(".filter-class:checked")).map((c) => c.dataset.class);
+    return { maxPrice, airlines, stops, times, classes };
+  }
+  function applyFilters(list) {
+    /* Merge filters from both panels (union of checked) */
+    const d = filterDesktop ? getActiveFilters(filterDesktop) : null;
+    const m = filterMobile ? getActiveFilters(filterMobile) : null;
+    const merge = (key) => {
+      const set = new Set();
+      if (d) d[key].forEach((v) => set.add(v));
+      if (m) m[key].forEach((v) => set.add(v));
+      return set;
+    };
+    const maxPrice = Math.min(d?.maxPrice || 700, m?.maxPrice || 700);
+    const airlines = merge("airlines");
+    const stops = merge("stops");
+    const times = merge("times");
+    const classes = merge("classes");
+    return list.filter((f) =>
+      f.price <= maxPrice &&
+      airlines.has(f.airline) &&
+      stops.has(f.stops) &&
+      times.has(f.depSlot) &&
+      classes.has(f.cabin)
+    );
+  }
+   function sortFlights(list) {
+    const mode = sortBy.value;
+    const arr = list.slice();
+    if (mode === "cheapest") arr.sort((a, b) => a.price - b.price);
+    else if (mode === "fastest") arr.sort((a, b) => a.durMin - b.durMin);
+    else if (mode === "earliest") arr.sort((a, b) => a.dep.localeCompare(b.dep));
+    else arr.sort((a, b) => (a.stops - b.stops) || (a.price - b.price)); /* recommended */
+    return arr;
+  }
+function stopBadgeClass(stops) {
+    return stops === 0 ? "stop-non" : stops === 1 ? "stop-1" : "stop-2";
+  }
+  function flightCardHTML(f, i) {
+    return `
+      <article class="flight-card" style="animation-delay:${i * 0.06}s">
+        <div class="flight-grid">
+          <div class="airline-block">
+            <div class="airline-logo" style="background:${f.color}"><i class="bi ${f.logo}"></i></div>
+            <div>
+              <div class="airline-name">${f.airline}</div>
+              <div class="flight-no">${f.no}</div>
+            </div>
+          </div>
+          <div class="route-block">
+            <div class="route-times">
+              <span>${f.dep}<br><small class="route-codes">${f.from}</small></span>
+              <span class="route-arrow"><i class="bi bi-airplane"></i><br><small>${f.dur}</small></span>
+              <span>${f.arr}<br><small class="route-codes">${f.to}</small></span>
+            </div>
+            <div class="route-meta">
+              <span class="stop-badge ${stopBadgeClass(f.stops)}">${f.stopLabel}</span>
+              <span class="baggage-info"><i class="bi bi-bag-fill"></i> ${f.baggage}</span>
+            </div>
+          </div>
+          <div class="price-block">
+            <div class="price-label">From</div>
+            <div class="price"><span class="currency">$</span>${f.price}</div>
+            <div class="flight-actions">
+              <button class="btn btn-outline-soft view-details" data-no="${f.no}">View Details</button>
+              <a href="../booking.html" class="btn btn-gradient book-now">Book Now</a>
+            </div>
+          </div>
+        </div>
+      </article>`;
+  }
+  function renderFlights() {
+    const filtered = applyFilters(FLIGHTS);
+    const sorted = sortFlights(filtered);
+    flightList.innerHTML = sorted.map((f, i) => flightCardHTML(f, i)).join("");
+    resultCount.textContent = `${sorted.length} flight${sorted.length === 1 ? "" : "s"} available`;
+    emptyState.classList.toggle("d-none", sorted.length > 0);
+    attachDetailHandlers();
+  }
