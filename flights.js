@@ -114,3 +114,11 @@
     const oneWay = document.getElementById("tripOne").checked;
     returnField.classList.toggle("hidden-return", oneWay);
   }));
+   /* Swap From / To with rotation */
+  swapBtn.addEventListener("click", function () {
+    const a = fromInput.value;
+    fromInput.value = toInput.value;
+    toInput.value = a;
+    swapBtn.classList.add("spin");
+    setTimeout(() => swapBtn.classList.remove("spin"), 500);
+  });
