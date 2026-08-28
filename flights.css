@@ -580,3 +580,8 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   margin-bottom: 0.9rem;
   display: flex; align-items: center; gap: 0.4rem;
 }
+/* Price range */
+.price-range-wrap { display: flex; justify-content: space-between; font-size: 0.82rem; color: var(--text-secondary); margin-bottom: 0.4rem; }
+.form-range::-webkit-slider-thumb { background: var(--accent-primary); }
+.form-range::-moz-range-thumb { background: var(--accent-primary); }
+.form-range:focus { box-shadow: none; }
