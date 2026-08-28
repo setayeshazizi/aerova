@@ -37,3 +37,46 @@
   ];
 
   const AIRLINES = ["Ariana Afghan Airlines", "Kam Air", "Turkish Airlines", "Emirates", "Qatar Airways"];
+   /* ============================================================
+     FILTER SIDEBAR MARKUP (shared by desktop + mobile)
+     ============================================================ */
+  function buildFiltersHTML() {
+    const airlineChecks = AIRLINES.map((a, i) => `
+      <label class="filter-check">
+        <input type="checkbox" class="filter-airline" data-airline="${a}" ${i < 2 ? "checked" : ""}>
+        <span>${a}</span>
+      </label>`).join("");
+
+    return `
+      <div class="filter-group">
+        <div class="filter-title"><i class="bi bi-cash-coin"></i> Max Price</div>
+        <div class="price-range-wrap"><span>$0</span><span class="price-label">$700</span></div>
+        <input type="range" class="form-range filter-price" id="priceRange" min="100" max="700" step="5" value="700">
+      </div>
+      <div class="filter-group">
+        <div class="filter-title"><i class="bi bi-buildings"></i> Airlines</div>
+        ${airlineChecks}
+      </div>
+      <div class="filter-group">
+        <div class="filter-title"><i class="bi bi-signpost-split"></i> Stops</div>
+        <label class="filter-check"><input type="checkbox" class="filter-stop" data-stops="0" checked><span>Non-stop</span></label>
+        <label class="filter-check"><input type="checkbox" class="filter-stop" data-stops="1" checked><span>1 Stop</span></label>
+        <label class="filter-check"><input type="checkbox" class="filter-stop" data-stops="2" checked><span>2+ Stops</span></label>
+      </div>
+      <div class="filter-group">
+        <div class="filter-title"><i class="bi bi-clock"></i> Departure Time</div>
+        <label class="filter-check"><input type="checkbox" class="filter-time" data-slot="morning" checked><span>Morning</span></label>
+        <label class="filter-check"><input type="checkbox" class="filter-time" data-slot="afternoon" checked><span>Afternoon</span></label>
+        <label class="filter-check"><input type="checkbox" class="filter-time" data-slot="evening" checked><span>Evening</span></label>
+        <label class="filter-check"><input type="checkbox" class="filter-time" data-slot="night" checked><span>Night</span></label>
+      </div>
+      <div class="filter-group">
+        <div class="filter-title"><i class="bi bi-bag-check"></i> Class</div>
+        <label class="filter-check"><input type="checkbox" class="filter-class" data-class="Economy" checked><span>Economy</span></label>
+        <label class="filter-check"><input type="checkbox" class="filter-class" data-class="Premium Economy" checked><span>Premium Economy</span></label>
+        <label class="filter-check"><input type="checkbox" class="filter-class" data-class="Business" checked><span>Business</span></label>
+        <label class="filter-check"><input type="checkbox" class="filter-class" data-class="First Class" checked><span>First Class</span></label>
+      </div>
+      <button class="btn-reset" id="resetFilters"><i class="bi bi-arrow-counterclockwise"></i> Reset Filters</button>
+    `;
+  }
