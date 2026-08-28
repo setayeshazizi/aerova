@@ -398,3 +398,47 @@ a:hover { color: var(--accent-tertiary); }
   box-shadow: 0 0 0 4px rgba(59,130,246,0.18);
 }
 .form-select option { background: var(--bg-secondary); color: var(--text-primary); }
+/* date input icon color */
+input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(0.7);
+  cursor: pointer;
+}
+[data-theme="light"] input[type="date"]::-webkit-calendar-picker-indicator { filter: none; }
+
+/* Swap button */
+.swap-btn {
+  width: 46px; height: 46px;
+  border-radius: 50%;
+  border: 1px solid var(--border-color);
+  background: var(--bg-card);
+  color: var(--text-primary);
+  display: grid; place-items: center;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: var(--transition);
+  margin-top: 26px;
+}
+.swap-btn:hover {
+  border-color: var(--accent-tertiary);
+  color: var(--accent-tertiary);
+  box-shadow: 0 0 18px rgba(6,182,212,0.4);
+}
+.swap-btn.spin i { animation: spin-swap 0.5s ease; }
+@keyframes spin-swap {
+  from { transform: rotate(0); }
+  to { transform: rotate(180deg); }
+}
+
+/* Return field hide transition */
+.return-field {
+  transition: opacity 0.35s ease, max-height 0.35s ease, margin 0.35s ease, padding 0.35s ease;
+  max-height: 100px;
+  overflow: hidden;
+}
+.return-field.hidden-return {
+  opacity: 0;
+  max-height: 0;
+  margin: 0 !important;
+  padding: 0 !important;
+  pointer-events: none;
+}
