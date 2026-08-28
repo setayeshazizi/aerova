@@ -243,3 +243,25 @@ function stopBadgeClass(stops) {
     emptyState.classList.toggle("d-none", sorted.length > 0);
     attachDetailHandlers();
   }
+   /* ============================================================
+     FILTER + SORT WIRING
+     ============================================================ */
+  function wireFilterPanel(scope) {
+    if (!scope) return;
+    const priceRange = scope.querySelector(".filter-price");
+    const priceLabel = scope.querySelector(".price-label");
+    if (priceRange && priceLabel) {
+      priceRange.addEventListener("input", () => { priceLabel.textContent = "$" + priceRange.value; renderFlights(); });
+    }
+    scope.querySelectorAll("input[type=checkbox]").forEach((c) => c.addEventListener("change", renderFlights));
+    const reset = scope.querySelector("#resetFilters");
+    if (reset) reset.addEventListener("click", function () {
+      scope.querySelectorAll("input[type=checkbox]").forEach((c) => (c.checked = true));
+      if (priceRange) { priceRange.value = 700; priceLabel.textContent = "$700"; }
+      renderFlights();
+    });
+  }
+  wireFilterPanel(filterDesktop);
+  wireFilterPanel(filterMobile);
+
+  sortBy.addEventListener("change", renderFlights);
