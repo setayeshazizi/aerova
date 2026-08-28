@@ -208,3 +208,15 @@ a:hover { color: var(--accent-tertiary); }
 .theme-icon-light { display: none; }
 [data-theme="light"] .theme-icon-dark { display: none; }
 [data-theme="light"] .theme-icon-light { display: inline; }
+[data-theme="light"] .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(15,23,42,0.9)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+/* Offcanvas (mobile menu + filters) */
+.nav-offcanvas {
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  border-left: 1px solid var(--border-color);
+}
+.nav-offcanvas .nav-link { color: var(--text-secondary); border-radius: 10px; padding: 0.7rem 1rem; }
+.nav-offcanvas .nav-link:hover { color: var(--text-primary); background: rgba(255,255,255,0.04); }
+.nav-offcanvas .nav-link.active { color: #fff; background: var(--gradient-primary); }
