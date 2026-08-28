@@ -442,3 +442,17 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   padding: 0 !important;
   pointer-events: none;
 }
+/* ============================================================
+   SECTIONS (shared)
+   ============================================================ */
+.section { padding: 5rem 0; }
+.section-title {
+  font-size: clamp(1.7rem, 3.5vw, 2.4rem);
+  font-weight: 700;
+  margin-bottom: 0.4rem;
+}
+.section-sub {
+  color: var(--text-secondary);
+  font-size: 1.05rem;
+  margin-bottom: 0;
+}
