@@ -12,3 +12,9 @@
     document.documentElement.setAttribute("data-theme", next);
     localStorage.setItem("skynest-theme", next);
   });
+  /* ---------- Navbar shadow on scroll ---------- */
+  const navbar = document.querySelector(".navbar-sky");
+  window.addEventListener("scroll", function () {
+    if (window.scrollY > 20) navbar.classList.add("scrolled");
+    else navbar.classList.remove("scrolled");
+  });
