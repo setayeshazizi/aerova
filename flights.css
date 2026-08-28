@@ -680,3 +680,28 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   transition: var(--transition);
 }
 .dest-btn:hover { background: var(--gradient-primary); border-color: transparent; color: #fff; }
+/* ============================================================
+   DEALS BANNER
+   ============================================================ */
+.deals-section { padding-top: 0; }
+.deals-banner {
+  position: relative;
+  padding: 3rem;
+  overflow: hidden;
+  background: var(--gradient-hero);
+  border-radius: var(--radius-lg);
+}
+.deals-glow {
+  position: absolute;
+  width: 300px; height: 300px;
+  background: radial-gradient(closest-side, rgba(6,182,212,0.4), transparent);
+  top: -100px; right: -80px;
+  filter: blur(20px);
+  animation: float-glow 8s ease-in-out infinite;
+}
+@keyframes float-glow {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(20px); }
+}
+.deals-title { color: #fff; font-size: clamp(1.6rem, 3.5vw, 2.3rem); font-weight: 800; }
+.deals-text { color: rgba(255,255,255,0.92); font-size: 1.05rem; margin: 0.5rem 0 0; }
