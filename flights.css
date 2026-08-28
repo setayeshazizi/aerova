@@ -372,3 +372,29 @@ a:hover { color: var(--accent-tertiary); }
   z-index: 1;
 }
 .trip-toggle input#tripOne:checked ~ .trip-slider { transform: translateX(100%); }
+/* Form fields */
+.form-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 0.35rem;
+  display: inline-flex; align-items: center; gap: 0.35rem;
+}
+.form-control, .form-select {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  border-radius: 12px;
+  padding: 0.7rem 0.9rem;
+  transition: var(--transition);
+}
+.form-control::placeholder { color: var(--text-muted); }
+.form-control:focus, .form-select:focus {
+  background: rgba(59,130,246,0.06);
+  border-color: var(--accent-primary);
+  color: var(--text-primary);
+  box-shadow: 0 0 0 4px rgba(59,130,246,0.18);
+}
+.form-select option { background: var(--bg-secondary); color: var(--text-primary); }
