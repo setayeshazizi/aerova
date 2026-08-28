@@ -456,3 +456,16 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   font-size: 1.05rem;
   margin-bottom: 0;
 }
+/* ============================================================
+   FLIGHT RESULTS
+   ============================================================ */
+.results-section { padding-top: 7rem; }
+.sort-select {
+  background: var(--bg-card);
+  border-color: var(--border-color);
+  color: var(--text-primary);
+  min-width: 180px;
+}
+.sort-select:focus { border-color: var(--accent-primary); }
+
+.flight-list { display: flex; flex-direction: column; gap: 1.2rem; }
