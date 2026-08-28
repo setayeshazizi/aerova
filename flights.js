@@ -307,3 +307,14 @@ function stopBadgeClass(stops) {
         </div>
       </div>`;
   });
+   /* ============================================================
+     POPULAR DESTINATIONS
+     ============================================================ */
+  const DESTINATIONS = [
+    { name: "Dubai", country: "United Arab Emirates", desc: "Futuristic skyline, golden deserts and world-class shopping.", img: "https://images.pexels.com/photos/19664340/pexels-photo-19664340.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" },
+    { name: "Istanbul", country: "Turkey", desc: "Where two continents meet — minarets, bazaars and the Bosphorus.", img: "https://images.pexels.com/photos/8518777/pexels-photo-8518777.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" },
+    { name: "Doha", country: "Qatar", desc: "A gleaming bayfront city of art, culture and desert adventure.", img: "https://images.pexels.com/photos/19748320/pexels-photo-19748320.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" },
+    { name: "Delhi", country: "India", desc: "Ancient monuments, vibrant streets and rich Mughal heritage.", img: "https://images.pexels.com/photos/789750/pexels-photo-789750.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" },
+    { name: "Kuala Lumpur", country: "Malaysia", desc: "Towering skyscrapers, lush parks and a blend of cultures.", img: "https://images.pexels.com/photos/9395978/pexels-photo-9395978.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" },
+    { name: "Abu Dhabi", country: "United Arab Emirates", desc: "Grand mosques, island Corniche and serene Gulf waters.", img: "https://images.pexels.com/photos/28448972/pexels-photo-28448972.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" }
+  ];
