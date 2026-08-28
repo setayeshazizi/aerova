@@ -179,8 +179,8 @@ a:hover {
 .navbar-sky {
   padding: 0.9rem 0;
   background: var(--bg-glass);
-  backdrop-filter: blur(18px) saturate(140%);
   -webkit-backdrop-filter: blur(18px) saturate(140%);
+  backdrop-filter: blur(18px) saturate(140%);
   border-bottom: 1px solid var(--border-color);
   transition:
     background var(--transition),
