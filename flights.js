@@ -80,3 +80,37 @@
       <button class="btn-reset" id="resetFilters"><i class="bi bi-arrow-counterclockwise"></i> Reset Filters</button>
     `;
   }
+
+   const filterDesktop = document.getElementById("filterPanelDesktop");
+  const filterMobile = document.getElementById("filterPanelMobile");
+  if (filterDesktop) filterDesktop.innerHTML = buildFiltersHTML();
+  if (filterMobile) filterMobile.innerHTML = buildFiltersHTML();
+   /* ============================================================
+     SEARCH FORM
+     ============================================================ */
+  const searchForm = document.getElementById("searchForm");
+  const fromInput = document.getElementById("fromInput");
+  const toInput = document.getElementById("toInput");
+  const departDate = document.getElementById("departDate");
+  const returnDate = document.getElementById("returnDate");
+  const returnField = document.getElementById("returnField");
+  const searchAlert = document.getElementById("searchAlert");
+  const tripRadios = document.querySelectorAll('input[name="tripType"]');
+  const swapBtn = document.getElementById("swapBtn");
+  const flightList = document.getElementById("flightList");
+  const emptyState = document.getElementById("emptyState");
+  const resultCount = document.getElementById("resultCount");
+  const sortBy = document.getElementById("sortBy");
+
+  /* Default dates: today + tomorrow */
+  const today = new Date();
+  const tomorrow = new Date(); tomorrow.setDate(today.getDate() + 1);
+  const fmt = (d) => d.toISOString().split("T")[0];
+  departDate.value = fmt(today);
+  returnDate.value = fmt(tomorrow);
+
+  /* Trip type toggle: hide return for One Way */
+  tripRadios.forEach((r) => r.addEventListener("change", function () {
+    const oneWay = document.getElementById("tripOne").checked;
+    returnField.classList.toggle("hidden-return", oneWay);
+  }));
