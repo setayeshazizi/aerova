@@ -585,3 +585,20 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 .form-range::-webkit-slider-thumb { background: var(--accent-primary); }
 .form-range::-moz-range-thumb { background: var(--accent-primary); }
 .form-range:focus { box-shadow: none; }
+/* Check list */
+.filter-check { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem; cursor: pointer; }
+.filter-check input { accent-color: var(--accent-primary); width: 16px; height: 16px; cursor: pointer; }
+.filter-check span { font-size: 0.9rem; color: var(--text-secondary); }
+.filter-check .count { margin-left: auto; font-size: 0.75rem; color: var(--text-muted); }
+.filter-check:hover span { color: var(--text-primary); }
+.btn-reset {
+  width: 100%;
+  background: transparent;
+  border: 1px solid var(--border-color);
+  color: var(--text-secondary);
+  border-radius: 10px;
+  padding: 0.6rem;
+  font-weight: 500;
+  transition: var(--transition);
+}
+.btn-reset:hover { border-color: var(--accent-secondary); color: var(--text-primary); }
