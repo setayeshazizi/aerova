@@ -122,3 +122,37 @@
     swapBtn.classList.add("spin");
     setTimeout(() => swapBtn.classList.remove("spin"), 500);
   });
+  /* Validation + search */
+  searchForm.addEventListener("submit", function (e) {
+    e.preventDefault();
+    searchAlert.classList.add("d-none");
+    [fromInput, toInput, departDate, returnDate].forEach((el) => el.classList.remove("is-invalid"));
+
+    const from = fromInput.value.trim();
+    const to = toInput.value.trim();
+    let ok = true;
+    let msg = "";
+
+    if (!from) { fromInput.classList.add("is-invalid"); ok = false; msg = "Please enter an origin."; }
+    if (!to) { toInput.classList.add("is-invalid"); ok = false; if (!msg) msg = "Please enter a destination."; }
+    if (from && to && from.toLowerCase() === to.toLowerCase()) {
+      fromInput.classList.add("is-invalid"); toInput.classList.add("is-invalid");
+      ok = false; msg = "Origin and destination cannot be the same.";
+    }
+    if (!departDate.value) { departDate.classList.add("is-invalid"); ok = false; if (!msg) msg = "Departure date is required."; }
+    if (document.getElementById("tripRound").checked) {
+      if (!returnDate.value) { returnDate.classList.add("is-invalid"); ok = false; if (!msg) msg = "Return date is required for round trips."; }
+      else if (returnDate.value < departDate.value) { returnDate.classList.add("is-invalid"); ok = false; if (!msg) msg = "Return date cannot be earlier than departure."; }
+    }
+
+    if (!ok) {
+      searchAlert.textContent = msg;
+      searchAlert.classList.remove("d-none");
+      searchAlert.scrollIntoView({ behavior: "smooth", block: "center" });
+      return;
+    }
+
+    /* Show results */
+    renderFlights();
+    document.getElementById("results").scrollIntoView({ behavior: "smooth" });
+  });
