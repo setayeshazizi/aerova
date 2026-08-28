@@ -705,3 +705,26 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 }
 .deals-title { color: #fff; font-size: clamp(1.6rem, 3.5vw, 2.3rem); font-weight: 800; }
 .deals-text { color: rgba(255,255,255,0.92); font-size: 1.05rem; margin: 0.5rem 0 0; }
+/* ============================================================
+   WHY CHOOSE US
+   ============================================================ */
+.why-section { background: var(--bg-secondary); }
+.feature-card {
+  padding: 2rem 1.6rem;
+  text-align: center;
+  height: 100%;
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+.feature-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
+.feature-icon {
+  width: 64px; height: 64px;
+  border-radius: 18px;
+  display: grid; place-items: center;
+  margin: 0 auto 1.2rem;
+  font-size: 1.6rem;
+  color: #fff;
+  background: var(--gradient-primary);
+  box-shadow: 0 8px 22px rgba(59,130,246,0.35);
+}
+.feature-card h3 { font-size: 1.15rem; margin-bottom: 0.4rem; }
+.feature-card p { color: var(--text-secondary); font-size: 0.92rem; margin: 0; }
