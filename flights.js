@@ -243,6 +243,47 @@ function stopBadgeClass(stops) {
     emptyState.classList.toggle("d-none", sorted.length > 0);
     attachDetailHandlers();
   }
+ /* ============================================================
+     FLIGHT DETAILS MODAL
+     ============================================================ */
+  const flightModal = new bootstrap.Modal(document.getElementById("flightModal"));
+  const modalBody = document.getElementById("flightModalBody");
+  const modalTitle = document.getElementById("flightModalLabel");
+
+  function attachDetailHandlers() {
+    document.querySelectorAll(".view-details").forEach((btn) => {
+      btn.addEventListener("click", function () {
+        const no = this.dataset.no;
+        const f = FLIGHTS.find((x) => x.no === no);
+        if (!f) return;
+        modalTitle.textContent = `${f.airline} — ${f.no}`;
+        modalBody.innerHTML = `
+          <div class="detail-route">
+            <div>
+              <div class="big">${f.dep}</div>
+              <div>${f.from}</div>
+            </div>
+            <div class="arrow"><i class="bi bi-airplane"></i><br>${f.dur} · ${f.stopLabel}</div>
+            <div class="text-end">
+              <div class="big">${f.arr}</div>
+              <div>${f.to}</div>
+            </div>
+          </div>
+          <div class="detail-grid">
+            <div class="detail-item"><div class="lbl">Airline</div><div class="val">${f.airline}</div></div>
+            <div class="detail-item"><div class="lbl">Flight Number</div><div class="val">${f.no}</div></div>
+            <div class="detail-item"><div class="lbl">Aircraft</div><div class="val">${f.aircraft}</div></div>
+            <div class="detail-item"><div class="lbl">Duration</div><div class="val">${f.dur}</div></div>
+            <div class="detail-item"><div class="lbl">Cabin Class</div><div class="val">${f.cabin}</div></div>
+            <div class="detail-item"><div class="lbl">Baggage</div><div class="val">${f.baggage}</div></div>
+            <div class="detail-item"><div class="lbl">Price</div><div class="val">$${f.price}</div></div>
+            <div class="detail-item"><div class="lbl">Cancellation</div><div class="val">${f.cancel}</div></div>
+          </div>`;
+        flightModal.show();
+      });
+    });
+  }
+
    /* ============================================================
      FILTER + SORT WIRING
      ============================================================ */
