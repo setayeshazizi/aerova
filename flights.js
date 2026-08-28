@@ -265,3 +265,45 @@ function stopBadgeClass(stops) {
   wireFilterPanel(filterMobile);
 
   sortBy.addEventListener("change", renderFlights);
+  /* ============================================================
+     FLIGHT STATUS CHECKER
+     ============================================================ */
+  const statusForm = document.getElementById("statusForm");
+  const statusInput = document.getElementById("statusInput");
+  const statusCard = document.getElementById("statusCard");
+
+  /* Deterministic demo status from flight number */
+  function statusFor(no) {
+    const clean = no.replace(/\s+/g, "").toUpperCase();
+    const statuses = [
+      { key: "ontime", label: "On Time", dot: "ontime", detail: "Scheduled departure on time. Gate will be announced 45 minutes before boarding." },
+      { key: "delayed", label: "Delayed", dot: "delayed", detail: "Delayed by approximately 35 minutes due to weather conditions." },
+      { key: "boarding", label: "Boarding", dot: "boarding", detail: "Boarding has started. Please proceed to the gate immediately." },
+      { key: "cancelled", label: "Cancelled", dot: "cancelled", detail: "This flight has been cancelled. Please contact customer support for rebooking." }
+    ];
+    const idx = (clean.charCodeAt(clean.length - 1) + clean.length) % statuses.length;
+    return statuses[idx];
+  }
+
+  statusForm.addEventListener("submit", function (e) {
+    e.preventDefault();
+    const no = statusInput.value.trim();
+    if (!no) { statusInput.focus(); return; }
+    const s = statusFor(no);
+    const f = FLIGHTS.find((x) => x.no.replace(/\s+/g, "").toUpperCase() === no.replace(/\s+/g, "").toUpperCase());
+    const route = f ? `${f.from} → ${f.to}` : "Route info unavailable";
+    const dep = f ? `${f.dep} · ${f.airline}` : "Schedule unavailable";
+    statusCard.innerHTML = `
+      <div class="status-result">
+        <div class="status-row">
+          <span class="status-dot ${s.dot}"></span>
+          <span class="status-label">${s.label}</span>
+          <span class="text-muted ms-auto">Flight ${no.toUpperCase()}</span>
+        </div>
+        <div class="status-detail">
+          <div><strong>Route:</strong> ${route}</div>
+          <div><strong>Schedule:</strong> ${dep}</div>
+          <div>${s.detail}</div>
+        </div>
+      </div>`;
+  });
