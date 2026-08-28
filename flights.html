@@ -384,5 +384,32 @@
       <div class="filter-panel glass" id="filterPanelMobile"></div>
     </div>
   </div>
+
+  <!-- ============ FLIGHT STATUS ============ -->
+  <section class="section status-section">
+    <div class="container">
+      <div class="row align-items-center g-4">
+        <div class="col-lg-5">
+          <h2 class="section-title">Check Flight Status</h2>
+          <p class="section-sub">Track your flight in real time.</p>
+          <form class="status-form" id="statusForm">
+            <div class="input-group">
+              <span class="input-group-text"><i class="bi bi-radar"></i></span>
+              <input type="text" class="form-control" id="statusInput" placeholder="e.g. RQ 101" autocomplete="off" />
+              <button class="btn btn-gradient" type="submit">Search</button>
+            </div>
+          </form>
+        </div>
+        <div class="col-lg-7">
+          <div class="status-card glass" id="statusCard">
+            <div class="status-placeholder">
+              <i class="bi bi-airplane-engines"></i>
+              <p>Enter a flight number to see its live status.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
   </body>
 </html>
