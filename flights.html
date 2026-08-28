@@ -100,3 +100,17 @@
         </div>
       </div>
     </div>
+    <!-- Floating search card -->
+    <div class="container search-wrap">
+      <div class="search-card glass" id="searchCard">
+        <form id="searchForm" novalidate>
+          <!-- Trip type -->
+          <div class="trip-type-row">
+            <div class="trip-toggle" role="group" aria-label="Trip type">
+              <input type="radio" name="tripType" id="tripRound" value="round" checked>
+              <label for="tripRound"><i class="bi bi-arrow-left-right"></i> Round Trip</label>
+              <input type="radio" name="tripType" id="tripOne" value="one">
+              <label for="tripOne"><i class="bi bi-arrow-right"></i> One Way</label>
+              <span class="trip-slider"></span>
+            </div>
+          </div>
