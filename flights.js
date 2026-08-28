@@ -318,3 +318,21 @@ function stopBadgeClass(stops) {
     { name: "Kuala Lumpur", country: "Malaysia", desc: "Towering skyscrapers, lush parks and a blend of cultures.", img: "https://images.pexels.com/photos/9395978/pexels-photo-9395978.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" },
     { name: "Abu Dhabi", country: "United Arab Emirates", desc: "Grand mosques, island Corniche and serene Gulf waters.", img: "https://images.pexels.com/photos/28448972/pexels-photo-28448972.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" }
   ];
+  const destGrid = document.getElementById("destinationsGrid");
+  destGrid.innerHTML = DESTINATIONS.map((d) => `
+    <div class="col-md-6 col-lg-4">
+      <div class="dest-card">
+        <div class="dest-img"><img src="${d.img}" alt="${d.name} skyline" loading="lazy"></div>
+        <div class="dest-body">
+          <div class="dest-country">${d.country}</div>
+          <div class="dest-name">${d.name}</div>
+          <p class="dest-desc">${d.desc}</p>
+          <a href="../booking.html" class="dest-btn">Explore Flights <i class="bi bi-arrow-right"></i></a>
+        </div>
+      </div>
+    </div>`).join("");
+     /* ============================================================
+     INITIAL RENDER
+     ============================================================ */
+  renderFlights();
+})();
