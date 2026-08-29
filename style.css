@@ -1,4 +1,1259 @@
 
+/* =========================================================
+   AEROVA - LOST & FOUND
+   Main Stylesheet
+   ========================================================= */
+
+
+/* =========================================================
+   1. CSS VARIABLES & THEMES
+   ========================================================= */
+
+:root {
+    --bg-primary: #0a0e17;
+    --bg-secondary: #111827;
+    --bg-card: #1a2332;
+    --bg-glass: rgba(26, 35, 50, 0.8);
+
+    --text-primary: #ffffff;
+    --text-secondary: #94a3b8;
+    --text-muted: #65758d;
+
+    --accent-primary: #556d92;
+    --accent-secondary: #8b5cf6;
+    --accent-tertiary: #06b6d4;
+
+    --gradient-primary:
+        linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+
+    --gradient-hero:
+        linear-gradient(
+            135deg,
+            #1e3a8a 0%,
+            #6d28d9 50%,
+            #0ea5e9 100%
+        );
+
+    --border-color: rgba(255, 255, 255, 0.1);
+
+    --shadow-sm:
+        0 2px 8px rgba(0, 0, 0, 0.3);
+
+    --shadow-md:
+        0 8px 32px rgba(0, 0, 0, 0.4);
+
+    --shadow-lg:
+        0 16px 64px rgba(0, 0, 0, 0.5);
+
+    --shadow-glow:
+        0 0 40px rgba(59, 130, 246, 0.3);
+
+    --transition:
+        all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+    --transition-slow:
+        all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+
+/* =========================================================
+   LIGHT THEME
+   ========================================================= */
+
+[data-theme="light"] {
+    --bg-primary: #f8fafc;
+    --bg-secondary: #ffffff;
+    --bg-card: #ffffff;
+    --bg-glass: rgba(255, 255, 255, 0.9);
+
+    --text-primary: #0f172a;
+    --text-secondary: #475569;
+    --text-muted: #94a3b8;
+
+    --accent-primary: #2563eb;
+    --accent-secondary: #7c3aed;
+    --accent-tertiary: #0891b2;
+
+    --gradient-primary:
+        linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
+
+    --gradient-hero:
+        linear-gradient(
+            135deg,
+            #bfdbfe 0%,
+            #ddd6fe 50%,
+            #a5f3fc 100%
+        );
+
+    --border-color: rgba(0, 0, 0, 0.1);
+
+    --shadow-sm:
+        0 2px 8px rgba(0, 0, 0, 0.1);
+
+    --shadow-md:
+        0 8px 32px rgba(0, 0, 0, 0.15);
+
+    --shadow-lg:
+        0 16px 64px rgba(0, 0, 0, 0.2);
+
+    --shadow-glow:
+        0 0 40px rgba(37, 99, 235, 0.2);
+}
+
+
+/* =========================================================
+   2. GLOBAL STYLES
+   ========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family:
+        "Inter",
+        "Segoe UI",
+        Arial,
+        sans-serif;
+
+    background: var(--bg-primary);
+    color: var(--text-primary);
+
+    line-height: 1.6;
+
+    overflow-x: hidden;
+
+    transition: var(--transition);
+}
+
+a {
+    text-decoration: none;
+}
+
+button,
+a {
+    -webkit-tap-highlight-color: transparent;
+}
+
+
+/* =========================================================
+   3. NAVBAR
+   ========================================================= */
+
+.navbar {
+    position: relative;
+    z-index: 1000;
+
+    padding: 18px 0;
+
+    background: rgba(10, 14, 23, 0.75);
+
+    border-bottom: 1px solid var(--border-color);
+
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+}
+
+.navbar-brand {
+    color: var(--text-primary) !important;
+
+    font-size: 1.6rem;
+    font-weight: 800;
+
+    letter-spacing: 2px;
+
+    transition: var(--transition);
+}
+
+.navbar-brand:hover {
+    color: var(--accent-primary) !important;
+
+    transform: translateY(-2px);
+}
+
+.navbar-nav {
+    gap: 8px;
+}
+
+.nav-link {
+    position: relative;
+
+    color: var(--text-secondary) !important;
+
+    font-weight: 500;
+
+    padding: 8px 14px !important;
+
+    transition: var(--transition);
+}
+
+.nav-link:hover,
+.nav-link.active {
+    color: var(--text-primary) !important;
+}
+
+.nav-link::after {
+    content: "";
+
+    position: absolute;
+
+    left: 50%;
+    bottom: 0;
+
+    width: 0;
+    height: 2px;
+
+    background: var(--gradient-primary);
+
+    transform: translateX(-50%);
+
+    transition: var(--transition);
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+    width: 60%;
+}
+
+
+/* =========================================================
+   4. HERO SECTION
+   ========================================================= */
+
+.lost-hero {
+    position: relative;
+
+    min-height: 680px;
+
+    display: flex;
+    align-items: center;
+
+    padding: 100px 0;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 15% 30%,
+            rgba(59, 130, 246, 0.18),
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at 85% 70%,
+            rgba(139, 92, 246, 0.18),
+            transparent 35%
+        ),
+        var(--bg-primary);
+}
+
+
+/* Decorative background */
+
+.lost-hero::before {
+    content: "";
+
+    position: absolute;
+
+    width: 450px;
+    height: 450px;
+
+    top: -200px;
+    right: -150px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(6, 182, 212, 0.16),
+            transparent 70%
+        );
+
+    animation: heroGlow 8s ease-in-out infinite;
+}
+
+.lost-hero::after {
+    content: "";
+
+    position: absolute;
+
+    width: 350px;
+    height: 350px;
+
+    bottom: -180px;
+    left: -100px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(59, 130, 246, 0.15),
+            transparent 70%
+        );
+
+    animation: heroGlow 10s ease-in-out infinite reverse;
+}
+
+
+/* Hero Badge */
+
+.hero-badge {
+    display: inline-flex;
+
+    align-items: center;
+    gap: 8px;
+
+    padding: 8px 15px;
+
+    margin-bottom: 22px;
+
+    border: 1px solid rgba(59, 130, 246, 0.3);
+
+    border-radius: 50px;
+
+    background: rgba(59, 130, 246, 0.08);
+
+    color: #60a5fa;
+
+    font-size: 0.8rem;
+    font-weight: 700;
+
+    letter-spacing: 1.5px;
+
+    animation: fadeUp 0.8s ease forwards;
+}
+
+.hero-badge i {
+    font-size: 1rem;
+}
+
+
+/* Hero Heading */
+
+.lost-hero h1 {
+    max-width: 700px;
+
+    margin-bottom: 22px;
+
+    font-size: clamp(3rem, 6vw, 5.3rem);
+
+    font-weight: 800;
+
+    line-height: 1.05;
+
+    letter-spacing: -2px;
+
+    animation: fadeUp 0.9s ease forwards;
+}
+
+.lost-hero h1 span {
+    display: block;
+
+    background: var(--gradient-primary);
+
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    color: transparent;
+}
+
+
+/* Hero paragraph */
+
+.lost-hero p {
+    max-width: 600px;
+
+    margin-bottom: 32px;
+
+    color: var(--text-secondary);
+
+    font-size: 1.1rem;
+
+    animation: fadeUp 1s ease forwards;
+}
+
+
+/* Hero buttons */
+
+.hero-buttons {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 14px;
+
+    animation: fadeUp 1.1s ease forwards;
+}
+
+.hero-buttons .btn {
+    padding: 13px 22px;
+
+    border-radius: 10px;
+
+    font-weight: 600;
+
+    transition: var(--transition);
+}
+
+.hero-buttons .btn-primary {
+    border: none;
+
+    background: var(--gradient-primary);
+
+    box-shadow: var(--shadow-glow);
+}
+
+.hero-buttons .btn-primary:hover {
+    transform: translateY(-4px);
+
+    box-shadow:
+        0 12px 35px rgba(59, 130, 246, 0.35);
+}
+
+.hero-buttons .btn-outline-light {
+    border-color: var(--border-color);
+
+    color: var(--text-primary);
+
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.hero-buttons .btn-outline-light:hover {
+    border-color: var(--accent-primary);
+
+    background: rgba(59, 130, 246, 0.1);
+
+    transform: translateY(-4px);
+}
+
+
+/* =========================================================
+   5. HERO VISUAL
+   ========================================================= */
+
+.hero-visual {
+    position: relative;
+
+    width: 390px;
+    height: 390px;
+
+    margin: 0 auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(59, 130, 246, 0.15),
+            transparent 65%
+        );
+
+    animation: visualFloat 5s ease-in-out infinite;
+}
+
+.hero-visual::before {
+    content: "";
+
+    position: absolute;
+
+    width: 290px;
+    height: 290px;
+
+    border: 1px solid rgba(59, 130, 246, 0.25);
+
+    border-radius: 50%;
+
+    animation: rotateCircle 15s linear infinite;
+}
+
+.hero-visual::after {
+    content: "";
+
+    position: absolute;
+
+    width: 220px;
+    height: 220px;
+
+    border: 1px dashed rgba(139, 92, 246, 0.35);
+
+    border-radius: 50%;
+
+    animation: rotateCircle 20s linear infinite reverse;
+}
+
+
+/* Main luggage icon */
+
+.visual-icon {
+    position: relative;
+    z-index: 3;
+
+    width: 170px;
+    height: 170px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 35px;
+
+    background: var(--gradient-primary);
+
+    box-shadow:
+        0 20px 70px rgba(59, 130, 246, 0.35);
+
+    transform: rotate(-5deg);
+
+    animation: luggageFloat 4s ease-in-out infinite;
+}
+
+.visual-icon i {
+    color: white;
+
+    font-size: 5rem;
+}
+
+
+/* Floating icons */
+
+.floating-item {
+    position: absolute;
+    z-index: 5;
+
+    width: 65px;
+    height: 65px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid var(--border-color);
+
+    border-radius: 18px;
+
+    background: var(--bg-glass);
+
+    color: var(--text-primary);
+
+    box-shadow: var(--shadow-md);
+
+    backdrop-filter: blur(12px);
+
+    font-size: 1.5rem;
+
+    animation: floatingItem 4s ease-in-out infinite;
+}
+
+.item-one {
+    top: 20px;
+    right: 20px;
+
+    animation-delay: 0s;
+}
+
+.item-two {
+    bottom: 35px;
+    left: 10px;
+
+    animation-delay: 1.2s;
+}
+
+.item-three {
+    top: 100px;
+    left: -5px;
+
+    animation-delay: 2s;
+}
+
+
+/* =========================================================
+   6. STATS
+   ========================================================= */
+
+.stats-section {
+    padding: 0 0 80px;
+
+    background: var(--bg-primary);
+}
+
+.stat-card {
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+
+    gap: 18px;
+
+    padding: 25px;
+
+    border: 1px solid var(--border-color);
+
+    border-radius: 18px;
+
+    background: var(--bg-card);
+
+    box-shadow: var(--shadow-sm);
+
+    transition: var(--transition);
+}
+
+.stat-card:hover {
+    transform: translateY(-7px);
+
+    border-color: rgba(59, 130, 246, 0.3);
+
+    box-shadow: var(--shadow-md);
+}
+
+.stat-card > i {
+    width: 55px;
+    height: 55px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 15px;
+
+    background: rgba(59, 130, 246, 0.12);
+
+    color: var(--accent-primary);
+
+    font-size: 1.5rem;
+}
+
+.stat-card h3 {
+    margin: 0;
+
+    font-size: 1.8rem;
+    font-weight: 800;
+}
+
+.stat-card p {
+    margin: 2px 0 0;
+
+    color: var(--text-secondary);
+
+    font-size: 0.9rem;
+}
+
+
+/* =========================================================
+   7. SECTION HEADINGS
+   ========================================================= */
+
+.report-section,
+.search-section {
+    padding: 100px 0;
+}
+
+.report-section {
+    background: var(--bg-secondary);
+}
+
+.section-heading {
+    max-width: 650px;
+
+    margin: 0 auto 55px;
+}
+
+.section-heading span {
+    color: var(--accent-primary);
+
+    font-size: 0.75rem;
+    font-weight: 800;
+
+    letter-spacing: 3px;
+}
+
+.section-heading h2 {
+    margin: 10px 0 15px;
+
+    font-size: clamp(2rem, 4vw, 3rem);
+
+    font-weight: 800;
+}
+
+.section-heading p {
+    margin: 0;
+
+    color: var(--text-secondary);
+}
+
+
+/* =========================================================
+   8. REPORT FORM CARD
+   ========================================================= */
+
+.report-card {
+    padding: 40px;
+
+    border: 1px solid var(--border-color);
+
+    border-radius: 24px;
+
+    background: var(--bg-glass);
+
+    box-shadow: var(--shadow-lg);
+
+    backdrop-filter: blur(20px);
+
+    animation: fadeUp 0.8s ease;
+}
+
+.report-card label {
+    display: block;
+
+    margin-bottom: 8px;
+
+    color: var(--text-primary);
+
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+
+/* Inputs */
+
+.form-control,
+.form-select,
+.input-group-text {
+    min-height: 52px;
+
+    border: 1px solid var(--border-color) !important;
+
+    background: rgba(255, 255, 255, 0.04) !important;
+
+    color: var(--text-primary) !important;
+
+    transition: var(--transition);
+}
+
+.form-control::placeholder {
+    color: var(--text-muted);
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: var(--accent-primary) !important;
+
+    box-shadow:
+        0 0 0 4px rgba(59, 130, 246, 0.1) !important;
+
+    background: rgba(59, 130, 246, 0.04) !important;
+}
+
+.input-group-text {
+    color: var(--accent-primary) !important;
+
+    border-right: none !important;
+}
+
+.input-group .form-control,
+.input-group .form-select {
+    border-left: none !important;
+}
+
+textarea.form-control {
+    min-height: 130px;
+
+    resize: vertical;
+}
+
+
+/* Select options */
+
+.form-select option {
+    background: var(--bg-card);
+
+    color: var(--text-primary);
+}
+
+
+/* Submit button */
+
+.submit-btn {
+    width: 100%;
+
+    min-height: 55px;
+
+    margin-top: 5px;
+
+    border: none;
+
+    border-radius: 12px;
+
+    background: var(--gradient-primary);
+
+    color: white;
+
+    font-size: 1rem;
+    font-weight: 700;
+
+    box-shadow: var(--shadow-glow);
+
+    transition: var(--transition);
+}
+
+.submit-btn:hover {
+    color: white;
+
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 15px 40px rgba(59, 130, 246, 0.35);
+}
+
+.submit-btn:active {
+    transform: translateY(0);
+}
+
+
+/* =========================================================
+   9. SEARCH SECTION
+   ========================================================= */
+
+.search-section {
+    background: var(--bg-primary);
+}
+
+.search-box {
+    max-width: 900px;
+
+    margin: 0 auto;
+
+    display: grid;
+
+    grid-template-columns: 1fr 220px;
+
+    gap: 15px;
+
+    padding: 20px;
+
+    border: 1px solid var(--border-color);
+
+    border-radius: 18px;
+
+    background: var(--bg-card);
+
+    box-shadow: var(--shadow-md);
+}
+
+
+/* =========================================================
+   10. ITEM CARDS
+   ========================================================= */
+
+.item-card {
+    height: 100%;
+
+    padding: 25px;
+
+    border: 1px solid var(--border-color);
+
+    border-radius: 18px;
+
+    background: var(--bg-card);
+
+    box-shadow: var(--shadow-sm);
+
+    transition: var(--transition);
+
+    animation: cardAppear 0.5s ease forwards;
+}
+
+.item-card:hover {
+    transform: translateY(-8px);
+
+    border-color: rgba(59, 130, 246, 0.35);
+
+    box-shadow: var(--shadow-md);
+}
+
+.item-icon {
+    width: 55px;
+    height: 55px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-bottom: 18px;
+
+    border-radius: 15px;
+
+    background: rgba(59, 130, 246, 0.1);
+
+    color: var(--accent-primary);
+
+    font-size: 1.5rem;
+}
+
+.item-card h4 {
+    margin-bottom: 8px;
+
+    font-size: 1.15rem;
+    font-weight: 700;
+}
+
+.item-card p {
+    margin-bottom: 6px;
+
+    color: var(--text-secondary);
+
+    font-size: 0.9rem;
+}
+
+.item-card p i {
+    width: 20px;
+
+    color: var(--accent-primary);
+}
+
+.item-status {
+    display: inline-block;
+
+    margin-top: 15px;
+
+    padding: 6px 12px;
+
+    border-radius: 50px;
+
+    background: rgba(59, 130, 246, 0.1);
+
+    color: #60a5fa;
+
+    font-size: 0.75rem;
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   11. FOOTER
+   ========================================================= */
+
+.footer {
+    padding: 60px 0 30px;
+
+    border-top: 1px solid var(--border-color);
+
+    background: var(--bg-secondary);
+}
+
+.footer h4 {
+    margin-bottom: 10px;
+
+    font-size: 1.5rem;
+    font-weight: 800;
+
+    letter-spacing: 2px;
+}
+
+.footer p {
+    color: var(--text-secondary);
+}
+
+.footer .copyright {
+    margin-top: 30px;
+
+    color: var(--text-muted);
+
+    font-size: 0.8rem;
+}
+
+
+/* =========================================================
+   12. ANIMATIONS
+   ========================================================= */
+
+@keyframes fadeUp {
+
+    from {
+        opacity: 0;
+
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform: translateY(0);
+    }
+}
+
+
+@keyframes cardAppear {
+
+    from {
+        opacity: 0;
+
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform: translateY(0);
+    }
+}
+
+
+@keyframes visualFloat {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-12px);
+    }
+}
+
+
+@keyframes luggageFloat {
+
+    0%,
+    100% {
+        transform: rotate(-5deg) translateY(0);
+    }
+
+    50% {
+        transform: rotate(-2deg) translateY(-10px);
+    }
+}
+
+
+@keyframes floatingItem {
+
+    0%,
+    100% {
+        transform: translateY(0) rotate(0deg);
+    }
+
+    50% {
+        transform: translateY(-15px) rotate(4deg);
+    }
+}
+
+
+@keyframes rotateCircle {
+
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+
+@keyframes heroGlow {
+
+    0%,
+    100% {
+        transform: scale(1);
+
+        opacity: 0.7;
+    }
+
+    50% {
+        transform: scale(1.15);
+
+        opacity: 1;
+    }
+}
+
+
+/* =========================================================
+   13. RESPONSIVE DESIGN
+   ========================================================= */
+
+@media (max-width: 991px) {
+
+    .lost-hero {
+        min-height: auto;
+
+        padding: 80px 0;
+    }
+
+    .lost-hero h1 {
+        font-size: 3.5rem;
+    }
+
+    .hero-visual {
+        width: 330px;
+        height: 330px;
+
+        margin-top: 60px;
+    }
+
+    .report-section,
+    .search-section {
+        padding: 80px 0;
+    }
+}
+
+
+@media (max-width: 767px) {
+
+    .navbar {
+        padding: 14px 0;
+    }
+
+    .navbar-nav {
+        margin-top: 15px;
+
+        padding: 10px 0;
+    }
+
+    .lost-hero {
+        padding: 65px 0;
+    }
+
+    .lost-hero h1 {
+        font-size: 2.8rem;
+
+        letter-spacing: -1px;
+    }
+
+    .lost-hero p {
+        font-size: 1rem;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+
+        align-items: stretch;
+    }
+
+    .hero-buttons .btn {
+        width: 100%;
+    }
+
+    .hero-visual {
+        width: 290px;
+        height: 290px;
+    }
+
+    .visual-icon {
+        width: 135px;
+        height: 135px;
+    }
+
+    .visual-icon i {
+        font-size: 4rem;
+    }
+
+    .floating-item {
+        width: 55px;
+        height: 55px;
+
+        font-size: 1.2rem;
+    }
+
+    .report-card {
+        padding: 25px 20px;
+    }
+
+    .search-box {
+        grid-template-columns: 1fr;
+    }
+
+    .report-section,
+    .search-section {
+        padding: 65px 0;
+    }
+}
+
+
+@media (max-width: 480px) {
+
+    .lost-hero h1 {
+        font-size: 2.35rem;
+    }
+
+    .hero-visual {
+        width: 250px;
+        height: 250px;
+    }
+
+    .visual-icon {
+        width: 115px;
+        height: 115px;
+    }
+
+    .visual-icon i {
+        font-size: 3.3rem;
+    }
+
+    .hero-visual::before {
+        width: 210px;
+        height: 210px;
+    }
+
+    .hero-visual::after {
+        width: 160px;
+        height: 160px;
+    }
+
+    .floating-item {
+        width: 48px;
+        height: 48px;
+
+        border-radius: 14px;
+    }
+
+    .item-one {
+        top: 10px;
+        right: 0;
+    }
+
+    .item-two {
+        bottom: 15px;
+        left: 0;
+    }
+
+    .item-three {
+        top: 75px;
+        left: -5px;
+    }
+
+    .stat-card {
+        padding: 20px;
+    }
+}
+
+
+/* =========================================================
+   14. REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+
+        transition-duration: 0.01ms !important;
+    }
+}
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
 :root{
@@ -33,7 +1288,6 @@ body{
 
 /* ==========================
 MAIN CARD
-========================== */
 
 .main-card{
     background:var(--glass);
@@ -46,7 +1300,6 @@ MAIN CARD
 
 /* ==========================
 NAVBAR
-========================== */
 
 .navbar-brand{
     font-size:22px;
@@ -135,7 +1388,6 @@ NAVBAR
 
 /* ==========================
 AI SWITCH
-========================== */
 
 .hero-switch{
     margin-top:25px;
@@ -155,7 +1407,6 @@ AI SWITCH
 
 /* ==========================
 BOOKING
-========================== */
 
 .booking{
     margin-top:22px;
