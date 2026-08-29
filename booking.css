@@ -1574,3 +1574,67 @@ body.light-mode #passengerForm input::placeholder {
 
 }
 
+/* =====================================================
+   BOARDING EMPTY
+===================================================== */
+
+.boarding-empty{
+
+    max-width: 550px;
+
+    margin: auto;
+
+    padding: 60px 30px;
+
+    text-align: center;
+
+    border:
+        1px dashed #3d4958;
+
+    border-radius:20px;
+
+    background:
+       #15283a80 ;
+}
+
+.empty-icon {
+
+    width: 75px;
+    height: 75px;
+
+    margin:
+        0 auto 20px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 22px;
+
+    background:
+        rgba(59, 130, 246, 0.08);
+
+    color:
+        var(--accent-primary);
+
+    font-size: 2rem;
+}
+
+.boarding-empty h4 {
+
+    font-size: 1.1rem;
+
+    font-weight: 800;
+}
+
+.boarding-empty p {
+
+    color:
+        var(--text-secondary);
+
+    font-size: 0.7rem;
+
+    line-height: 1.7;
+
+    margin:
+        8px auto 20px;
+}
