@@ -588,3 +588,11 @@ function loadTheme() {
     themeToggle.innerHTML = `<i class="bi bi-sun-fill"></i>`;
   }
 }
+/* =========================================
+   PRINT BOARDING PASS
+========================================= */
+
+document.getElementById("printPassBtn").addEventListener("click", function () {
+  window.print();
+  
+});
