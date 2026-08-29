@@ -379,3 +379,31 @@ function updateSummary() {
   document.getElementById("totalPrice").textContent =
     `$${bookingData.totalPrice}`;
 }
+
+/* =========================================
+   CONFIRM BOOKING
+========================================= */
+
+document
+  .getElementById("confirmBookingBtn")
+  .addEventListener("click", function () {
+    /* Generate reference */
+
+    bookingData.bookingReference = generateBookingReference();
+
+    /* Save */
+
+    saveBooking();
+
+    /* Generate boarding pass */
+
+    generateBoardingPass();
+
+    /* Scroll */
+
+    document.getElementById("boarding").scrollIntoView({
+      behavior: "smooth",
+    });
+
+    showToast("Booking confirmed successfully!");
+  });
