@@ -1,0 +1,27 @@
+/* =========================================
+   ROOT
+========================================= */
+
+:root {
+    --primary: #5b7cfa;
+    --primary-dark: #405ee5;
+    --secondary: #7c5cff;
+
+    --bg: #f5f7fc;
+    --card: #ffffff;
+
+    --text: #182033;
+    --muted: #7d8599;
+
+    --border: #e8ebf3;
+
+    --success: #20c997;
+    --danger: #ff647c;
+
+    --shadow:
+        0 20px 60px rgba(37, 49, 87, 0.10);
+
+    --radius: 22px;
+
+    --transition: 0.3s ease;
+}
