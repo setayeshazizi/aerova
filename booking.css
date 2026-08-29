@@ -1251,3 +1251,48 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     font-size: 1.3rem;
     letter-spacing: 2px;
 }
+/* =========================================
+   ACTIONS
+========================================= */
+
+.boarding-actions {
+    max-width: 850px;
+    margin: 25px auto 0;
+
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.action-btn {
+    border: 1px solid var(--border);
+
+    background: var(--card);
+
+    color: var(--text);
+
+    padding: 13px 20px;
+
+    border-radius: 12px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: 0.3s ease;
+}
+
+.action-btn:hover {
+    color: white;
+
+    background: var(--primary);
+
+    border-color: var(--primary);
+
+    transform: translateY(-3px);
+}
+
+.action-btn i {
+    margin-right: 5px;
+}
