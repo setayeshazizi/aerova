@@ -1547,3 +1547,30 @@ body.light-mode #passengerForm input::placeholder {
     }
 }
 
+/* =========================================
+   PRINT
+========================================= */
+
+@media print {
+
+    body * {
+        visibility: hidden;
+    }
+
+    #boardingPass,
+    #boardingPass * {
+        visibility: visible;
+    }
+
+    #boardingPass {
+        position: absolute;
+        left: 0;
+        top: 0;
+
+        width: 100%;
+
+        box-shadow: none;
+    }
+
+}
+
