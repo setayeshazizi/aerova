@@ -1,379 +1,490 @@
-(function () {
-  "use strict";
+/* ==========================================================================
+   AEROVA Airlines — Flights page logic (Vanilla JavaScript only)
+   Sections:
+   1. Theme toggle          5. Sorting
+   2. Sample flight data    6. View details modal
+   3. Search form logic     7. Flight status board
+   4. Filters               8. Scroll reveal + particles
+   ========================================================================== */
 
-  /* ---------- Theme toggle (persist in localStorage) ---------- */
-  const themeToggle = document.getElementById("themeToggle");
-  const storedTheme = localStorage.getItem("skynest-theme");
-  if (storedTheme) document.documentElement.setAttribute("data-theme", storedTheme);
+/* ------------------------------------------------------------------
+   1. THEME TOGGLE (saved in localStorage)
+------------------------------------------------------------------ */
+const themeBtn = document.getElementById("themeToggle");
+const themeIcon = document.getElementById("themeIcon");
 
-  themeToggle.addEventListener("click", function () {
-    const current = document.documentElement.getAttribute("data-theme");
-    const next = current === "dark" ? "light" : "dark";
-    document.documentElement.setAttribute("data-theme", next);
-    localStorage.setItem("skynest-theme", next);
-  });
-  /* ---------- Navbar shadow on scroll ---------- */
-  const navbar = document.querySelector(".navbar-sky");
-  window.addEventListener("scroll", function () {
-    if (window.scrollY > 20) navbar.classList.add("scrolled");
-    else navbar.classList.remove("scrolled");
-  });
-    /* ============================================================
-     FLIGHT DATA (demo dataset)
-     ============================================================ */
-  const FLIGHTS = [
-    { airline: "Kam Air", code: "RQ", logo: "bi-airplane-fill", color: "#3b82f6", no: "RQ 101", from: "HEA", to: "DXB", dep: "13:20", arr: "15:40", dur: "2h 20m", durMin: 140, stops: 0, stopLabel: "Non-stop", baggage: "20kg checked", aircraft: "Airbus A320", price: 165, cabin: "Economy", cancel: "Free cancellation up to 24h before departure.", depSlot: "afternoon" },
-    { airline: "Ariana Afghan Airlines", code: "FG", logo: "bi-airplane-fill", color: "#06b6d4", no: "FG 204", from: "HEA", to: "DXB", dep: "06:10", arr: "11:30", dur: "5h 20m", durMin: 320, stops: 1, stopLabel: "1 Stop · KBL", baggage: "25kg checked", aircraft: "Boeing 737-800", price: 210, cabin: "Economy", cancel: "Free cancellation up to 24h before departure.", depSlot: "morning" },
-    { airline: "Turkish Airlines", code: "TK", logo: "bi-airplane-fill", color: "#8b5cf6", no: "TK 707", from: "HEA", to: "DXB", dep: "22:45", arr: "09:15", dur: "10h 30m", durMin: 630, stops: 1, stopLabel: "1 Stop · IST", baggage: "30kg checked", aircraft: "Boeing 787-9", price: 480, cabin: "Business", cancel: "Free cancellation up to 48h before departure.", depSlot: "night" },
-    { airline: "Emirates", code: "EK", logo: "bi-airplane-fill", color: "#dc2626", no: "EK 902", from: "HEA", to: "DXB", dep: "08:30", arr: "11:00", dur: "3h 30m", durMin: 210, stops: 1, stopLabel: "1 Stop · KBL", baggage: "30kg checked", aircraft: "Airbus A350", price: 520, cabin: "Business", cancel: "Free cancellation up to 48h before departure.", depSlot: "morning" },
-    { airline: "Qatar Airways", code: "QR", logo: "bi-airplane-fill", color: "#10b981", no: "QR 334", from: "HEA", to: "DXB", dep: "16:55", arr: "21:10", dur: "4h 15m", durMin: 255, stops: 1, stopLabel: "1 Stop · DOH", baggage: "30kg checked", aircraft: "Airbus A350-1000", price: 395, cabin: "Economy", cancel: "Free cancellation up to 24h before departure.", depSlot: "afternoon" },
-    { airline: "Kam Air", code: "RQ", logo: "bi-airplane-fill", color: "#3b82f6", no: "RQ 118", from: "HEA", to: "DXB", dep: "19:40", arr: "22:00", dur: "2h 20m", durMin: 140, stops: 0, stopLabel: "Non-stop", baggage: "20kg checked", aircraft: "Airbus A320", price: 185, cabin: "Economy", cancel: "Free cancellation up to 24h before departure.", depSlot: "evening" },
-    { airline: "Ariana Afghan Airlines", code: "FG", logo: "bi-airplane-fill", color: "#06b6d4", no: "FG 310", from: "HEA", to: "DXB", dep: "14:05", arr: "19:25", dur: "5h 20m", durMin: 320, stops: 2, stopLabel: "2 Stops · KBL, MCT", baggage: "25kg checked", aircraft: "Boeing 737-800", price: 175, cabin: "Economy", cancel: "Free cancellation up to 24h before departure.", depSlot: "afternoon" },
-    { airline: "Turkish Airlines", code: "TK", logo: "bi-airplane-fill", color: "#8b5cf6", no: "TK 812", from: "HEA", to: "DXB", dep: "03:20", arr: "13:50", dur: "10h 30m", durMin: 630, stops: 2, stopLabel: "2 Stops · IST, MCT", baggage: "30kg checked", aircraft: "Boeing 787-9", price: 410, cabin: "Economy", cancel: "Free cancellation up to 48h before departure.", depSlot: "night" },
-    { airline: "Emirates", code: "EK", logo: "bi-airplane-fill", color: "#dc2626", no: "EK 556", from: "HEA", to: "DXB", dep: "10:15", arr: "12:35", dur: "2h 20m", durMin: 140, stops: 0, stopLabel: "Non-stop", baggage: "35kg checked", aircraft: "Airbus A380", price: 690, cabin: "First Class", cancel: "Free cancellation up to 48h before departure.", depSlot: "morning" },
-    { airline: "Qatar Airways", code: "QR", logo: "bi-airplane-fill", color: "#10b981", no: "QR 778", from: "HEA", to: "DXB", dep: "23:30", arr: "03:45", dur: "4h 15m", durMin: 255, stops: 1, stopLabel: "1 Stop · DOH", baggage: "40kg checked", aircraft: "Airbus A350-1000", price: 540, cabin: "First Class", cancel: "Free cancellation up to 48h before departure.", depSlot: "night" },
-    { airline: "Kam Air", code: "RQ", logo: "bi-airplane-fill", color: "#3b82f6", no: "RQ 250", from: "HEA", to: "DXB", dep: "17:25", arr: "19:45", dur: "2h 20m", durMin: 140, stops: 0, stopLabel: "Non-stop", baggage: "20kg checked", aircraft: "Airbus A320", price: 199, cabin: "Business", cancel: "Free cancellation up to 24h before departure.", depSlot: "evening" },
-    { airline: "Ariana Afghan Airlines", code: "FG", logo: "bi-airplane-fill", color: "#06b6d4", no: "FG 415", from: "HEA", to: "DXB", dep: "09:50", arr: "15:10", dur: "5h 20m", durMin: 320, stops: 1, stopLabel: "1 Stop · KBL", baggage: "25kg checked", aircraft: "Boeing 737-800", price: 225, cabin: "Premium Economy", cancel: "Free cancellation up to 24h before departure.", depSlot: "morning" }
-  ];
-
-  const AIRLINES = ["Ariana Afghan Airlines", "Kam Air", "Turkish Airlines", "Emirates", "Qatar Airways"];
-   /* ============================================================
-     FILTER SIDEBAR MARKUP (shared by desktop + mobile)
-     ============================================================ */
-  function buildFiltersHTML() {
-    const airlineChecks = AIRLINES.map((a, i) => `
-      <label class="filter-check">
-        <input type="checkbox" class="filter-airline" data-airline="${a}" ${i < 2 ? "checked" : ""}>
-        <span>${a}</span>
-      </label>`).join("");
-
-    return `
-      <div class="filter-group">
-        <div class="filter-title"><i class="bi bi-cash-coin"></i> Max Price</div>
-        <div class="price-range-wrap"><span>$0</span><span class="price-label">$700</span></div>
-        <input type="range" class="form-range filter-price" id="priceRange" min="100" max="700" step="5" value="700">
-      </div>
-      <div class="filter-group">
-        <div class="filter-title"><i class="bi bi-buildings"></i> Airlines</div>
-        ${airlineChecks}
-      </div>
-      <div class="filter-group">
-        <div class="filter-title"><i class="bi bi-signpost-split"></i> Stops</div>
-        <label class="filter-check"><input type="checkbox" class="filter-stop" data-stops="0" checked><span>Non-stop</span></label>
-        <label class="filter-check"><input type="checkbox" class="filter-stop" data-stops="1" checked><span>1 Stop</span></label>
-        <label class="filter-check"><input type="checkbox" class="filter-stop" data-stops="2" checked><span>2+ Stops</span></label>
-      </div>
-      <div class="filter-group">
-        <div class="filter-title"><i class="bi bi-clock"></i> Departure Time</div>
-        <label class="filter-check"><input type="checkbox" class="filter-time" data-slot="morning" checked><span>Morning</span></label>
-        <label class="filter-check"><input type="checkbox" class="filter-time" data-slot="afternoon" checked><span>Afternoon</span></label>
-        <label class="filter-check"><input type="checkbox" class="filter-time" data-slot="evening" checked><span>Evening</span></label>
-        <label class="filter-check"><input type="checkbox" class="filter-time" data-slot="night" checked><span>Night</span></label>
-      </div>
-      <div class="filter-group">
-        <div class="filter-title"><i class="bi bi-bag-check"></i> Class</div>
-        <label class="filter-check"><input type="checkbox" class="filter-class" data-class="Economy" checked><span>Economy</span></label>
-        <label class="filter-check"><input type="checkbox" class="filter-class" data-class="Premium Economy" checked><span>Premium Economy</span></label>
-        <label class="filter-check"><input type="checkbox" class="filter-class" data-class="Business" checked><span>Business</span></label>
-        <label class="filter-check"><input type="checkbox" class="filter-class" data-class="First Class" checked><span>First Class</span></label>
-      </div>
-      <button class="btn-reset" id="resetFilters"><i class="bi bi-arrow-counterclockwise"></i> Reset Filters</button>
-    `;
+function applyTheme(theme) {
+  if (theme === "light") {
+    document.documentElement.setAttribute("data-theme", "light");
+    themeIcon.className = "bi bi-moon-stars";
+    themeBtn.setAttribute("aria-label", "Switch to dark mode");
+  } else {
+    document.documentElement.removeAttribute("data-theme");
+    themeIcon.className = "bi bi-sun";
+    themeBtn.setAttribute("aria-label", "Switch to light mode");
   }
+}
 
-   const filterDesktop = document.getElementById("filterPanelDesktop");
-  const filterMobile = document.getElementById("filterPanelMobile");
-  if (filterDesktop) filterDesktop.innerHTML = buildFiltersHTML();
-  if (filterMobile) filterMobile.innerHTML = buildFiltersHTML();
-   /* ============================================================
-     SEARCH FORM
-     ============================================================ */
-  const searchForm = document.getElementById("searchForm");
-  const fromInput = document.getElementById("fromInput");
-  const toInput = document.getElementById("toInput");
-  const departDate = document.getElementById("departDate");
-  const returnDate = document.getElementById("returnDate");
-  const returnField = document.getElementById("returnField");
-  const searchAlert = document.getElementById("searchAlert");
-  const tripRadios = document.querySelectorAll('input[name="tripType"]');
-  const swapBtn = document.getElementById("swapBtn");
-  const flightList = document.getElementById("flightList");
-  const emptyState = document.getElementById("emptyState");
-  const resultCount = document.getElementById("resultCount");
-  const sortBy = document.getElementById("sortBy");
+applyTheme(localStorage.getItem("skycrest-theme") || "dark");
 
-  /* Default dates: today + tomorrow */
-  const today = new Date();
-  const tomorrow = new Date(); tomorrow.setDate(today.getDate() + 1);
-  const fmt = (d) => d.toISOString().split("T")[0];
-  departDate.value = fmt(today);
-  returnDate.value = fmt(tomorrow);
+themeBtn.addEventListener("click", () => {
+  const isLight = document.documentElement.getAttribute("data-theme") === "light";
+  const next = isLight ? "dark" : "light";
+  localStorage.setItem("skycrest-theme", next);
+  applyTheme(next);
+});
 
-  /* Trip type toggle: hide return for One Way */
-  tripRadios.forEach((r) => r.addEventListener("change", function () {
-    const oneWay = document.getElementById("tripOne").checked;
-    returnField.classList.toggle("hidden-return", oneWay);
-  }));
-   /* Swap From / To with rotation */
-  swapBtn.addEventListener("click", function () {
-    const a = fromInput.value;
-    fromInput.value = toInput.value;
-    toInput.value = a;
-    swapBtn.classList.add("spin");
-    setTimeout(() => swapBtn.classList.remove("spin"), 500);
-  });
-  /* Validation + search */
-  searchForm.addEventListener("submit", function (e) {
-    e.preventDefault();
-    searchAlert.classList.add("d-none");
-    [fromInput, toInput, departDate, returnDate].forEach((el) => el.classList.remove("is-invalid"));
-
-    const from = fromInput.value.trim();
-    const to = toInput.value.trim();
-    let ok = true;
-    let msg = "";
-
-    if (!from) { fromInput.classList.add("is-invalid"); ok = false; msg = "Please enter an origin."; }
-    if (!to) { toInput.classList.add("is-invalid"); ok = false; if (!msg) msg = "Please enter a destination."; }
-    if (from && to && from.toLowerCase() === to.toLowerCase()) {
-      fromInput.classList.add("is-invalid"); toInput.classList.add("is-invalid");
-      ok = false; msg = "Origin and destination cannot be the same.";
-    }
-    if (!departDate.value) { departDate.classList.add("is-invalid"); ok = false; if (!msg) msg = "Departure date is required."; }
-    if (document.getElementById("tripRound").checked) {
-      if (!returnDate.value) { returnDate.classList.add("is-invalid"); ok = false; if (!msg) msg = "Return date is required for round trips."; }
-      else if (returnDate.value < departDate.value) { returnDate.classList.add("is-invalid"); ok = false; if (!msg) msg = "Return date cannot be earlier than departure."; }
-    }
-
-    if (!ok) {
-      searchAlert.textContent = msg;
-      searchAlert.classList.remove("d-none");
-      searchAlert.scrollIntoView({ behavior: "smooth", block: "center" });
-      return;
-    }
-
-    /* Show results */
-    renderFlights();
-    document.getElementById("results").scrollIntoView({ behavior: "smooth" });
-  });
-   /* ============================================================
-     RENDER FLIGHT CARDS (with filtering + sorting)
-     ============================================================ */
-  function getActiveFilters(scope) {
-    const maxPrice = parseInt(scope.querySelector(".filter-price").value, 10);
-    const airlines = Array.from(scope.querySelectorAll(".filter-airline:checked")).map((c) => c.dataset.airline);
-    const stops = Array.from(scope.querySelectorAll(".filter-stop:checked")).map((c) => parseInt(c.dataset.stops, 10));
-    const times = Array.from(scope.querySelectorAll(".filter-time:checked")).map((c) => c.dataset.slot);
-    const classes = Array.from(scope.querySelectorAll(".filter-class:checked")).map((c) => c.dataset.class);
-    return { maxPrice, airlines, stops, times, classes };
+/* ------------------------------------------------------------------
+   2. SAMPLE FLIGHT DATA (frontend demo data)
+------------------------------------------------------------------ */
+const flights = [
+  {
+    id: 1, airline: "Kam Air", code: "RQ 101", aircraft: "Boeing 737-500",
+    fromCode: "HEA", fromCity: "Herat", toCode: "DXB", toCity: "Dubai",
+    depart: "13:20", arrive: "15:40", durationMin: 140, stops: 0,
+    baggage: "25 kg", cabin: "Economy", price: 165,
+    cancellation: "Free cancellation within 24 hours of booking."
+  },
+  {
+    id: 2, airline: "Ariana Afghan Airlines", code: "FG 305", aircraft: "Airbus A310",
+    fromCode: "HEA", fromCity: "Herat", toCode: "DXB", toCity: "Dubai",
+    depart: "07:05", arrive: "09:50", durationMin: 165, stops: 0,
+    baggage: "20 kg", cabin: "Economy", price: 149,
+    cancellation: "Refundable with a $40 service fee."
+  },
+  {
+    id: 3, airline: "Emirates", code: "EK 640", aircraft: "Boeing 777-300ER",
+    fromCode: "HEA", fromCity: "Herat", toCode: "DXB", toCity: "Dubai",
+    depart: "18:45", arrive: "22:30", durationMin: 225, stops: 1,
+    baggage: "35 kg", cabin: "Business", price: 720,
+    cancellation: "Flexible fare — free changes up to 6 hours before departure."
+  },
+  {
+    id: 4, airline: "Qatar Airways", code: "QR 419", aircraft: "Airbus A350-900",
+    fromCode: "HEA", fromCity: "Herat", toCode: "DOH", toCity: "Doha",
+    depart: "09:30", arrive: "13:15", durationMin: 225, stops: 1,
+    baggage: "30 kg", cabin: "Economy", price: 289,
+    cancellation: "Changes permitted for a $75 fee; non-refundable."
+  },
+  {
+    id: 5, airline: "Turkish Airlines", code: "TK 707", aircraft: "Boeing 787-9",
+    fromCode: "HEA", fromCity: "Herat", toCode: "IST", toCity: "Istanbul",
+    depart: "23:10", arrive: "05:05", durationMin: 355, stops: 1,
+    baggage: "30 kg", cabin: "Economy", price: 342,
+    cancellation: "Free date change once; refund minus $60."
+  },
+  {
+    id: 6, airline: "Emirates", code: "EK 218", aircraft: "Airbus A380-800",
+    fromCode: "HEA", fromCity: "Herat", toCode: "DXB", toCity: "Dubai",
+    depart: "16:00", arrive: "18:10", durationMin: 130, stops: 0,
+    baggage: "40 kg", cabin: "First Class", price: 1480,
+    cancellation: "Fully refundable at any time before departure."
+  },
+  {
+    id: 7, airline: "Kam Air", code: "RQ 202", aircraft: "Boeing 767-200",
+    fromCode: "HEA", fromCity: "Herat", toCode: "DEL", toCity: "Delhi",
+    depart: "11:25", arrive: "17:55", durationMin: 390, stops: 2,
+    baggage: "25 kg", cabin: "Economy", price: 268,
+    cancellation: "Non-refundable promotional fare."
+  },
+  {
+    id: 8, airline: "Qatar Airways", code: "QR 852", aircraft: "Boeing 787-8",
+    fromCode: "HEA", fromCity: "Herat", toCode: "KUL", toCity: "Kuala Lumpur",
+    depart: "02:40", arrive: "17:20", durationMin: 560, stops: 2,
+    baggage: "30 kg", cabin: "Business", price: 965,
+    cancellation: "Free cancellation up to 48 hours before departure."
+  },
+  {
+    id: 9, airline: "Turkish Airlines", code: "TK 372", aircraft: "Airbus A321neo",
+    fromCode: "HEA", fromCity: "Herat", toCode: "IST", toCity: "Istanbul",
+    depart: "14:50", arrive: "19:35", durationMin: 285, stops: 0,
+    baggage: "25 kg", cabin: "Business", price: 655,
+    cancellation: "Changes free of charge; refund minus $90."
+  },
+  {
+    id: 10, airline: "Ariana Afghan Airlines", code: "FG 211", aircraft: "Boeing 737-400",
+    fromCode: "HEA", fromCity: "Herat", toCode: "AUH", toCity: "Abu Dhabi",
+    depart: "20:15", arrive: "23:05", durationMin: 170, stops: 0,
+    baggage: "20 kg", cabin: "Economy", price: 178,
+    cancellation: "Refundable with a $40 service fee."
+  },
+  {
+    id: 11, airline: "Emirates", code: "EK 942", aircraft: "Boeing 777-200LR",
+    fromCode: "HEA", fromCity: "Herat", toCode: "AUH", toCity: "Abu Dhabi",
+    depart: "05:35", arrive: "08:30", durationMin: 175, stops: 1,
+    baggage: "30 kg", cabin: "Economy", price: 205,
+    cancellation: "Changes allowed for a $50 fee."
+  },
+  {
+    id: 12, airline: "Kam Air", code: "RQ 303", aircraft: "Airbus A340-300",
+    fromCode: "HEA", fromCity: "Herat", toCode: "DOH", toCity: "Doha",
+    depart: "21:40", arrive: "01:20", durationMin: 220, stops: 0,
+    baggage: "25 kg", cabin: "First Class", price: 1120,
+    cancellation: "Fully refundable at any time before departure."
   }
-  function applyFilters(list) {
-    /* Merge filters from both panels (union of checked) */
-    const d = filterDesktop ? getActiveFilters(filterDesktop) : null;
-    const m = filterMobile ? getActiveFilters(filterMobile) : null;
-    const merge = (key) => {
-      const set = new Set();
-      if (d) d[key].forEach((v) => set.add(v));
-      if (m) m[key].forEach((v) => set.add(v));
-      return set;
-    };
-    const maxPrice = Math.min(d?.maxPrice || 700, m?.maxPrice || 700);
-    const airlines = merge("airlines");
-    const stops = merge("stops");
-    const times = merge("times");
-    const classes = merge("classes");
-    return list.filter((f) =>
-      f.price <= maxPrice &&
-      airlines.has(f.airline) &&
-      stops.has(f.stops) &&
-      times.has(f.depSlot) &&
-      classes.has(f.cabin)
-    );
-  }
-   function sortFlights(list) {
-    const mode = sortBy.value;
-    const arr = list.slice();
-    if (mode === "cheapest") arr.sort((a, b) => a.price - b.price);
-    else if (mode === "fastest") arr.sort((a, b) => a.durMin - b.durMin);
-    else if (mode === "earliest") arr.sort((a, b) => a.dep.localeCompare(b.dep));
-    else arr.sort((a, b) => (a.stops - b.stops) || (a.price - b.price)); /* recommended */
-    return arr;
-  }
-function stopBadgeClass(stops) {
-    return stops === 0 ? "stop-non" : stops === 1 ? "stop-1" : "stop-2";
-  }
-  function flightCardHTML(f, i) {
-    return `
-      <article class="flight-card" style="animation-delay:${i * 0.06}s">
-        <div class="flight-grid">
-          <div class="airline-block">
-            <div class="airline-logo" style="background:${f.color}"><i class="bi ${f.logo}"></i></div>
-            <div>
-              <div class="airline-name">${f.airline}</div>
-              <div class="flight-no">${f.no}</div>
-            </div>
+];
+
+/* Helpers -------------------------------------------------------- */
+function formatDuration(minutes) {
+  const h = Math.floor(minutes / 60);
+  const m = minutes % 60;
+  return m === 0 ? h + "h" : h + "h " + m + "m";
+}
+
+function stopsLabel(stops) {
+  if (stops === 0) return "Non-stop";
+  if (stops === 1) return "1 Stop";
+  return stops + " Stops";
+}
+
+function timeBucket(time) {
+  const hour = parseInt(time.split(":")[0], 10);
+  if (hour >= 5 && hour < 12) return "morning";
+  if (hour >= 12 && hour < 17) return "afternoon";
+  if (hour >= 17 && hour < 21) return "evening";
+  return "night";
+}
+
+/* ------------------------------------------------------------------
+   3. RENDER FLIGHT CARDS
+------------------------------------------------------------------ */
+const resultsList = document.getElementById("resultsList");
+const resultCount = document.getElementById("resultCount");
+const emptyState = document.getElementById("emptyState");
+
+function flightCardHTML(f) {
+  return `
+  <article class="flight-card reveal visible">
+    <div class="row align-items-center g-4">
+      <div class="col-lg-3">
+        <p class="airline-name mb-1">${f.airline}</p>
+        <p class="flight-no mb-0">${f.code} &middot; ${f.aircraft}</p>
+      </div>
+
+      <div class="col-lg-6">
+        <div class="row align-items-center text-center text-lg-start">
+          <div class="col-4">
+            <p class="airport-code mb-0">${f.fromCode}</p>
+            <p class="flight-time mb-0">${f.depart}</p>
+            <p class="flight-city mb-0">${f.fromCity}</p>
           </div>
-          <div class="route-block">
-            <div class="route-times">
-              <span>${f.dep}<br><small class="route-codes">${f.from}</small></span>
-              <span class="route-arrow"><i class="bi bi-airplane"></i><br><small>${f.dur}</small></span>
-              <span>${f.arr}<br><small class="route-codes">${f.to}</small></span>
+          <div class="col-4 path-visual">
+            <span class="flight-city">${formatDuration(f.durationMin)}</span>
+            <div class="path-line">
+              <span class="path-plane"><i class="bi bi-airplane-fill" aria-hidden="true"></i></span>
             </div>
-            <div class="route-meta">
-              <span class="stop-badge ${stopBadgeClass(f.stops)}">${f.stopLabel}</span>
-              <span class="baggage-info"><i class="bi bi-bag-fill"></i> ${f.baggage}</span>
-            </div>
+            <span class="flight-city">${stopsLabel(f.stops)}</span>
           </div>
-          <div class="price-block">
-            <div class="price-label">From</div>
-            <div class="price"><span class="currency">$</span>${f.price}</div>
-            <div class="flight-actions">
-              <button class="btn btn-outline-soft view-details" data-no="${f.no}">View Details</button>
-              <a href="../booking.html" class="btn btn-gradient book-now">Book Now</a>
-            </div>
+          <div class="col-4 text-end text-lg-end">
+            <p class="airport-code mb-0">${f.toCode}</p>
+            <p class="flight-time mb-0">${f.arrive}</p>
+            <p class="flight-city mb-0">${f.toCity}</p>
           </div>
         </div>
-      </article>`;
-  }
-  function renderFlights() {
-    const filtered = applyFilters(FLIGHTS);
-    const sorted = sortFlights(filtered);
-    flightList.innerHTML = sorted.map((f, i) => flightCardHTML(f, i)).join("");
-    resultCount.textContent = `${sorted.length} flight${sorted.length === 1 ? "" : "s"} available`;
-    emptyState.classList.toggle("d-none", sorted.length > 0);
-    attachDetailHandlers();
-  }
- /* ============================================================
-     FLIGHT DETAILS MODAL
-     ============================================================ */
-  const flightModal = new bootstrap.Modal(document.getElementById("flightModal"));
-  const modalBody = document.getElementById("flightModalBody");
-  const modalTitle = document.getElementById("flightModalLabel");
+      </div>
 
-  function attachDetailHandlers() {
-    document.querySelectorAll(".view-details").forEach((btn) => {
-      btn.addEventListener("click", function () {
-        const no = this.dataset.no;
-        const f = FLIGHTS.find((x) => x.no === no);
-        if (!f) return;
-        modalTitle.textContent = `${f.airline} — ${f.no}`;
-        modalBody.innerHTML = `
-          <div class="detail-route">
-            <div>
-              <div class="big">${f.dep}</div>
-              <div>${f.from}</div>
-            </div>
-            <div class="arrow"><i class="bi bi-airplane"></i><br>${f.dur} · ${f.stopLabel}</div>
-            <div class="text-end">
-              <div class="big">${f.arr}</div>
-              <div>${f.to}</div>
-            </div>
-          </div>
-          <div class="detail-grid">
-            <div class="detail-item"><div class="lbl">Airline</div><div class="val">${f.airline}</div></div>
-            <div class="detail-item"><div class="lbl">Flight Number</div><div class="val">${f.no}</div></div>
-            <div class="detail-item"><div class="lbl">Aircraft</div><div class="val">${f.aircraft}</div></div>
-            <div class="detail-item"><div class="lbl">Duration</div><div class="val">${f.dur}</div></div>
-            <div class="detail-item"><div class="lbl">Cabin Class</div><div class="val">${f.cabin}</div></div>
-            <div class="detail-item"><div class="lbl">Baggage</div><div class="val">${f.baggage}</div></div>
-            <div class="detail-item"><div class="lbl">Price</div><div class="val">$${f.price}</div></div>
-            <div class="detail-item"><div class="lbl">Cancellation</div><div class="val">${f.cancel}</div></div>
-          </div>`;
-        flightModal.show();
-      });
+      <div class="col-lg-3">
+        <div class="price-block">
+          <p class="price-from mb-0">From</p>
+          <p class="price-value mb-0">$${f.price}</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="card-divider"></div>
+
+    <div class="d-flex flex-wrap align-items-center justify-content-between gap-3">
+      <div>
+        <span class="meta-chip"><i class="bi bi-briefcase" aria-hidden="true"></i> Baggage ${f.baggage}</span>
+        <span class="meta-chip"><i class="bi bi-airplane-engines" aria-hidden="true"></i> ${f.cabin}</span>
+        <span class="meta-chip"><i class="bi bi-geo-alt" aria-hidden="true"></i> ${stopsLabel(f.stops)}</span>
+      </div>
+      <div class="d-flex flex-wrap gap-2">
+        <button class="btn btn-ghost btn-sm px-3" data-details="${f.id}">View Details</button>
+        <a class="btn btn-lux btn-sm px-4" href="booking.html?flight=${encodeURIComponent(f.code)}">Book Now</a>
+      </div>
+    </div>
+  </article>`;
+}
+
+function renderFlights(list) {
+  resultsList.innerHTML = list.map(flightCardHTML).join("");
+  resultCount.textContent = list.length + (list.length === 1 ? " flight available" : " flights available");
+  emptyState.classList.toggle("show", list.length === 0);
+}
+
+/* ------------------------------------------------------------------
+   4. FILTERS + SORTING
+------------------------------------------------------------------ */
+const priceRange = document.getElementById("priceRange");
+const priceValue = document.getElementById("priceValue");
+const sortSelect = document.getElementById("sortSelect");
+
+function checkedValues(name) {
+  return Array.from(document.querySelectorAll('input[data-filter="' + name + '"]:checked'))
+    .map((el) => el.value);
+}
+
+function applyFilters() {
+  const maxPrice = Number(priceRange.value);
+  const airlines = checkedValues("airline");
+  const stops = checkedValues("stops");
+  const times = checkedValues("time");
+  const cabins = checkedValues("cabin");
+
+  let list = flights.filter((f) => {
+    if (f.price > maxPrice) return false;
+    if (airlines.length && !airlines.includes(f.airline)) return false;
+    if (stops.length) {
+      const key = f.stops === 0 ? "0" : f.stops === 1 ? "1" : "2";
+      if (!stops.includes(key)) return false;
+    }
+    if (times.length && !times.includes(timeBucket(f.depart))) return false;
+    if (cabins.length && !cabins.includes(f.cabin)) return false;
+    return true;
+  });
+
+  list = sortFlights(list, sortSelect.value);
+  renderFlights(list);
+}
+
+function sortFlights(list, mode) {
+  const copy = list.slice();
+  if (mode === "cheapest") copy.sort((a, b) => a.price - b.price);
+  else if (mode === "fastest") copy.sort((a, b) => a.durationMin - b.durationMin);
+  else if (mode === "earliest") copy.sort((a, b) => a.depart.localeCompare(b.depart));
+  else copy.sort((a, b) => a.stops - b.stops || a.price - b.price); // Recommended
+  return copy;
+}
+
+priceRange.addEventListener("input", () => {
+  priceValue.textContent = "$" + priceRange.value;
+  applyFilters();
+});
+sortSelect.addEventListener("change", applyFilters);
+document.querySelectorAll("input[data-filter]").forEach((el) => el.addEventListener("change", applyFilters));
+
+function resetFilters() {
+  document.querySelectorAll("input[data-filter]").forEach((el) => (el.checked = false));
+  priceRange.value = priceRange.max;
+  priceValue.textContent = "$" + priceRange.value;
+  sortSelect.value = "recommended";
+  applyFilters();
+}
+document.querySelectorAll("[data-reset-filters]").forEach((btn) => btn.addEventListener("click", resetFilters));
+
+/* First render */
+applyFilters();
+
+/* ------------------------------------------------------------------
+   5. SEARCH FORM: trip type, swap, validation, loading
+------------------------------------------------------------------ */
+const form = document.getElementById("searchForm");
+const fromInput = document.getElementById("fromField");
+const toInput = document.getElementById("toField");
+const departInput = document.getElementById("departField");
+const returnInput = document.getElementById("returnField");
+const returnWrap = document.getElementById("returnWrap");
+const passengersInput = document.getElementById("passengersField");
+const cabinInput = document.getElementById("cabinField");
+const swapBtn = document.getElementById("swapBtn");
+const loadingState = document.getElementById("loadingState");
+const resultsSection = document.getElementById("resultsSection");
+
+/* One Way / Round Trip -------------------------------------------- */
+document.querySelectorAll('input[name="tripType"]').forEach((radio) => {
+  radio.addEventListener("change", () => {
+    const roundTrip = document.getElementById("roundTrip").checked;
+    returnWrap.classList.toggle("d-none", !roundTrip);
+    if (!roundTrip) {
+      returnInput.value = "";
+      clearError(returnInput);
+    }
+  });
+});
+
+/* Swap airports --------------------------------------------------- */
+swapBtn.addEventListener("click", () => {
+  const temp = fromInput.value;
+  fromInput.value = toInput.value;
+  toInput.value = temp;
+  swapBtn.classList.remove("spin");
+  void swapBtn.offsetWidth; // restart the animation
+  swapBtn.classList.add("spin");
+});
+
+/* Validation helpers --------------------------------------------- */
+function showError(input, message) {
+  const wrap = input.closest(".field");
+  wrap.classList.add("is-invalid-lux");
+  wrap.querySelector(".field-error").textContent = message;
+  input.setAttribute("aria-invalid", "true");
+}
+
+function clearError(input) {
+  const wrap = input.closest(".field");
+  wrap.classList.remove("is-invalid-lux");
+  input.removeAttribute("aria-invalid");
+}
+
+function validateForm() {
+  let valid = true;
+  [fromInput, toInput, departInput, returnInput, passengersInput, cabinInput].forEach(clearError);
+
+  if (!fromInput.value.trim()) { showError(fromInput, "Please enter a departure airport."); valid = false; }
+  if (!toInput.value.trim()) { showError(toInput, "Please enter a destination airport."); valid = false; }
+  if (
+    fromInput.value.trim() &&
+    fromInput.value.trim().toLowerCase() === toInput.value.trim().toLowerCase()
+  ) {
+    showError(toInput, "Departure and destination cannot be the same.");
+    valid = false;
+  }
+  if (!departInput.value) { showError(departInput, "Please choose a departure date."); valid = false; }
+
+  if (document.getElementById("roundTrip").checked) {
+    if (!returnInput.value) {
+      showError(returnInput, "Please choose a return date.");
+      valid = false;
+    } else if (departInput.value && returnInput.value < departInput.value) {
+      showError(returnInput, "Return date cannot be earlier than departure.");
+      valid = false;
+    }
+  }
+  if (!passengersInput.value) { showError(passengersInput, "Select the number of passengers."); valid = false; }
+  if (!cabinInput.value) { showError(cabinInput, "Select a cabin class."); valid = false; }
+
+  return valid;
+}
+
+form.addEventListener("submit", (event) => {
+  event.preventDefault();
+  if (!validateForm()) return;
+
+  /* Premium loading state, then reveal results */
+  resultsSection.classList.add("d-none");
+  loadingState.classList.add("show");
+  loadingState.scrollIntoView({ behavior: "smooth", block: "center" });
+
+  setTimeout(() => {
+    loadingState.classList.remove("show");
+    resultsSection.classList.remove("d-none");
+    applyFilters();
+    resultsSection.scrollIntoView({ behavior: "smooth", block: "start" });
+  }, 1800);
+});
+
+/* ------------------------------------------------------------------
+   6. VIEW DETAILS — one reusable Bootstrap modal
+------------------------------------------------------------------ */
+const detailModal = new bootstrap.Modal(document.getElementById("flightModal"));
+const modalBody = document.getElementById("flightModalBody");
+const modalTitle = document.getElementById("flightModalLabel");
+const modalBookBtn = document.getElementById("modalBookBtn");
+
+function detailRow(key, value) {
+  return `<div class="detail-row"><span class="detail-key">${key}</span><span class="detail-val">${value}</span></div>`;
+}
+
+resultsList.addEventListener("click", (event) => {
+  const btn = event.target.closest("[data-details]");
+  if (!btn) return;
+  const flight = flights.find((f) => f.id === Number(btn.dataset.details));
+  if (!flight) return;
+
+  modalTitle.textContent = flight.airline + " · " + flight.code;
+  modalBody.innerHTML =
+    detailRow("Airline", flight.airline) +
+    detailRow("Flight Number", flight.code) +
+    detailRow("Departure", flight.fromCity + " (" + flight.fromCode + ") · " + flight.depart) +
+    detailRow("Arrival", flight.toCity + " (" + flight.toCode + ") · " + flight.arrive) +
+    detailRow("Duration", formatDuration(flight.durationMin)) +
+    detailRow("Stops", stopsLabel(flight.stops)) +
+    detailRow("Aircraft", flight.aircraft) +
+    detailRow("Baggage", flight.baggage) +
+    detailRow("Cabin", flight.cabin) +
+    detailRow("Price", "$" + flight.price) +
+    detailRow("Cancellation", flight.cancellation);
+
+  modalBookBtn.href = "booking.html?flight=" + encodeURIComponent(flight.code);
+  detailModal.show();
+});
+
+/* ------------------------------------------------------------------
+   7. FLIGHT STATUS BOARD
+------------------------------------------------------------------ */
+const statusData = {
+  RQ101: { status: "On Time", cls: "status-ontime", fromCode: "HEA", fromCity: "Herat", toCode: "DXB", toCity: "Dubai", depart: "13:20", arrive: "15:40" },
+  RQ202: { status: "Boarding", cls: "status-boarding", fromCode: "HEA", fromCity: "Herat", toCode: "DEL", toCity: "Delhi", depart: "11:25", arrive: "17:55" },
+  RQ303: { status: "Delayed", cls: "status-delayed", fromCode: "HEA", fromCity: "Herat", toCode: "DOH", toCity: "Doha", depart: "21:40", arrive: "01:20" },
+  RQ404: { status: "Cancelled", cls: "status-cancelled", fromCode: "HEA", fromCity: "Herat", toCode: "IST", toCity: "Istanbul", depart: "06:10", arrive: "11:05" }
+};
+
+const statusForm = document.getElementById("statusForm");
+const statusInput = document.getElementById("statusInput");
+const statusResult = document.getElementById("statusResult");
+const statusError = document.getElementById("statusError");
+
+statusForm.addEventListener("submit", (event) => {
+  event.preventDefault();
+  const key = statusInput.value.replace(/\s+/g, "").toUpperCase();
+  const data = statusData[key];
+
+  if (!data) {
+    statusResult.classList.remove("show");
+    statusError.textContent = key
+      ? "Flight " + key + " was not found. Try RQ101, RQ202, RQ303 or RQ404."
+      : "Please enter a flight number.";
+    statusError.classList.remove("d-none");
+    return;
+  }
+
+  statusError.classList.add("d-none");
+  statusResult.innerHTML = `
+    <div class="row align-items-center g-4 text-center text-md-start">
+      <div class="col-md-3">
+        <p class="board-city mb-1">Flight</p>
+        <p class="board-code mb-0">${key}</p>
+      </div>
+      <div class="col-md-5">
+        <p class="board-code mb-0" style="font-size:2rem">${data.fromCity.toUpperCase()} (${data.fromCode})</p>
+        <p class="board-arrow mb-0" aria-hidden="true"><i class="bi bi-arrow-down"></i></p>
+        <p class="board-code mb-0" style="font-size:2rem">${data.toCity.toUpperCase()} (${data.toCode})</p>
+      </div>
+      <div class="col-md-4 text-md-end">
+        <span class="status-pill ${data.cls}"><span class="dot"></span>${data.status}</span>
+        <p class="board-city mt-3 mb-1">Departure ${data.depart}</p>
+        <p class="board-city mb-0">Arrival ${data.arrive}</p>
+      </div>
+    </div>`;
+  statusResult.classList.add("show");
+});
+
+/* ------------------------------------------------------------------
+   8. SCROLL REVEAL + ATMOSPHERIC PARTICLES
+------------------------------------------------------------------ */
+const observer = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry, index) => {
+      if (entry.isIntersecting) {
+        entry.target.style.transitionDelay = index * 80 + "ms";
+        entry.target.classList.add("visible");
+        observer.unobserve(entry.target);
+      }
     });
-  }
+  },
+  { threshold: 0.12 }
+);
+document.querySelectorAll(".reveal:not(.visible)").forEach((el) => observer.observe(el));
 
-   /* ============================================================
-     FILTER + SORT WIRING
-     ============================================================ */
-  function wireFilterPanel(scope) {
-    if (!scope) return;
-    const priceRange = scope.querySelector(".filter-price");
-    const priceLabel = scope.querySelector(".price-label");
-    if (priceRange && priceLabel) {
-      priceRange.addEventListener("input", () => { priceLabel.textContent = "$" + priceRange.value; renderFlights(); });
-    }
-    scope.querySelectorAll("input[type=checkbox]").forEach((c) => c.addEventListener("change", renderFlights));
-    const reset = scope.querySelector("#resetFilters");
-    if (reset) reset.addEventListener("click", function () {
-      scope.querySelectorAll("input[type=checkbox]").forEach((c) => (c.checked = true));
-      if (priceRange) { priceRange.value = 700; priceLabel.textContent = "$700"; }
-      renderFlights();
-    });
-  }
-  wireFilterPanel(filterDesktop);
-  wireFilterPanel(filterMobile);
-
-  sortBy.addEventListener("change", renderFlights);
-  /* ============================================================
-     FLIGHT STATUS CHECKER
-     ============================================================ */
-  const statusForm = document.getElementById("statusForm");
-  const statusInput = document.getElementById("statusInput");
-  const statusCard = document.getElementById("statusCard");
-
-  /* Deterministic demo status from flight number */
-  function statusFor(no) {
-    const clean = no.replace(/\s+/g, "").toUpperCase();
-    const statuses = [
-      { key: "ontime", label: "On Time", dot: "ontime", detail: "Scheduled departure on time. Gate will be announced 45 minutes before boarding." },
-      { key: "delayed", label: "Delayed", dot: "delayed", detail: "Delayed by approximately 35 minutes due to weather conditions." },
-      { key: "boarding", label: "Boarding", dot: "boarding", detail: "Boarding has started. Please proceed to the gate immediately." },
-      { key: "cancelled", label: "Cancelled", dot: "cancelled", detail: "This flight has been cancelled. Please contact customer support for rebooking." }
-    ];
-    const idx = (clean.charCodeAt(clean.length - 1) + clean.length) % statuses.length;
-    return statuses[idx];
-  }
-
-  statusForm.addEventListener("submit", function (e) {
-    e.preventDefault();
-    const no = statusInput.value.trim();
-    if (!no) { statusInput.focus(); return; }
-    const s = statusFor(no);
-    const f = FLIGHTS.find((x) => x.no.replace(/\s+/g, "").toUpperCase() === no.replace(/\s+/g, "").toUpperCase());
-    const route = f ? `${f.from} → ${f.to}` : "Route info unavailable";
-    const dep = f ? `${f.dep} · ${f.airline}` : "Schedule unavailable";
-    statusCard.innerHTML = `
-      <div class="status-result">
-        <div class="status-row">
-          <span class="status-dot ${s.dot}"></span>
-          <span class="status-label">${s.label}</span>
-          <span class="text-muted ms-auto">Flight ${no.toUpperCase()}</span>
-        </div>
-        <div class="status-detail">
-          <div><strong>Route:</strong> ${route}</div>
-          <div><strong>Schedule:</strong> ${dep}</div>
-          <div>${s.detail}</div>
-        </div>
-      </div>`;
-  });
-   /* ============================================================
-     POPULAR DESTINATIONS
-     ============================================================ */
-  const DESTINATIONS = [
-    { name: "Dubai", country: "United Arab Emirates", desc: "Futuristic skyline, golden deserts and world-class shopping.", img: "https://images.pexels.com/photos/19664340/pexels-photo-19664340.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" },
-    { name: "Istanbul", country: "Turkey", desc: "Where two continents meet — minarets, bazaars and the Bosphorus.", img: "https://images.pexels.com/photos/8518777/pexels-photo-8518777.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" },
-    { name: "Doha", country: "Qatar", desc: "A gleaming bayfront city of art, culture and desert adventure.", img: "https://images.pexels.com/photos/19748320/pexels-photo-19748320.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" },
-    { name: "Delhi", country: "India", desc: "Ancient monuments, vibrant streets and rich Mughal heritage.", img: "https://images.pexels.com/photos/789750/pexels-photo-789750.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" },
-    { name: "Kuala Lumpur", country: "Malaysia", desc: "Towering skyscrapers, lush parks and a blend of cultures.", img: "https://images.pexels.com/photos/9395978/pexels-photo-9395978.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" },
-    { name: "Abu Dhabi", country: "United Arab Emirates", desc: "Grand mosques, island Corniche and serene Gulf waters.", img: "https://images.pexels.com/photos/28448972/pexels-photo-28448972.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" }
-  ];
-  const destGrid = document.getElementById("destinationsGrid");
-  destGrid.innerHTML = DESTINATIONS.map((d) => `
-    <div class="col-md-6 col-lg-4">
-      <div class="dest-card">
-        <div class="dest-img"><img src="${d.img}" alt="${d.name} skyline" loading="lazy"></div>
-        <div class="dest-body">
-          <div class="dest-country">${d.country}</div>
-          <div class="dest-name">${d.name}</div>
-          <p class="dest-desc">${d.desc}</p>
-          <a href="../booking.html" class="dest-btn">Explore Flights <i class="bi bi-arrow-right"></i></a>
-        </div>
-      </div>
-    </div>`).join("");
-     /* ============================================================
-     INITIAL RENDER
-     ============================================================ */
-  renderFlights();
-})();
+/* A handful of soft particles in the hero (kept light for performance) */
+const particleLayer = document.getElementById("particles");
+for (let i = 0; i < 14; i++) {
+  const dot = document.createElement("span");
+  dot.className = "particle";
+  dot.style.left = Math.random() * 100 + "%";
+  dot.style.top = 60 + Math.random() * 40 + "%";
+  dot.style.animationDuration = 12 + Math.random() * 12 + "s";
+  dot.style.animationDelay = -Math.random() * 12 + "s";
+  particleLayer.appendChild(dot);
+}

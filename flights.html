@@ -1,550 +1,1152 @@
 <!doctype html>
-<html lang="en" data-theme="dark">
+<html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Flights — AEROVA Airlines</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Flights — Search & Compare Premium Fares | AEROVA Airlines</title>
     <meta
       name="description"
-      content="Search, compare and discover your next journey with AEROVA Airlines."
+      content="Search, compare and book premium flights with AEROVA Airlines. Live flight status, exclusive fares and popular destinations across Asia and the Middle East."
     />
-    <!-- Bootstrap 5 CSS -->
+    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+
+    <!-- Bootstrap 5 + Bootstrap Icons -->
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
       rel="stylesheet"
     />
-    <!-- Bootstrap Icons -->
     <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
       rel="stylesheet"
     />
-    <!-- Google Fonts -->
+    <!-- Typography -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,600&family=Manrope:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
     <!-- Page styles -->
-    <link href="flights.css" rel="stylesheet" />
+    <link rel="stylesheet" href="flights.css" />
   </head>
+
   <body>
-    <!-- ============ NAVBAR ============ -->
-    <nav class="navbar navbar-expand-lg fixed-top navbar-sky">
+    <!-- ================= NAVBAR ================= -->
+    <nav
+      class="navbar navbar-expand-lg lux-navbar sticky-top"
+      aria-label="Main navigation"
+    >
       <div class="container">
-        <!-- Brand / Logo -->
-        <a
-          class="navbar-brand d-flex align-items-center gap-2"
-          href="../index.html"
-        >
-          <span class="brand-icon"
-            ><i class="bi bi-airplane-engines-fill"></i
+        <a class="navbar-brand" href="index.html">
+          <span class="brand-mark"
+            ><i class="bi bi-airplane-fill" aria-hidden="true"></i
           ></span>
-          <span class="brand-name">AEROVA</span>
+          AEROVA
         </a>
 
-        <!-- Mobile toggle -->
         <button
           class="navbar-toggler"
           type="button"
-          data-bs-toggle="offcanvas"
-          data-bs-target="#navOffcanvas"
-          aria-controls="navOffcanvas"
-          aria-label="Toggle navigation"
+          data-bs-toggle="collapse"
+          data-bs-target="#mainNav"
+          aria-controls="mainNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation menu"
         >
-          <span class="navbar-toggler-icon"></span>
+          <i class="bi bi-list fs-4" aria-hidden="true"></i>
         </button>
-        <!-- Desktop links -->
-        <div class="collapse navbar-collapse justify-content-center">
-          <ul class="navbar-nav gap-lg-1">
+
+        <div class="collapse navbar-collapse" id="mainNav">
+          <ul class="navbar-nav ms-auto align-items-lg-center">
             <li class="nav-item">
-              <a class="nav-link" href="../index.html">Home</a>
+              <a class="nav-link" href="index.html">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" href="flights.html">Flights</a>
+              <a class="nav-link active" href="flights.html" aria-current="page"
+                >Flights</a
+              >
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="../booking.html">Booking</a>
+              <a class="nav-link" href="booking.html">Booking</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="../boarding-pass.html">Boarding Pass</a>
+              <a class="nav-link" href="boarding-pass.html">Boarding Pass</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="../airport-guide.html">Airport Guide</a>
+              <a class="nav-link" href="airport-guide.html">Airport Guide</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="../lost-found.html">Lost &amp; Found</a>
+              <a class="nav-link" href="lost-found.html">Lost &amp; Found</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="../login.html">Login</a>
+            <li class="nav-item ms-lg-2">
+              <a class="btn btn-ghost btn-sm px-3" href="login.html">Login</a>
+            </li>
+            <li class="nav-item ms-lg-3 mt-3 mt-lg-0">
+              <button
+                class="theme-toggle"
+                id="themeToggle"
+                type="button"
+                aria-label="Switch theme"
+              >
+                <i class="bi bi-sun" id="themeIcon" aria-hidden="true"></i>
+              </button>
             </li>
           </ul>
-        </div>
-        <!-- Theme toggle -->
-        <div class="d-flex align-items-center gap-2 ms-lg-2">
-          <button
-            class="btn-theme-toggle"
-            id="themeToggle"
-            type="button"
-            aria-label="Toggle theme"
-          >
-            <i class="bi bi-moon-stars-fill theme-icon-dark"></i>
-            <i class="bi bi-sun-fill theme-icon-light"></i>
-          </button>
-          <a href="../login.html" class="btn btn-ghost d-none d-lg-inline-flex"
-            >Sign In</a
-          >
         </div>
       </div>
     </nav>
 
-    <!-- Mobile offcanvas menu -->
-    <div
-      class="offcanvas offcanvas-end nav-offcanvas"
-      tabindex="-1"
-      id="navOffcanvas"
-      aria-labelledby="navOffcanvasLabel"
-    >
-      <div class="offcanvas-header">
-        <h5 class="offcanvas-title" id="navOffcanvasLabel">
-          <span class="brand-icon"
-            ><i class="bi bi-airplane-engines-fill"></i
-          ></span>
-          SkyNest
-        </h5>
-        <button
-          type="button"
-          class="btn-close btn-close-white"
-          data-bs-dismiss="offcanvas"
-          aria-label="Close"
-        ></button>
-      </div>
-      <div class="offcanvas-body">
-        <ul class="nav flex-column gap-2">
-          <li><a class="nav-link" href="../index.html">Home</a></li>
-          <li><a class="nav-link active" href="flights.html">Flights</a></li>
-          <li><a class="nav-link" href="../booking.html">Booking</a></li>
-          <li>
-            <a class="nav-link" href="../boarding-pass.html">Boarding Pass</a>
-          </li>
-          <li>
-            <a class="nav-link" href="../airport-guide.html">Airport Guide</a>
-          </li>
-          <li>
-            <a class="nav-link" href="../lost-found.html">Lost &amp; Found</a>
-          </li>
-          <li><a class="nav-link" href="../login.html">Login</a></li>
-        </ul>
-      </div>
-    </div>
-    <!-- ============ HERO + SEARCH ============ -->
-    <header class="hero" id="top">
-      <!-- Animated background: airplane, clouds, flight path -->
-      <div class="hero-bg" aria-hidden="true">
-        <div class="cloud cloud-1"></div>
-        <div class="cloud cloud-2"></div>
-        <div class="cloud cloud-3"></div>
-        <svg
-          class="flight-path"
-          viewBox="0 0 1200 400"
-          preserveAspectRatio="none"
-        >
-          <path
-            d="M -50 320 Q 300 80 600 200 T 1250 120"
-            fill="none"
-            stroke="url(#pathGrad)"
-            stroke-width="2"
-            stroke-dasharray="6 10"
-          />
-          <defs>
-            <linearGradient id="pathGrad" x1="0" y1="0" x2="1" y2="0">
-              <stop offset="0%" stop-color="#3b82f6" stop-opacity="0" />
-              <stop offset="50%" stop-color="#06b6d4" stop-opacity="0.5" />
-              <stop offset="100%" stop-color="#8b5cf6" stop-opacity="0" />
-            </linearGradient>
-          </defs>
-        </svg>
-        <div class="airplane"><i class="bi bi-airplane-fill"></i></div>
-      </div>
+    <main>
+      <!-- ================= HERO ================= -->
+      <header class="hero">
+        <img
+          class="hero-img"
+          src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=1920&q=70"
+          alt="Commercial airliner cruising above a sea of clouds at sunset"
+        />
+        <div class="hero-overlay"></div>
+        <div class="hero-glow" aria-hidden="true"></div>
+        <span class="hero-orb one" aria-hidden="true"></span>
+        <span class="hero-orb two" aria-hidden="true"></span>
 
-      <div class="container hero-content">
-        <div class="row justify-content-center text-center">
-          <div class="col-lg-9 hero-text">
-            <span class="eyebrow"
-              ><i class="bi bi-globe2"></i> Premium Flight Search</span
-            >
-            <h1 class="hero-title">Find Your Perfect Flight</h1>
-            <p class="hero-subtitle">
-              Search, compare and discover your next journey with ease.
-            </p>
+        <!-- Realistic curved flight path with a small plane silhouette -->
+        <div class="flight-path" aria-hidden="true">
+          <svg viewBox="0 0 1000 400" preserveAspectRatio="none">
+            <path
+              class="route-line"
+              d="M -60 300 C 220 140, 620 320, 1000 120"
+            />
+            <path
+              class="route-plane"
+              d="M 0 0 L -9 4 L -7 0 L -9 -4 Z M -3 0 L -12 8 M -3 0 L -12 -8"
+              transform="scale(1.6)"
+            />
+          </svg>
+        </div>
+        <div class="particles" id="particles" aria-hidden="true"></div>
+
+        <div class="container hero-content">
+          <div class="row">
+            <div class="col-lg-8">
+              <span class="hero-badge fade-up d1">✦ Premium Flight Search</span>
+              <h1 class="hero-title fade-up d2">
+                Find Your <span class="accent">Perfect</span> Flight
+              </h1>
+              <p class="hero-sub mt-3 fade-up d3">
+                Search, compare and discover your next journey.
+              </p>
+            </div>
           </div>
         </div>
-      </div>
-      <!-- Floating search card -->
-      <div class="container search-wrap">
-        <div class="search-card glass" id="searchCard">
-          <form id="searchForm" novalidate>
-            <!-- Trip type -->
-            <div class="trip-type-row">
-              <div class="trip-toggle" role="group" aria-label="Trip type">
+      </header>
+
+      <!-- ================= SEARCH PANEL ================= -->
+      <section class="search-wrap" aria-labelledby="searchTitle">
+        <div class="container">
+          <div class="glass-panel fade-up d4">
+            <div
+              class="d-flex flex-wrap align-items-center justify-content-between gap-3 mb-4"
+            >
+              <h2 class="panel-title" id="searchTitle">Search Flights</h2>
+              <div class="trip-toggle" role="radiogroup" aria-label="Trip type">
                 <input
                   type="radio"
                   name="tripType"
-                  id="tripRound"
+                  id="roundTrip"
                   value="round"
                   checked
                 />
-                <label for="tripRound"
-                  ><i class="bi bi-arrow-left-right"></i> Round Trip</label
-                >
-                <input type="radio" name="tripType" id="tripOne" value="one" />
-                <label for="tripOne"
-                  ><i class="bi bi-arrow-right"></i> One Way</label
-                >
-                <span class="trip-slider"></span>
+                <label for="roundTrip">Round Trip</label>
+                <input
+                  type="radio"
+                  name="tripType"
+                  id="oneWay"
+                  value="oneway"
+                />
+                <label for="oneWay">One Way</label>
               </div>
             </div>
-            <div class="row g-3 align-items-end">
-              <!-- From -->
-              <div class="col-12 col-md-5 col-lg-3">
-                <label class="form-label" for="fromInput"
-                  ><i class="bi bi-geo-alt-fill"></i> From</label
-                >
-                <div class="position-relative">
+
+            <form id="searchForm" novalidate>
+              <div class="row g-3 align-items-end">
+                <div class="col-lg-3 col-md-6 field">
+                  <label class="field-label d-block" for="fromField"
+                    >From</label
+                  >
                   <input
+                    class="lux-input"
+                    id="fromField"
                     type="text"
-                    class="form-control"
-                    id="fromInput"
-                    placeholder="City or airport"
+                    placeholder="Herat (HEA)"
                     value="Herat (HEA)"
                     autocomplete="off"
                   />
+                  <p class="field-error" role="alert"></p>
                 </div>
-                <div class="invalid-feedback" id="fromFeedback">
-                  Please enter an origin.
-                </div>
-              </div>
-              <!-- Swap -->
-              <div class="col-12 col-md-2 col-lg-1 text-center">
-                <button
-                  type="button"
-                  class="swap-btn"
-                  id="swapBtn"
-                  aria-label="Swap origin and destination"
-                  title="Swap"
-                >
-                  <i class="bi bi-arrow-left-right"></i>
-                </button>
-              </div>
-              <!-- To -->
-              <div class="col-12 col-md-5 col-lg-3">
-                <label class="form-label" for="toInput"
-                  ><i class="bi bi-geo-fill"></i> To</label
-                >
-                <input
-                  type="text"
-                  class="form-control"
-                  id="toInput"
-                  placeholder="City or airport"
-                  value="Dubai (DXB)"
-                  autocomplete="off"
-                />
-                <div class="invalid-feedback" id="toFeedback">
-                  Please enter a destination.
-                </div>
-              </div>
-              <!-- Departure -->
-              <div class="col-6 col-lg-2">
-                <label class="form-label" for="departDate"
-                  ><i class="bi bi-calendar-event"></i> Departure</label
-                >
-                <input type="date" class="form-control" id="departDate" />
-                <div class="invalid-feedback" id="departFeedback">
-                  Departure date required.
-                </div>
-              </div>
-              <!-- Return -->
-              <div class="col-6 col-lg-2 return-field" id="returnField">
-                <label class="form-label" for="returnDate"
-                  ><i class="bi bi-calendar-check"></i> Return</label
-                >
-                <input type="date" class="form-control" id="returnDate" />
-                <div class="invalid-feedback" id="returnFeedback">
-                  Return must be after departure.
-                </div>
-              </div>
-              <!-- Passengers + Class -->
-              <div class="col-6 col-lg-2">
-                <label class="form-label" for="passengers"
-                  ><i class="bi bi-people-fill"></i> Passengers</label
-                >
-                <select class="form-select" id="passengers">
-                  <option value="1">1 Passenger</option>
-                  <option value="2">2 Passengers</option>
-                  <option value="3">3 Passengers</option>
-                  <option value="4">4 Passengers</option>
-                  <option value="5">5+ Passengers</option>
-                </select>
-              </div>
-              <div class="col-6 col-lg-2">
-                <label class="form-label" for="cabinClass"
-                  ><i class="bi bi-bag-check-fill"></i> Class</label
-                >
-                <select class="form-select" id="cabinClass">
-                  <option value="Economy">Economy</option>
-                  <option value="Premium Economy">Premium Economy</option>
-                  <option value="Business">Business</option>
-                  <option value="First Class">First Class</option>
-                </select>
-              </div>
 
-              <!-- Search button -->
-              <div class="col-12 col-lg-2 d-grid">
-                <button
-                  type="submit"
-                  class="btn btn-gradient btn-search"
-                  id="searchBtn"
+                <div class="col-lg-1 col-md-12 swap-holder">
+                  <button
+                    class="swap-btn"
+                    id="swapBtn"
+                    type="button"
+                    aria-label="Swap departure and destination airports"
+                  >
+                    <i class="bi bi-arrow-left-right" aria-hidden="true"></i>
+                  </button>
+                </div>
+
+                <div class="col-lg-3 col-md-6 field">
+                  <label class="field-label d-block" for="toField">To</label>
+                  <input
+                    class="lux-input"
+                    id="toField"
+                    type="text"
+                    placeholder="Dubai (DXB)"
+                    value="Dubai (DXB)"
+                    autocomplete="off"
+                  />
+                  <p class="field-error" role="alert"></p>
+                </div>
+
+                <div class="col-lg-2 col-md-6 field">
+                  <label class="field-label d-block" for="departField"
+                    >Departure</label
+                  >
+                  <input class="lux-input" id="departField" type="date" />
+                  <p class="field-error" role="alert"></p>
+                </div>
+
+                <div class="col-lg-3 col-md-6 field" id="returnWrap">
+                  <label class="field-label d-block" for="returnField"
+                    >Return</label
+                  >
+                  <input class="lux-input" id="returnField" type="date" />
+                  <p class="field-error" role="alert"></p>
+                </div>
+
+                <div class="col-lg-3 col-md-6 field">
+                  <label class="field-label d-block" for="passengersField"
+                    >Passengers</label
+                  >
+                  <select class="lux-select" id="passengersField">
+                    <option value="1">1 Passenger</option>
+                    <option value="2">2 Passengers</option>
+                    <option value="3">3 Passengers</option>
+                    <option value="4">4 Passengers</option>
+                    <option value="5">5+ Passengers</option>
+                  </select>
+                  <p class="field-error" role="alert"></p>
+                </div>
+
+                <div class="col-lg-4 col-md-6 field">
+                  <label class="field-label d-block" for="cabinField"
+                    >Cabin Class</label
+                  >
+                  <select class="lux-select" id="cabinField">
+                    <option value="Economy">Economy</option>
+                    <option value="Premium Economy">Premium Economy</option>
+                    <option value="Business">Business</option>
+                    <option value="First Class">First Class</option>
+                  </select>
+                  <p class="field-error" role="alert"></p>
+                </div>
+
+                <div
+                  class="col-lg-5 col-md-12 d-grid d-lg-flex justify-content-lg-end"
                 >
-                  <i class="bi bi-search"></i> Search Flights
-                </button>
+                  <button class="btn btn-lux px-5" type="submit">
+                    <i class="bi bi-search me-2" aria-hidden="true"></i>Search
+                    Flights
+                  </button>
+                </div>
               </div>
-            </div>
-            <!-- Shared validation alert -->
-            <div
-              class="alert alert-danger mt-3 d-none"
-              id="searchAlert"
-              role="alert"
-            ></div>
-          </form>
+            </form>
+          </div>
         </div>
-      </div>
-    </header>
-    <!-- ============ FLIGHT RESULTS ============ -->
-    <section class="section results-section" id="results">
+      </section>
+
+      <!-- ================= LOADING STATE ================= -->
       <div class="container">
         <div
-          class="d-flex flex-wrap align-items-center justify-content-between gap-3 mb-4"
+          class="loading-state"
+          id="loadingState"
+          role="status"
+          aria-live="polite"
         >
-          <div>
-            <h2 class="section-title">Available Flights</h2>
-            <p class="section-sub" id="resultCount">
-              Search to see available flights.
+          <div class="loader-track">
+            <i class="bi bi-airplane-fill" aria-hidden="true"></i>
+          </div>
+          <p class="mb-0 text-secondary-soft">Searching available flights…</p>
+        </div>
+      </div>
+
+      <!-- ================= RESULTS ================= -->
+      <section
+        class="section pt-5"
+        id="resultsSection"
+        aria-labelledby="resultsTitle"
+      >
+        <div class="container">
+          <div class="row g-4">
+            <!-- Filters: sidebar on desktop, offcanvas on mobile -->
+            <div class="col-lg-3 d-none d-lg-block">
+              <aside class="filter-panel reveal" aria-label="Flight filters">
+                <div class="filter-group">
+                  <p class="filter-title">Price Range</p>
+                  <input
+                    type="range"
+                    class="form-range"
+                    id="priceRange"
+                    min="100"
+                    max="1500"
+                    step="25"
+                    value="1500"
+                    aria-label="Maximum price"
+                  />
+                  <div class="d-flex justify-content-between">
+                    <span class="flight-city">$100</span>
+                    <span class="flight-city" id="priceValue">$1500</span>
+                  </div>
+                </div>
+
+                <div class="filter-group">
+                  <p class="filter-title">Airlines</p>
+                  <div class="form-check">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      data-filter="airline"
+                      value="Kam Air"
+                      id="alKam"
+                    /><label class="form-check-label" for="alKam"
+                      >Kam Air</label
+                    >
+                  </div>
+                  <div class="form-check">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      data-filter="airline"
+                      value="Ariana Afghan Airlines"
+                      id="alAriana"
+                    /><label class="form-check-label" for="alAriana"
+                      >Ariana Afghan Airlines</label
+                    >
+                  </div>
+                  <div class="form-check">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      data-filter="airline"
+                      value="Emirates"
+                      id="alEk"
+                    /><label class="form-check-label" for="alEk"
+                      >Emirates</label
+                    >
+                  </div>
+                  <div class="form-check">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      data-filter="airline"
+                      value="Qatar Airways"
+                      id="alQr"
+                    /><label class="form-check-label" for="alQr"
+                      >Qatar Airways</label
+                    >
+                  </div>
+                  <div class="form-check">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      data-filter="airline"
+                      value="Turkish Airlines"
+                      id="alTk"
+                    /><label class="form-check-label" for="alTk"
+                      >Turkish Airlines</label
+                    >
+                  </div>
+                </div>
+
+                <div class="filter-group">
+                  <p class="filter-title">Stops</p>
+                  <div class="form-check">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      data-filter="stops"
+                      value="0"
+                      id="st0"
+                    /><label class="form-check-label" for="st0">Non-stop</label>
+                  </div>
+                  <div class="form-check">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      data-filter="stops"
+                      value="1"
+                      id="st1"
+                    /><label class="form-check-label" for="st1">1 Stop</label>
+                  </div>
+                  <div class="form-check">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      data-filter="stops"
+                      value="2"
+                      id="st2"
+                    /><label class="form-check-label" for="st2">2+ Stops</label>
+                  </div>
+                </div>
+
+                <div class="filter-group">
+                  <p class="filter-title">Departure</p>
+                  <div class="form-check">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      data-filter="time"
+                      value="morning"
+                      id="tmMorning"
+                    /><label class="form-check-label" for="tmMorning"
+                      >Morning</label
+                    >
+                  </div>
+                  <div class="form-check">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      data-filter="time"
+                      value="afternoon"
+                      id="tmAfternoon"
+                    /><label class="form-check-label" for="tmAfternoon"
+                      >Afternoon</label
+                    >
+                  </div>
+                  <div class="form-check">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      data-filter="time"
+                      value="evening"
+                      id="tmEvening"
+                    /><label class="form-check-label" for="tmEvening"
+                      >Evening</label
+                    >
+                  </div>
+                  <div class="form-check">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      data-filter="time"
+                      value="night"
+                      id="tmNight"
+                    /><label class="form-check-label" for="tmNight"
+                      >Night</label
+                    >
+                  </div>
+                </div>
+
+                <div class="filter-group">
+                  <p class="filter-title">Cabin</p>
+                  <div class="form-check">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      data-filter="cabin"
+                      value="Economy"
+                      id="cbEco"
+                    /><label class="form-check-label" for="cbEco"
+                      >Economy</label
+                    >
+                  </div>
+                  <div class="form-check">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      data-filter="cabin"
+                      value="Business"
+                      id="cbBus"
+                    /><label class="form-check-label" for="cbBus"
+                      >Business</label
+                    >
+                  </div>
+                  <div class="form-check">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      data-filter="cabin"
+                      value="First Class"
+                      id="cbFirst"
+                    /><label class="form-check-label" for="cbFirst"
+                      >First Class</label
+                    >
+                  </div>
+                </div>
+
+                <button
+                  class="btn btn-ghost w-100 mt-4"
+                  type="button"
+                  data-reset-filters
+                >
+                  <i
+                    class="bi bi-arrow-counterclockwise me-2"
+                    aria-hidden="true"
+                  ></i
+                  >Reset Filters
+                </button>
+              </aside>
+            </div>
+
+            <!-- Flight list -->
+            <div class="col-lg-9">
+              <div class="results-head mb-4 reveal">
+                <div>
+                  <p class="eyebrow mb-2">Results</p>
+                  <h2 class="section-title mb-1" id="resultsTitle">
+                    Available Flights
+                  </h2>
+                  <p
+                    class="text-secondary-soft mb-0"
+                    id="resultCount"
+                    aria-live="polite"
+                  >
+                    12 flights available
+                  </p>
+                </div>
+                <div class="d-flex align-items-end gap-2">
+                  <button
+                    class="btn btn-ghost d-lg-none"
+                    type="button"
+                    data-bs-toggle="offcanvas"
+                    data-bs-target="#filterOffcanvas"
+                  >
+                    <i class="bi bi-sliders me-2" aria-hidden="true"></i>Filters
+                  </button>
+                  <div>
+                    <label class="field-label d-block" for="sortSelect"
+                      >Sort by</label
+                    >
+                    <select
+                      class="lux-select"
+                      id="sortSelect"
+                      style="min-width: 200px"
+                    >
+                      <option value="recommended">Recommended</option>
+                      <option value="cheapest">Cheapest</option>
+                      <option value="fastest">Fastest</option>
+                      <option value="earliest">Earliest Departure</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              <div id="resultsList"></div>
+
+              <!-- Empty state -->
+              <div class="empty-state" id="emptyState">
+                <i class="bi bi-airplane" aria-hidden="true"></i>
+                <h3 class="mt-3 mb-2">No flights found</h3>
+                <p class="text-secondary-soft">
+                  Try changing your filters or search criteria.
+                </p>
+                <button
+                  class="btn btn-lux mt-2"
+                  type="button"
+                  data-reset-filters
+                >
+                  Reset Filters
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Mobile filter offcanvas (mirrors the sidebar controls) -->
+      <div
+        class="offcanvas offcanvas-start offcanvas-lux"
+        tabindex="-1"
+        id="filterOffcanvas"
+        aria-labelledby="filterOffcanvasLabel"
+      >
+        <div class="offcanvas-header">
+          <h3 class="h5 mb-0" id="filterOffcanvasLabel">Filters</h3>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="offcanvas"
+            aria-label="Close filters"
+          ></button>
+        </div>
+        <div class="offcanvas-body">
+          <p class="text-secondary-soft small">
+            Use the controls below to refine your results. Changes apply
+            instantly.
+          </p>
+          <div class="filter-group">
+            <p class="filter-title">Airlines</p>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                data-filter="airline"
+                value="Kam Air"
+                id="mAlKam"
+              /><label class="form-check-label" for="mAlKam">Kam Air</label>
+            </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                data-filter="airline"
+                value="Ariana Afghan Airlines"
+                id="mAlAriana"
+              /><label class="form-check-label" for="mAlAriana"
+                >Ariana Afghan Airlines</label
+              >
+            </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                data-filter="airline"
+                value="Emirates"
+                id="mAlEk"
+              /><label class="form-check-label" for="mAlEk">Emirates</label>
+            </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                data-filter="airline"
+                value="Qatar Airways"
+                id="mAlQr"
+              /><label class="form-check-label" for="mAlQr"
+                >Qatar Airways</label
+              >
+            </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                data-filter="airline"
+                value="Turkish Airlines"
+                id="mAlTk"
+              /><label class="form-check-label" for="mAlTk"
+                >Turkish Airlines</label
+              >
+            </div>
+          </div>
+          <div class="filter-group">
+            <p class="filter-title">Stops</p>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                data-filter="stops"
+                value="0"
+                id="mSt0"
+              /><label class="form-check-label" for="mSt0">Non-stop</label>
+            </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                data-filter="stops"
+                value="1"
+                id="mSt1"
+              /><label class="form-check-label" for="mSt1">1 Stop</label>
+            </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                data-filter="stops"
+                value="2"
+                id="mSt2"
+              /><label class="form-check-label" for="mSt2">2+ Stops</label>
+            </div>
+          </div>
+          <div class="filter-group">
+            <p class="filter-title">Departure</p>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                data-filter="time"
+                value="morning"
+                id="mTmMorning"
+              /><label class="form-check-label" for="mTmMorning">Morning</label>
+            </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                data-filter="time"
+                value="afternoon"
+                id="mTmAfternoon"
+              /><label class="form-check-label" for="mTmAfternoon"
+                >Afternoon</label
+              >
+            </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                data-filter="time"
+                value="evening"
+                id="mTmEvening"
+              /><label class="form-check-label" for="mTmEvening">Evening</label>
+            </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                data-filter="time"
+                value="night"
+                id="mTmNight"
+              /><label class="form-check-label" for="mTmNight">Night</label>
+            </div>
+          </div>
+          <div class="filter-group">
+            <p class="filter-title">Cabin</p>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                data-filter="cabin"
+                value="Economy"
+                id="mCbEco"
+              /><label class="form-check-label" for="mCbEco">Economy</label>
+            </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                data-filter="cabin"
+                value="Business"
+                id="mCbBus"
+              /><label class="form-check-label" for="mCbBus">Business</label>
+            </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                data-filter="cabin"
+                value="First Class"
+                id="mCbFirst"
+              /><label class="form-check-label" for="mCbFirst"
+                >First Class</label
+              >
+            </div>
+          </div>
+          <button
+            class="btn btn-ghost w-100 mt-4"
+            type="button"
+            data-reset-filters
+          >
+            Reset Filters
+          </button>
+        </div>
+      </div>
+
+      <!-- ================= FLIGHT STATUS ================= -->
+      <section class="section status-section" aria-labelledby="statusTitle">
+        <div class="container">
+          <div class="text-center reveal">
+            <p class="eyebrow mb-2">Live Operations</p>
+            <h2 class="section-title" id="statusTitle">Check Flight Status</h2>
+            <p class="section-sub mx-auto">
+              Stay informed from takeoff to touchdown.
             </p>
           </div>
-          <div class="d-flex align-items-center gap-2">
-            <label class="form-label mb-0 text-muted small me-1" for="sortBy"
-              >Sort by</label
-            >
-            <select class="form-select form-select-sm sort-select" id="sortBy">
-              <option value="recommended">Recommended</option>
-              <option value="cheapest">Cheapest</option>
-              <option value="fastest">Fastest</option>
-              <option value="earliest">Earliest Departure</option>
-            </select>
-            <!-- Mobile filter toggle -->
-            <button
-              class="btn btn-outline-light btn-sm d-lg-none"
-              type="button"
-              data-bs-toggle="offcanvas"
-              data-bs-target="#filterOffcanvas"
-            >
-              <i class="bi bi-funnel-fill"></i> Filters
-            </button>
+
+          <div class="row justify-content-center mt-5">
+            <div class="col-lg-9">
+              <div class="board reveal">
+                <form
+                  id="statusForm"
+                  class="row g-3 align-items-end"
+                  novalidate
+                >
+                  <div class="col-md-8">
+                    <label class="field-label d-block" for="statusInput"
+                      >Flight Number</label
+                    >
+                    <input
+                      class="lux-input"
+                      id="statusInput"
+                      type="text"
+                      placeholder="RQ101"
+                      autocomplete="off"
+                    />
+                  </div>
+                  <div class="col-md-4 d-grid">
+                    <button class="btn btn-lux" type="submit">
+                      Check Status
+                    </button>
+                  </div>
+                </form>
+                <p
+                  class="field-error d-none mt-3"
+                  id="statusError"
+                  role="alert"
+                  style="display: block"
+                ></p>
+                <hr class="hairline my-4" />
+                <div
+                  class="status-result"
+                  id="statusResult"
+                  aria-live="polite"
+                ></div>
+                <p class="flight-city mb-0">
+                  Demo flight numbers: RQ101 · RQ202 · RQ303 · RQ404
+                </p>
+              </div>
+            </div>
           </div>
         </div>
+      </section>
 
+      <!-- ================= POPULAR DESTINATIONS ================= -->
+      <section class="section" aria-labelledby="destTitle">
+        <div class="container">
+          <div class="reveal">
+            <p class="eyebrow mb-2">Where to next</p>
+            <h2 class="section-title" id="destTitle">Popular Destinations</h2>
+            <p class="section-sub">
+              Handpicked cities our travellers love most this season.
+            </p>
+          </div>
+
+          <div class="row g-4 mt-4">
+            <!-- Dubai -->
+            <div class="col-lg-4 col-md-6 reveal">
+              <article class="dest-card">
+                <img
+                  loading="lazy"
+                  src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=900&q=65"
+                  alt="Dubai skyline at dusk with the Burj Khalifa"
+                />
+                <span class="veil"></span>
+                <div class="dest-body">
+                  <p class="dest-country mb-1">United Arab Emirates</p>
+                  <h3 class="dest-city">Dubai</h3>
+                  <p class="dest-desc mt-2">
+                    Experience a city where futuristic architecture meets
+                    timeless luxury.
+                  </p>
+                  <p class="dest-price mb-3">From $165</p>
+                  <a class="btn btn-ghost btn-sm" href="#resultsSection"
+                    >Explore Flights</a
+                  >
+                </div>
+              </article>
+            </div>
+            <!-- Istanbul -->
+            <div class="col-lg-4 col-md-6 reveal">
+              <article class="dest-card">
+                <img
+                  loading="lazy"
+                  src="https://images.unsplash.com/photo-1541432901042-2d8bd64b4a9b?auto=format&fit=crop&w=900&q=65"
+                  alt="Istanbul skyline with mosques above the Bosphorus"
+                />
+                <span class="veil"></span>
+                <div class="dest-body">
+                  <p class="dest-country mb-1">Türkiye</p>
+                  <h3 class="dest-city">Istanbul</h3>
+                  <p class="dest-desc mt-2">
+                    Two continents, countless centuries of art, spice and sea
+                    air.
+                  </p>
+                  <p class="dest-price mb-3">From $342</p>
+                  <a class="btn btn-ghost btn-sm" href="#resultsSection"
+                    >Explore Flights</a
+                  >
+                </div>
+              </article>
+            </div>
+            <!-- Doha -->
+            <div class="col-lg-4 col-md-6 reveal">
+              <article class="dest-card">
+                <img
+                  loading="lazy"
+                  src="https://images.unsplash.com/photo-1572252009286-268acec5ca0a?auto=format&fit=crop&w=900&q=65"
+                  alt="Doha waterfront skyline in the evening"
+                />
+                <span class="veil"></span>
+                <div class="dest-body">
+                  <p class="dest-country mb-1">Qatar</p>
+                  <h3 class="dest-city">Doha</h3>
+                  <p class="dest-desc mt-2">
+                    Desert calm, museum-grade design and a glittering corniche.
+                  </p>
+                  <p class="dest-price mb-3">From $289</p>
+                  <a class="btn btn-ghost btn-sm" href="#resultsSection"
+                    >Explore Flights</a
+                  >
+                </div>
+              </article>
+            </div>
+            <!-- Abu Dhabi -->
+            <div class="col-lg-4 col-md-6 reveal">
+              <article class="dest-card">
+                <img
+                  loading="lazy"
+                  src="https://images.unsplash.com/photo-1512632578888-169bbbc64f33?auto=format&fit=crop&w=900&q=65"
+                  alt="Sheikh Zayed Grand Mosque in Abu Dhabi at twilight"
+                />
+                <span class="veil"></span>
+                <div class="dest-body">
+                  <p class="dest-country mb-1">United Arab Emirates</p>
+                  <h3 class="dest-city">Abu Dhabi</h3>
+                  <p class="dest-desc mt-2">
+                    Serene grandeur, cultural landmarks and quiet island
+                    beaches.
+                  </p>
+                  <p class="dest-price mb-3">From $178</p>
+                  <a class="btn btn-ghost btn-sm" href="#resultsSection"
+                    >Explore Flights</a
+                  >
+                </div>
+              </article>
+            </div>
+            <!-- Delhi -->
+            <div class="col-lg-4 col-md-6 reveal">
+              <article class="dest-card">
+                <img
+                  loading="lazy"
+                  src="https://images.unsplash.com/photo-1587474260584-136574528ed5?auto=format&fit=crop&w=900&q=65"
+                  alt="India Gate boulevard in Delhi at sunset"
+                />
+                <span class="veil"></span>
+                <div class="dest-body">
+                  <p class="dest-country mb-1">India</p>
+                  <h3 class="dest-city">Delhi</h3>
+                  <p class="dest-desc mt-2">
+                    Imperial monuments, layered history and unforgettable
+                    flavour.
+                  </p>
+                  <p class="dest-price mb-3">From $268</p>
+                  <a class="btn btn-ghost btn-sm" href="#resultsSection"
+                    >Explore Flights</a
+                  >
+                </div>
+              </article>
+            </div>
+            <!-- Kuala Lumpur -->
+            <div class="col-lg-4 col-md-6 reveal">
+              <article class="dest-card">
+                <img
+                  loading="lazy"
+                  src="https://images.unsplash.com/photo-1596422846543-75c6fc197f07?auto=format&fit=crop&w=900&q=65"
+                  alt="Kuala Lumpur skyline with the Petronas Towers"
+                />
+                <span class="veil"></span>
+                <div class="dest-body">
+                  <p class="dest-country mb-1">Malaysia</p>
+                  <h3 class="dest-city">Kuala Lumpur</h3>
+                  <p class="dest-desc mt-2">
+                    Tropical skylines, night markets and rainforest on the
+                    doorstep.
+                  </p>
+                  <p class="dest-price mb-3">From $965</p>
+                  <a class="btn btn-ghost btn-sm" href="#resultsSection"
+                    >Explore Flights</a
+                  >
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= SPECIAL DEALS ================= -->
+      <section class="section pt-0" aria-labelledby="dealsTitle">
+        <div class="container">
+          <div class="deals reveal">
+            <img
+              loading="lazy"
+              src="https://images.unsplash.com/photo-1569154941061-e231b4725ef1?auto=format&fit=crop&w=1600&q=65"
+              alt="Passenger jet on the runway during golden hour"
+            />
+            <span class="veil"></span>
+            <span class="sheen" aria-hidden="true"></span>
+            <div class="deals-body">
+              <p class="eyebrow mb-2">Limited offers</p>
+              <h2 class="section-title mb-3" id="dealsTitle">
+                Fly More. Pay Less.
+              </h2>
+              <p class="dest-desc mb-4" style="max-width: 460px">
+                Discover exclusive flight deals and make your next journey
+                unforgettable.
+              </p>
+              <a class="btn btn-lux" href="#resultsSection">Explore Deals</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= WHY CHOOSE US ================= -->
+      <section class="section pt-0" aria-labelledby="whyTitle">
+        <div class="container">
+          <div class="text-center reveal mb-5">
+            <p class="eyebrow mb-2">The AEROVA difference</p>
+            <h2 class="section-title" id="whyTitle">Why Choose Us</h2>
+          </div>
+          <div class="row g-4">
+            <div class="col-lg-3 col-md-6 reveal">
+              <div class="feature-card">
+                <div class="feature-icon">
+                  <i class="bi bi-tag" aria-hidden="true"></i>
+                </div>
+                <h3 class="h5">Best Prices</h3>
+                <p class="text-secondary-soft mb-0">
+                  Competitive fares for your journey.
+                </p>
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-6 reveal">
+              <div class="feature-card">
+                <div class="feature-icon">
+                  <i class="bi bi-lightning-charge" aria-hidden="true"></i>
+                </div>
+                <h3 class="h5">Easy Booking</h3>
+                <p class="text-secondary-soft mb-0">
+                  A simple and seamless booking experience.
+                </p>
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-6 reveal">
+              <div class="feature-card">
+                <div class="feature-icon">
+                  <i class="bi bi-shield-check" aria-hidden="true"></i>
+                </div>
+                <h3 class="h5">Secure Travel</h3>
+                <p class="text-secondary-soft mb-0">Travel with confidence.</p>
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-6 reveal">
+              <div class="feature-card">
+                <div class="feature-icon">
+                  <i class="bi bi-headset" aria-hidden="true"></i>
+                </div>
+                <h3 class="h5">24/7 Support</h3>
+                <p class="text-secondary-soft mb-0">
+                  We're here whenever you need us.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- ================= FOOTER ================= -->
+    <footer class="lux-footer">
+      <div class="container">
         <div class="row g-4">
-          <!-- Filter sidebar (desktop) -->
-          <aside class="col-lg-3 d-none d-lg-block">
-            <div class="filter-panel glass" id="filterPanelDesktop">
-              <!-- filters injected by shared markup -->
+          <div class="col-lg-5">
+            <a class="navbar-brand" href="index.html">
+              <span class="brand-mark"
+                ><i class="bi bi-airplane-fill" aria-hidden="true"></i
+              ></span>
+              AEROVA
+            </a>
+            <p class="text-secondary-soft mt-3" style="max-width: 340px">
+              A premium airline experience built for modern travellers — elegant
+              cabins, honest fares and care from gate to gate.
+            </p>
+          </div>
+          <div class="col-lg-3 col-6">
+            <p class="footer-title">Quick Links</p>
+            <ul class="list-unstyled d-grid gap-2 mb-0">
+              <li><a href="flights.html">Flights</a></li>
+              <li><a href="booking.html">Booking</a></li>
+              <li><a href="boarding-pass.html">Boarding Pass</a></li>
+              <li><a href="airport-guide.html">Airport Guide</a></li>
+              <li><a href="lost-found.html">Lost &amp; Found</a></li>
+            </ul>
+          </div>
+          <div class="col-lg-4 col-6">
+            <p class="footer-title">Contact</p>
+            <ul class="list-unstyled d-grid gap-2 mb-3">
+              <li>
+                <a href="mailto:hello@skycrest.example"
+                  >hello@AEROVA.example</a
+                >
+              </li>
+              <li><a href="tel:+9700000000">+97 000 000 000</a></li>
+              <li>
+                <span class="text-secondary-soft"
+                  >Herat International Airport, AF</span
+                >
+              </li>
+            </ul>
+            <div class="d-flex gap-2">
+              <a class="social-btn" href="#" aria-label="SkyCrest on Facebook"
+                ><i class="bi bi-facebook" aria-hidden="true"></i
+              ></a>
+              <a class="social-btn" href="#" aria-label="SkyCrest on Instagram"
+                ><i class="bi bi-instagram" aria-hidden="true"></i
+              ></a>
+              <a class="social-btn" href="#" aria-label="SkyCrest on X"
+                ><i class="bi bi-twitter-x" aria-hidden="true"></i
+              ></a>
+              <a class="social-btn" href="#" aria-label="SkyCrest on LinkedIn"
+                ><i class="bi bi-linkedin" aria-hidden="true"></i
+              ></a>
             </div>
-          </aside>
+          </div>
+        </div>
+        <hr class="hairline my-4" />
+        <p class="text-center flight-city mb-0">
+          © 2026 AEROVA Airlines · Student team project
+        </p>
+      </div>
+    </footer>
 
-          <!-- Results grid -->
-          <div class="col-lg-9">
-            <div class="flight-list" id="flightList">
-              <!-- flight cards injected by JS -->
-            </div>
-            <div class="empty-state text-center py-5 d-none" id="emptyState">
-              <i class="bi bi-emoji-frown"></i>
-              <p>No flights match your filters. Try resetting them.</p>
-            </div>
+    <!-- ================= REUSABLE DETAILS MODAL ================= -->
+    <div
+      class="modal fade modal-lux"
+      id="flightModal"
+      tabindex="-1"
+      aria-labelledby="flightModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h3 class="h5 mb-0" id="flightModalLabel">Flight details</h3>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body" id="flightModalBody"></div>
+          <div class="modal-footer">
+            <button
+              class="btn btn-ghost btn-sm"
+              type="button"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+            <a
+              class="btn btn-lux btn-sm px-4"
+              id="modalBookBtn"
+              href="booking.html"
+              >Book Now</a
+            >
           </div>
         </div>
       </div>
-    </section>
-     <!-- Mobile filter offcanvas -->
-  <div class="offcanvas offcanvas-start nav-offcanvas" tabindex="-1" id="filterOffcanvas" aria-labelledby="filterOffcanvasLabel">
-    <div class="offcanvas-header">
-      <h5 class="offcanvas-title" id="filterOffcanvasLabel"><i class="bi bi-funnel-fill"></i> Filters</h5>
-      <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
-    <div class="offcanvas-body">
-      <div class="filter-panel glass" id="filterPanelMobile"></div>
-    </div>
-  </div>
 
-  <!-- ============ FLIGHT STATUS ============ -->
-  <section class="section status-section">
-    <div class="container">
-      <div class="row align-items-center g-4">
-        <div class="col-lg-5">
-          <h2 class="section-title">Check Flight Status</h2>
-          <p class="section-sub">Track your flight in real time.</p>
-          <form class="status-form" id="statusForm">
-            <div class="input-group">
-              <span class="input-group-text"><i class="bi bi-radar"></i></span>
-              <input type="text" class="form-control" id="statusInput" placeholder="e.g. RQ 101" autocomplete="off" />
-              <button class="btn btn-gradient" type="submit">Search</button>
-            </div>
-          </form>
-        </div>
-        <div class="col-lg-7">
-          <div class="status-card glass" id="statusCard">
-            <div class="status-placeholder">
-              <i class="bi bi-airplane-engines"></i>
-              <p>Enter a flight number to see its live status.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <!-- ============ POPULAR DESTINATIONS ============ -->
-  <section class="section destinations-section">
-    <div class="container">
-      <h2 class="section-title text-center">Popular Destinations</h2>
-      <p class="section-sub text-center mb-5">Handpicked cities worth the journey.</p>
-      <div class="row g-4" id="destinationsGrid">
-        <!-- destination cards injected by JS -->
-      </div>
-    </div>
-  </section>
-  <!-- ============ SPECIAL DEALS BANNER ============ -->
-  <section class="section deals-section">
-    <div class="container">
-      <div class="deals-banner glass">
-        <div class="deals-glow"></div>
-        <div class="row align-items-center g-4 position-relative">
-          <div class="col-lg-8">
-            <h2 class="deals-title">Fly More. Pay Less.</h2>
-            <p class="deals-text">Discover exclusive flight deals and start planning your next adventure.</p>
-          </div>
-          <div class="col-lg-4 text-lg-end">
-            <a href="../booking.html" class="btn btn-gradient btn-lg">Explore Deals</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <!-- ============ WHY CHOOSE US ============ -->
-  <section class="section why-section">
-    <div class="container">
-      <h2 class="section-title text-center">Why Choose Us</h2>
-      <p class="section-sub text-center mb-5">A smoother way to take to the skies.</p>
-      <div class="row g-4">
-        <div class="col-md-6 col-lg-3">
-          <div class="feature-card glass">
-            <div class="feature-icon"><i class="bi bi-tag-fill"></i></div>
-            <h3>Best Prices</h3>
-            <p>Competitive fares for your journey.</p>
-          </div>
-        </div>
-        <div class="col-md-6 col-lg-3">
-          <div class="feature-card glass">
-            <div class="feature-icon"><i class="bi bi-calendar2-check-fill"></i></div>
-            <h3>Easy Booking</h3>
-            <p>A simple and smooth booking experience.</p>
-          </div>
-        </div>
-        <div class="col-md-6 col-lg-3">
-          <div class="feature-card glass">
-            <div class="feature-icon"><i class="bi bi-shield-lock-fill"></i></div>
-            <h3>Secure Travel</h3>
-            <p>Your journey and information matter to us.</p>
-          </div>
-        </div>
-        <div class="col-md-6 col-lg-3">
-          <div class="feature-card glass">
-            <div class="feature-icon"><i class="bi bi-headset"></i></div>
-            <h3>24/7 Support</h3>
-            <p>We're here whenever you need assistance.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <!-- ============ FOOTER ============ -->
-  <footer class="footer">
-    <div class="container">
-      <div class="row g-4">
-        <div class="col-lg-4">
-          <a class="navbar-brand d-flex align-items-center gap-2 mb-3" href="../index.html">
-            <span class="brand-icon"><i class="bi bi-airplane-engines-fill"></i></span>
-            <span class="brand-name">AEROVA</span>
-          </a>
-          <p class="footer-desc">A premium flight experience connecting you to the world with comfort, care and reliability.</p>
-          <div class="social-icons">
-            <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
-            <a href="#" aria-label="Twitter"><i class="bi bi-twitter-x"></i></a>
-            <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
-            <a href="#" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
-          </div>
-        </div>
-        <div class="col-6 col-lg-2">
-          <h4>Quick Links</h4>
-          <ul class="footer-links">
-            <li><a href="../index.html">Home</a></li>
-            <li><a href="flights.html">Flights</a></li>
-            <li><a href="../booking.html">Booking</a></li>
-            <li><a href="../boarding-pass.html">Boarding Pass</a></li>
-          </ul>
-        </div>
-        <div class="col-6 col-lg-3">
-          <h4>Explore</h4>
-          <ul class="footer-links">
-            <li><a href="../airport-guide.html">Airport Guide</a></li>
-            <li><a href="../lost-found.html">Lost &amp; Found</a></li>
-            <li><a href="../login.html">Login</a></li>
-            <li><a href="#top">Back to top</a></li>
-          </ul>
-        </div>
-        <div class="col-lg-3">
-          <h4>Contact</h4>
-          <ul class="footer-links footer-contact">
-            <li><i class="bi bi-telephone-fill"></i> +93 800 123 456</li>
-            <li><i class="bi bi-envelope-fill"></i> support@aerova.aero</li>
-            <li><i class="bi bi-geo-alt-fill"></i> Herat International Airport</li>
-          </ul>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <p>&copy; 2026 AEROVA Airlines. All rights reserved.</p>
-      </div>
-    </div>
-  </footer>
-   <!-- ============ FLIGHT DETAILS MODAL ============ -->
-  <div class="modal fade" id="flightModal" tabindex="-1" aria-labelledby="flightModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-lg">
-      <div class="modal-content glass">
-        <div class="modal-header">
-          <h5 class="modal-title" id="flightModalLabel">Flight Details</h5>
-          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body" id="flightModalBody">
-          <!-- injected by JS -->
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-ghost" data-bs-dismiss="modal">Close</button>
-          <a href="../booking.html" class="btn btn-gradient" id="modalBookBtn">Book Now</a>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- Bootstrap 5 JS bundle -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <!-- Page script -->
-  <script src="flights.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="flights.js"></script>
   </body>
 </html>
