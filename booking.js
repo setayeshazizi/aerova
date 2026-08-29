@@ -458,3 +458,48 @@ function generateBookingReference() {
 
   return result;
 }
+/* =========================================
+   STEP NAVIGATION
+========================================= */
+
+function goToStep(step) {
+  currentStep = step;
+
+  /* Hide all steps */
+
+  bookingSteps.forEach(function (section) {
+    section.classList.remove("active");
+  });
+
+  /* Show selected */
+
+  document.getElementById(`step${step}`).classList.add("active");
+
+  /* Progress */
+
+  progressSteps.forEach(function (item) {
+    const stepNumber = Number(item.dataset.step);
+
+    item.classList.remove("active", "completed");
+
+    if (stepNumber < step) {
+      item.classList.add("completed");
+    }
+
+    if (stepNumber === step) {
+      item.classList.add("active");
+    }
+  });
+
+  /* Progress bar */
+
+  const percentage = ((step - 1) / 3) * 100;
+
+  progressBar.style.width = `${percentage}%`;
+
+  /* Scroll */
+
+  document.getElementById("booking").scrollIntoView({
+    behavior: "smooth",
+  });
+}
