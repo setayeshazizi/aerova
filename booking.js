@@ -66,3 +66,39 @@ const themeToggle = document.getElementById("themeToggle");
 const notificationToast = document.getElementById("notificationToast");
 
 const toastMessage = document.getElementById("toastMessage");
+
+/* =========================================
+   CITY DATA
+========================================= */
+
+const cityData = {
+  HER: {
+    code: "HER",
+    name: "Herat",
+  },
+
+  KBL: {
+    code: "KBL",
+    name: "Kabul",
+  },
+
+  DXB: {
+    code: "DXB",
+    name: "Dubai",
+  },
+
+  IST: {
+    code: "IST",
+    name: "Istanbul",
+  },
+
+  DEL: {
+    code: "DEL",
+    name: "Delhi",
+  },
+
+  DOH: {
+    code: "DOH",
+    name: "Doha",
+  },
+};
