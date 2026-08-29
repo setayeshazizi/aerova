@@ -613,3 +613,12 @@ document
       showToast("Could not copy the code.");
     }
   });
+/* =========================================
+   NEW BOOKING
+========================================= */
+
+document.getElementById("newBookingBtn").addEventListener("click", function () {
+  localStorage.removeItem("skyPortBooking");
+
+  location.reload();
+});
