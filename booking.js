@@ -559,3 +559,32 @@ function loadBooking() {
     console.log("Unable to load saved booking.");
   }
 }
+/* =========================================
+   THEME
+========================================= */
+
+themeToggle.addEventListener("click", function () {
+  document.body.classList.toggle("dark-mode");
+
+  const isDark = document.body.classList.contains("dark-mode");
+
+  localStorage.setItem("skyPortTheme", isDark ? "dark" : "light");
+
+  themeToggle.innerHTML = isDark
+    ? `<i class="bi bi-sun-fill"></i>`
+    : `<i class="bi bi-moon-stars-fill"></i>`;
+});
+
+/* =========================================
+   LOAD THEME
+========================================= */
+
+function loadTheme() {
+  const savedTheme = localStorage.getItem("skyPortTheme");
+
+  if (savedTheme === "dark") {
+    document.body.classList.add("dark-mode");
+
+    themeToggle.innerHTML = `<i class="bi bi-sun-fill"></i>`;
+  }
+}
