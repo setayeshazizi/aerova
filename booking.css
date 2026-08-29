@@ -608,3 +608,166 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 
     margin-top: 40px;
 }
+/* =========================================
+   SEATS
+========================================= */
+
+.seat-layout {
+    max-width: 600px;
+    margin: auto;
+}
+
+.cockpit {
+    width: 160px;
+    height: 70px;
+
+    margin: auto;
+
+    border-radius: 80px 80px 20px 20px;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--primary),
+            var(--secondary)
+        );
+
+    color: white;
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+
+    gap: 3px;
+
+    box-shadow:
+        0 15px 35px rgba(91, 124, 250, 0.2);
+}
+
+.cockpit i {
+    font-size: 1.5rem;
+}
+
+.cockpit span {
+    font-size: 0.6rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.seat-legend {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+
+    margin: 30px 0;
+}
+
+.seat-legend span {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+
+    color: var(--muted);
+    font-size: 0.75rem;
+}
+
+.legend-seat {
+    width: 13px;
+    height: 13px;
+    border-radius: 4px;
+}
+
+.legend-seat.available {
+    background: var(--bg);
+    border: 1px solid var(--border);
+}
+
+.legend-seat.selected {
+    background: var(--primary);
+}
+
+.legend-seat.occupied {
+    background: #d7dbe5;
+}
+
+.aircraft {
+    background: var(--bg);
+
+    border-radius: 100px 100px 30px 30px;
+
+    padding: 35px 25px;
+
+    border: 1px solid var(--border);
+}
+
+.seat-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    gap: 9px;
+
+    margin-bottom: 12px;
+}
+
+.seat {
+    width: 48px;
+    height: 42px;
+
+    border: 1px solid var(--border);
+
+    border-radius: 9px;
+
+    background: var(--card);
+
+    color: var(--text);
+
+    font-size: 0.8rem;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: 0.25s ease;
+}
+
+.seat.available:hover {
+    background: var(--primary);
+    color: white;
+
+    transform: translateY(-4px);
+
+    box-shadow:
+        0 8px 15px rgba(91, 124, 250, 0.25);
+}
+
+.seat.selected {
+    background: var(--primary);
+    color: white;
+    border-color: var(--primary);
+
+    transform: scale(1.08);
+
+    box-shadow:
+        0 8px 20px rgba(91, 124, 250, 0.3);
+}
+
+.seat.occupied {
+    background: #d7dbe5;
+    color: #9299a9;
+    cursor: not-allowed;
+}
+
+.row-number {
+    width: 25px;
+
+    font-size: 0.7rem;
+
+    color: var(--muted);
+    font-weight: 700;
+}
+
+.aisle {
+    width: 20px;
+}
