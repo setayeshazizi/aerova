@@ -503,3 +503,20 @@ function goToStep(step) {
     behavior: "smooth",
   });
 }
+/* =========================================
+   DATE FORMAT
+========================================= */
+
+function formatDate(dateString) {
+  if (!dateString) {
+    return "---";
+  }
+
+  const date = new Date(dateString + "T00:00:00");
+
+  return date.toLocaleDateString("en-US", {
+    day: "2-digit",
+    month: "short",
+    year: "numeric",
+  });
+}
