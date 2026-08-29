@@ -120,3 +120,55 @@ const classPrices = {
 const today = new Date().toISOString().split("T")[0];
 
 departureDate.min = today;
+/* =========================================
+   FLIGHT FORM
+========================================= */
+
+flightForm.addEventListener("submit", function (event) {
+  event.preventDefault();
+
+  /* Validate same airport */
+
+  if (fromCity.value === toCity.value) {
+    showToast("Departure and destination cannot be the same.");
+
+    toCity.focus();
+
+    return;
+  }
+
+  /* Validate */
+
+  if (
+    !fromCity.value ||
+    !toCity.value ||
+    !departureDate.value ||
+    !travelClass.value
+  ) {
+    showToast("Please complete all flight information.");
+
+    return;
+  }
+
+  /* Store data */
+
+  bookingData.from = fromCity.value;
+
+  bookingData.to = toCity.value;
+
+  bookingData.date = departureDate.value;
+
+  bookingData.travelClass = travelClass.value;
+
+  bookingData.basePrice = classPrices[travelClass.value];
+
+  bookingData.totalPrice = bookingData.basePrice;
+
+  /* Save */
+
+  saveBooking();
+
+  /* Next step */
+
+  goToStep(2);
+});
