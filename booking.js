@@ -172,3 +172,23 @@ flightForm.addEventListener("submit", function (event) {
 
   goToStep(2);
 });
+
+/* =========================================
+   FLIGHT PREVIEW
+========================================= */
+
+function updateFlightPreview() {
+  if (fromCity.value && toCity.value) {
+    document.getElementById("previewFrom").textContent = fromCity.value;
+
+    document.getElementById("previewTo").textContent = toCity.value;
+
+    flightPreview.classList.remove("d-none");
+  } else {
+    flightPreview.classList.add("d-none");
+  }
+}
+
+fromCity.addEventListener("change", updateFlightPreview);
+
+toCity.addEventListener("change", updateFlightPreview);
