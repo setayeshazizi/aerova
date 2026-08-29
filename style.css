@@ -315,3 +315,60 @@ BOOKING
     color:var(--muted);
     font-size:13px;
 }
+
+@media(max-width:992px){
+
+    .hero{
+        text-align:center;
+    }
+
+    .hero h1{
+        font-size:36px;
+    }
+
+}
+
+@media(max-width:768px){
+
+    .main-card{
+        padding:15px;
+    }
+
+    .hero{
+        padding:25px;
+    }
+
+    .hero h1{
+        font-size:30px;
+    }
+
+    .tabs{
+        overflow:auto;
+        flex-wrap:nowrap;
+    }
+
+    .tab{
+        white-space:nowrap;
+    }
+
+    .price{
+        font-size:24px;
+    }
+
+}
+
+@media(max-width:576px){
+
+    .navbar-brand{
+        font-size:18px;
+    }
+
+    .hero h1{
+        font-size:26px;
+    }
+
+    .booking{
+        padding:15px;
+    }
+
+}
