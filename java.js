@@ -172,4 +172,18 @@ manualBtn.addEventListener("click",()=>{
     aiBtn.classList.remove("active");
 
 });
+const dateText = document.querySelector(".date");
+
+function updateClock(){
+
+    const now = new Date();
+
+    const time = now.toLocaleTimeString();
+
+    dateText.innerHTML =
+    `Monday, 12 March 2026 • ${time}`;
+
+}
+
+setInterval(updateClock,1000);
 
