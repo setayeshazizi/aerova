@@ -102,3 +102,14 @@ const cityData = {
     name: "Doha",
   },
 };
+/* =========================================
+   CLASS PRICES
+========================================= */
+
+const classPrices = {
+  Economy: 250,
+
+  Premium: 390,
+
+  Business: 650,
+};
