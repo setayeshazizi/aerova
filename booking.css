@@ -771,3 +771,77 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 .aisle {
     width: 20px;
 }
+/* =========================================
+   EXTRAS
+========================================= */
+
+.extras-section {
+    margin-top: 45px;
+}
+
+.extras-section h4 {
+    font-size: 1rem;
+    margin-bottom: 20px;
+}
+
+.extras-section h4 i {
+    color: var(--primary);
+    margin-right: 7px;
+}
+
+.extra-card {
+    min-height: 100px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+
+    padding: 15px;
+
+    border: 1px solid var(--border);
+
+    border-radius: 15px;
+
+    cursor: pointer;
+
+    transition: 0.3s ease;
+}
+
+.extra-card:hover {
+    border-color: var(--primary);
+
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 10px 25px rgba(37, 49, 87, 0.07);
+}
+
+.extra-card input {
+    accent-color: var(--primary);
+}
+
+.extra-card div {
+    display: flex;
+    flex-direction: column;
+
+    flex: 1;
+}
+
+.extra-card div i {
+    color: var(--primary);
+    margin-bottom: 5px;
+}
+
+.extra-card strong {
+    font-size: 0.78rem;
+}
+
+.extra-card small {
+    color: var(--muted);
+    font-size: 0.65rem;
+}
+
+.extra-card b {
+    font-size: 0.75rem;
+}
