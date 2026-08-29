@@ -1058,3 +1058,196 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 .success-message p {
     color: var(--muted);
 }
+/* PASS */
+
+.boarding-pass {
+    max-width: 850px;
+    margin: auto;
+
+    background: var(--card);
+
+    border-radius: 25px;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 30px 80px rgba(37, 49, 87, 0.15);
+
+    animation: passReveal 0.8s ease;
+}
+
+@keyframes passReveal {
+
+    from {
+        opacity: 0;
+        transform: translateY(30px) scale(0.98);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.pass-top {
+    padding: 22px 30px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--primary),
+            var(--secondary)
+        );
+
+    color: white;
+}
+
+.pass-brand {
+    font-weight: 800;
+    font-size: 1.3rem;
+}
+
+.pass-brand i {
+    margin-right: 7px;
+}
+
+.pass-top > span {
+    font-size: 0.65rem;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+}
+
+.pass-route {
+    padding: 45px 40px 35px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.airport {
+    display: flex;
+    flex-direction: column;
+}
+
+.airport small {
+    color: var(--muted);
+    font-size: 0.65rem;
+}
+
+.airport strong {
+    font-size: 3rem;
+    font-weight: 800;
+}
+
+.airport span {
+    color: var(--muted);
+    font-size: 0.8rem;
+}
+
+.flight-line {
+    flex: 1;
+
+    display: flex;
+    align-items: center;
+
+    margin: 0 40px;
+}
+
+.flight-line span {
+    height: 1px;
+    flex: 1;
+    border-top: 2px dashed var(--border);
+}
+
+.flight-line i {
+    margin: 0 15px;
+
+    color: var(--primary);
+
+    transform: rotate(90deg);
+
+    font-size: 1.5rem;
+}
+
+.pass-details {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+
+    border-top: 1px dashed var(--border);
+    border-bottom: 1px dashed var(--border);
+}
+
+.pass-details div {
+    padding: 20px 25px;
+
+    display: flex;
+    flex-direction: column;
+
+    border-right: 1px solid var(--border);
+}
+
+.pass-details div:nth-child(3n) {
+    border-right: none;
+}
+
+.pass-details small {
+    color: var(--muted);
+    font-size: 0.6rem;
+    margin-bottom: 6px;
+}
+
+.pass-details strong {
+    font-size: 0.85rem;
+}
+
+.pass-bottom {
+    padding: 25px 30px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.barcode {
+    height: 60px;
+
+    display: flex;
+    align-items: stretch;
+
+    gap: 3px;
+}
+
+.barcode span {
+    display: block;
+    width: 3px;
+    background: var(--text);
+}
+
+.barcode span:nth-child(2n) {
+    width: 6px;
+}
+
+.barcode span:nth-child(3n) {
+    width: 2px;
+}
+
+.booking-code {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.booking-code small {
+    color: var(--muted);
+    font-size: 0.6rem;
+}
+
+.booking-code strong {
+    font-size: 1.3rem;
+    letter-spacing: 2px;
+}
