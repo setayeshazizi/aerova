@@ -324,3 +324,20 @@ function calculateExtras() {
 
   saveBooking();
 }
+/* =========================================
+   REVIEW BOOKING
+========================================= */
+
+document
+  .getElementById("reviewBookingBtn")
+  .addEventListener("click", function () {
+    if (!selectedSeat) {
+      showToast("Please select a seat first.");
+
+      return;
+    }
+
+    updateSummary();
+
+    goToStep(4);
+  });
