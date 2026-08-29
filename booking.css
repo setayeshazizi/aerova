@@ -1353,3 +1353,19 @@ body.dark-mode  #passengerForm input::placeholder {
 body.light-mode #passengerForm input::placeholder {
     color: #88919e !important;
 }
+/* =========================================
+   ANIMATIONS
+========================================= */
+
+@keyframes fadeUp {
+
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
