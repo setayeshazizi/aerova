@@ -1369,3 +1369,181 @@ body.light-mode #passengerForm input::placeholder {
         transform: translateY(0);
     }
 }
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 768px) {
+
+    .booking-hero {
+        min-height: 600px;
+    }
+
+    .hero-content h1 {
+        font-size: 3.2rem;
+        letter-spacing: -2px;
+    }
+
+    .hero-stats {
+        gap: 20px;
+    }
+
+    .booking-section,
+    .boarding-section {
+        padding: 70px 0;
+    }
+
+    .booking-step {
+        padding: 30px 20px;
+    }
+
+    .section-heading h2 {
+        font-size: 2.2rem;
+    }
+
+    .step-header {
+        gap: 15px;
+    }
+
+    .step-icon {
+        font-size: 2rem;
+    }
+
+    .summary-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .pass-route {
+        padding: 30px 20px;
+    }
+
+    .airport strong {
+        font-size: 2rem;
+    }
+
+    .flight-line {
+        margin: 0 15px;
+    }
+
+    .pass-details {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .pass-details div:nth-child(3n) {
+        border-right: 1px solid var(--border);
+    }
+
+    .pass-details div:nth-child(2n) {
+        border-right: none;
+    }
+
+    .pass-bottom {
+        flex-direction: column;
+        gap: 20px;
+        align-items: flex-start;
+    }
+
+    .booking-code {
+        align-items: flex-start;
+    }
+
+    .seat {
+        width: 40px;
+        height: 38px;
+    }
+}
+
+
+@media (max-width: 480px) {
+
+    .hero-content h1 {
+        font-size: 2.7rem;
+    }
+
+    .hero-stats {
+        gap: 15px;
+    }
+
+    .hero-stats strong {
+        font-size: 1.2rem;
+    }
+
+    .hero-stats small {
+        font-size: 0.65rem;
+    }
+
+    .progress-step small {
+        display: none;
+    }
+
+    .progress-line {
+        left: 10%;
+        right: 10%;
+    }
+
+    .summary-route {
+        padding: 20px;
+    }
+
+    .summary-route strong {
+        font-size: 1.5rem;
+    }
+
+    .summary-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .button-row {
+        flex-direction: column-reverse;
+    }
+
+    .btn-primary-custom,
+    .btn-secondary-custom {
+        width: 100%;
+    }
+
+    .seat-layout {
+        width: 100%;
+    }
+
+    .aircraft {
+        padding: 25px 10px;
+    }
+
+    .seat {
+        width: 34px;
+        height: 35px;
+    }
+
+    .aisle {
+        width: 8px;
+    }
+
+    .row-number {
+        width: 15px;
+    }
+
+    .seat-legend {
+        gap: 10px;
+        flex-wrap: wrap;
+    }
+
+    .pass-route {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .flight-line {
+        width: 100%;
+        margin: 0;
+    }
+
+    .pass-details {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .airport {
+        align-items: center;
+    }
+}
+
