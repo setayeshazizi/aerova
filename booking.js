@@ -407,3 +407,39 @@ document
 
     showToast("Booking confirmed successfully!");
   });
+
+  /* =========================================
+   GENERATE BOARDING PASS
+========================================= */
+
+function generateBoardingPass() {
+  const from = cityData[bookingData.from];
+
+  const to = cityData[bookingData.to];
+
+  document.getElementById("passFrom").textContent = from.code;
+
+  document.getElementById("passFromName").textContent = from.name;
+
+  document.getElementById("passTo").textContent = to.code;
+
+  document.getElementById("passToName").textContent = to.name;
+
+  document.getElementById("passPassenger").textContent =
+    `${bookingData.firstName} ${bookingData.lastName}`;
+
+  document.getElementById("passDate").textContent = formatDate(
+    bookingData.date,
+  );
+
+  document.getElementById("passClass").textContent = bookingData.travelClass;
+
+  document.getElementById("passSeat").textContent = bookingData.seat;
+
+  document.getElementById("bookingReference").textContent =
+    bookingData.bookingReference;
+
+  document.getElementById("boardingPass").classList.remove("d-none");
+
+  document.getElementById("boardingActions").classList.remove("d-none");
+}
