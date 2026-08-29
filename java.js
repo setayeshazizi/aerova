@@ -44,3 +44,71 @@ const flights = [
     price: 165
   }
 ];
+
+const flightList = document.getElementById("flightList");
+
+function displayFlights(data){
+
+    flightList.innerHTML = "";
+
+    data.forEach((flight,index)=>{
+
+        flightList.innerHTML += `
+        <div class="flight-card">
+
+            <div class="row align-items-center">
+
+                <div class="col-md-4">
+
+                    <p class="code">WED, MAR 24</p>
+
+                    <h5 class="airline">${flight.airline}</h5>
+
+                    <p class="code">${flight.code}</p>
+
+                </div>
+
+                <div class="col-md-4 text-center">
+
+                    <div class="time">
+                        ${flight.depart}
+                    </div>
+
+                    <div class="duration">
+                        ✈ ${flight.duration}
+                    </div>
+
+                    <div class="time">
+                        ${flight.arrive}
+                    </div>
+
+                </div>
+
+                <div class="col-md-2 text-center">
+
+                    <div class="price">
+                        $${flight.price}
+                    </div>
+
+                </div>
+
+                <div class="col-md-2 text-end">
+
+                    <button
+                    class="select-btn"
+                    onclick="selectFlight(${index})">
+
+                    Select
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+        `;
+
+    });
+
+}
