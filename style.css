@@ -197,3 +197,27 @@ BOOKING
 .search-btn:hover{
     transform:translateY(-2px);
 }
+.tabs{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+}
+
+.tab{
+    border:none;
+    padding:10px 18px;
+    border-radius:30px;
+    background:#eef6ff;
+    color:var(--muted);
+    transition:.3s;
+}
+
+.tab.active{
+    background:var(--dark);
+    color:white;
+}
+
+.tab:hover{
+    background:var(--primary);
+    color:white;
+}
