@@ -540,3 +540,22 @@ function showToast(message) {
 function saveBooking() {
   localStorage.setItem("skyPortBooking", JSON.stringify(bookingData));
 }
+/* =========================================
+   LOAD SAVED BOOKING
+========================================= */
+
+function loadBooking() {
+  const saved = localStorage.getItem("skyPortBooking");
+
+  if (!saved) {
+    return;
+  }
+
+  try {
+    const data = JSON.parse(saved);
+
+    bookingData = data;
+  } catch (error) {
+    console.log("Unable to load saved booking.");
+  }
+}
