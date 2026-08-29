@@ -902,6 +902,243 @@
 
         </div>
 
+        <!-- ================= SUCCESS SECTION ================= -->
+
+<section class="boarding-section" id="boarding">
+
+    <div class="container">
+
+          <div class="section-heading text-center reveal hide-end">
+
+            <div class="section-tag">
+                <i class="bi bi-qr-code"></i>
+                DIGITAL BOARDING PASS
+            </div>
+
+            <h2>
+                Ready for
+                <span>takeoff?</span>
+            </h2>
+
+            <p>
+                Your digital boarding pass will appear here after confirmation.
+            </p>
+
+        </div>
+
+
+         <!-- EMPTY STATE -->
+
+        <div
+            class="boarding-empty hide-end"
+            id="boardingEmpty ">
+
+            <div class="empty-icon">
+                <i class="bi bi-ticket-perforated"></i>
+            </div>
+
+            <h4>
+                Your boarding pass is waiting
+            </h4>
+
+            <p>
+                Complete your booking above to generate your digital pass.
+            </p>
+
+            <a href="#booking" class="secondary-btn">
+                Start Booking
+            </a>
+
+        </div>
+        
+        <!-- ================= BOARDING PASS ================= -->
+        
+        <div class="boarding-pass d-none" id="boardingPass">
+            <div class="success-message" id="successMessage">
+    
+                <div class="success-icon">
+                    <i class="bi bi-check-lg"></i>
+                </div>
+    
+                <span>BOOKING CONFIRMED</span>
+    
+                <h2>
+                    You're ready to
+                    <span>take off!</span>
+                </h2>
+    
+                <p>
+                    Your digital boarding pass has been generated successfully.
+                </p>
+    
+            </div>
+
+            <!-- Top -->
+
+            <div class="pass-top">
+
+                <div class="pass-brand">
+                    <i class="bi bi-airplane-engines-fill"></i>
+                    SkyPort
+                </div>
+
+                <span>
+                    BOARDING PASS
+                </span>
+
+            </div>
+
+
+            <!-- Route -->
+
+            <div class="pass-route">
+
+                <div class="airport">
+
+                    <small>FROM</small>
+
+                    <strong id="passFrom">HER</strong>
+
+                    <span id="passFromName">
+                        Herat
+                    </span>
+
+                </div>
+
+
+                <div class="flight-line">
+
+                    <span></span>
+
+                    <i class="bi bi-airplane-fill"></i>
+
+                    <span></span>
+
+                </div>
+
+
+                <div class="airport">
+
+                    <small>TO</small>
+
+                    <strong id="passTo">DXB</strong>
+
+                    <span id="passToName">
+                        Dubai
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <!-- Details -->
+
+            <div class="pass-details">
+
+                <div>
+                    <small>PASSENGER</small>
+                    <strong id="passPassenger">---</strong>
+                </div>
+
+                <div>
+                    <small>DATE</small>
+                    <strong id="passDate">---</strong>
+                </div>
+
+                <div>
+                    <small>FLIGHT</small>
+                    <strong id="passFlight">SP-204</strong>
+                </div>
+
+                <div>
+                    <small>CLASS</small>
+                    <strong id="passClass">---</strong>
+                </div>
+
+                <div>
+                    <small>SEAT</small>
+                    <strong id="passSeat">---</strong>
+                </div>
+
+                <div>
+                    <small>GATE</small>
+                    <strong id="passGate">B12</strong>
+                </div>
+
+            </div>
+
+
+            <!-- Barcode -->
+
+            <div class="pass-bottom">
+
+                <div class="barcode">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+
+                <div class="booking-code">
+                    <small>BOOKING REFERENCE</small>
+                    <strong id="bookingReference">SP000000</strong>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Actions -->
+
+        <div
+            class="boarding-actions d-none"
+            id="boardingActions"
+        >
+
+            <button
+                class="action-btn"
+                id="printPassBtn"
+            >
+                <i class="bi bi-printer"></i>
+                Print Pass
+            </button>
+
+            <button
+                class="action-btn"
+                id="copyCodeBtn"
+            >
+                <i class="bi bi-copy"></i>
+                Copy Booking Code
+            </button>
+
+            <button
+                class="action-btn"
+                id="newBookingBtn"
+            >
+                <i class="bi bi-plus-circle"></i>
+                New Booking
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
     </div>
 
 </section>
