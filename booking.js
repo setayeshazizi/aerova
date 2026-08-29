@@ -596,3 +596,20 @@ document.getElementById("printPassBtn").addEventListener("click", function () {
   window.print();
   
 });
+/* =========================================
+   COPY BOOKING CODE
+========================================= */
+
+document
+  .getElementById("copyCodeBtn")
+  .addEventListener("click", async function () {
+    const code = bookingData.bookingReference;
+
+    try {
+      await navigator.clipboard.writeText(code);
+
+      showToast("Booking reference copied!");
+    } catch (error) {
+      showToast("Could not copy the code.");
+    }
+  });
