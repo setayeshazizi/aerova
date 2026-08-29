@@ -533,3 +533,10 @@ function showToast(message) {
 
   toast.show();
 }
+/* =========================================
+   LOCAL STORAGE
+========================================= */
+
+function saveBooking() {
+  localStorage.setItem("skyPortBooking", JSON.stringify(bookingData));
+}
