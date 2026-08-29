@@ -341,3 +341,41 @@ document
 
     goToStep(4);
   });
+
+  /* =========================================
+   UPDATE SUMMARY
+========================================= */
+
+function updateSummary() {
+  const from = cityData[bookingData.from];
+
+  const to = cityData[bookingData.to];
+
+  document.getElementById("summaryFrom").textContent = from.code;
+
+  document.getElementById("summaryFromName").textContent = from.name;
+
+  document.getElementById("summaryTo").textContent = to.code;
+
+  document.getElementById("summaryToName").textContent = to.name;
+
+  document.getElementById("summaryPassenger").textContent =
+    `${bookingData.firstName} ${bookingData.lastName}`;
+
+  document.getElementById("summaryDate").textContent = formatDate(
+    bookingData.date,
+  );
+
+  document.getElementById("summaryClass").textContent = bookingData.travelClass;
+
+  document.getElementById("summarySeat").textContent = bookingData.seat;
+
+  document.getElementById("basePrice").textContent =
+    `$${bookingData.basePrice}`;
+
+  document.getElementById("extrasPrice").textContent =
+    `$${bookingData.extrasPrice}`;
+
+  document.getElementById("totalPrice").textContent =
+    `$${bookingData.totalPrice}`;
+}
