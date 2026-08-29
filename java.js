@@ -154,3 +154,22 @@ tabs.forEach(tab=>{
     });
 
 });
+
+
+const aiBtn = document.querySelector(".ai");
+const manualBtn = document.querySelector(".manual");
+
+aiBtn.addEventListener("click",()=>{
+
+    aiBtn.classList.add("active");
+    manualBtn.classList.remove("active");
+
+});
+
+manualBtn.addEventListener("click",()=>{
+
+    manualBtn.classList.add("active");
+    aiBtn.classList.remove("active");
+
+});
+
