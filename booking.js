@@ -290,3 +290,37 @@ seats.forEach(function (seat) {
     saveBooking();
   });
 });
+
+/* =========================================
+   EXTRAS
+========================================= */
+
+extras.forEach(function (extra) {
+  extra.addEventListener("change", calculateExtras);
+});
+
+function calculateExtras() {
+  bookingData.extras = [];
+
+  bookingData.extrasPrice = 0;
+
+  extras.forEach(function (extra) {
+    if (extra.checked) {
+      const name = extra.dataset.name;
+
+      const price = Number(extra.dataset.price);
+
+      bookingData.extras.push({
+        name: name,
+
+        price: price,
+      });
+
+      bookingData.extrasPrice += price;
+    }
+  });
+
+  bookingData.totalPrice = bookingData.basePrice + bookingData.extrasPrice;
+
+  saveBooking();
+}
