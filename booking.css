@@ -313,3 +313,43 @@ a {
     color: var(--muted);
     margin-top: 12px;
 }
+/* =========================================
+   BOOKING CARD
+========================================= */
+
+.booking-card {
+    max-width: 1050px;
+    margin: auto;
+
+    background: var(--card);
+
+    border-radius: var(--radius);
+
+    box-shadow: var(--shadow);
+
+    overflow: hidden;
+}
+
+.booking-step {
+    display: none;
+    padding: 50px;
+
+    animation: stepIn 0.5s ease;
+}
+
+.booking-step.active {
+    display: block;
+}
+
+@keyframes stepIn {
+
+    from {
+        opacity: 0;
+        transform: translateX(25px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
