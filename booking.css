@@ -276,3 +276,40 @@ a {
         transform: translateY(0);
     }
 }
+/* =========================================
+   SECTION
+========================================= */
+
+.booking-section {
+    padding: 110px 0;
+}
+
+.section-heading {
+    margin-bottom: 65px;
+}
+
+.section-label {
+    display: inline-flex;
+    gap: 8px;
+
+    color: var(--primary);
+    font-size: 0.75rem;
+    font-weight: 800;
+
+    letter-spacing: 1.5px;
+}
+
+.section-heading h2 {
+    margin-top: 15px;
+    font-weight: 800;
+    font-size: 3rem;
+}
+
+.section-heading h2 span {
+    color: var(--primary);
+}
+
+.section-heading p {
+    color: var(--muted);
+    margin-top: 12px;
+}
