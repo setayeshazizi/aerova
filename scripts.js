@@ -61,24 +61,87 @@ function initParticles() {
 }
 
 function initNavigation() {
-  const nav = document.getElementById("mainNav"),
-    sections = document.querySelectorAll("section[id]"),
-    links = document.querySelectorAll(".nav-link");
-  const update = () => {
-    if (nav) nav.classList.toggle("scrolled", scrollY > 100);
-    let id = "";
-    sections.forEach((s) => {
-      if (scrollY >= s.offsetTop - 100) id = s.id;
-    });
-    links.forEach((link) =>
-      link.classList.toggle("active", link.getAttribute("href") === `#${id}`),
-    );
-  };
-  window.addEventListener("scroll", update, { passive: true });
-  update();
+  const nav = document.getElementById("mainNav");
+  if (!nav) return;
+  // Add shadow on scroll
+  window.addEventListener("scroll", function () {
+    if (window.scrollY > 100) {
+      nav.classList.add("scrolled");
+    } else {
+      nav.classList.remove("scrolled");
+    }
+  });
+
+  // Mobile menu toggle
   const toggler = document.querySelector(".custom-toggler");
-  if (toggler)
-    toggler.addEventListener("click", () => toggler.classList.toggle("active"));
+  if (toggler) {
+    toggler.addEventListener("click", function () {
+      this.classList.toggle("active");
+    });
+  }
+
+  // Active link on scroll
+  const sections = document.querySelectorAll("section[id]");
+  const navLinks = document.querySelectorAll(".nav-link");
+
+  function updateActiveLink() {
+    const scrollPosition = window.scrollY + 150; // Offset for navbar
+
+    let currentSection = "";
+
+    sections.forEach((section) => {
+      const sectionTop = section.offsetTop;
+      const sectionBottom = sectionTop + section.offsetHeight;
+
+      if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
+        currentSection = section.getAttribute("id");
+      }
+    });
+
+    navLinks.forEach((link) => {
+      link.classList.remove("active");
+      const href = link.getAttribute("href");
+      if (href && href.substring(1) === currentSection) {
+        link.classList.add("active");
+      }
+    });
+  }
+
+  // Run on scroll
+  window.addEventListener("scroll", updateActiveLink);
+
+  // Run on page load
+  updateActiveLink();
+
+  // Smooth scroll for nav links
+  navLinks.forEach((link) => {
+    link.addEventListener("click", function (e) {
+      e.preventDefault();
+      const targetId = this.getAttribute("href");
+      const targetSection = document.querySelector(targetId);
+
+      if (targetSection) {
+        const offsetTop = targetSection.offsetTop - 80; // Adjust for navbar height
+        window.scrollTo({
+          top: offsetTop,
+          behavior: "smooth",
+        });
+
+        // Update active link immediately
+        navLinks.forEach((l) => l.classList.remove("active"));
+        this.classList.add("active");
+
+        // Close mobile menu if open
+        const navCollapse = document.getElementById("navMenu");
+        if (navCollapse.classList.contains("show")) {
+          const bsCollapse = bootstrap.Collapse.getInstance(navCollapse);
+          if (bsCollapse) {
+            bsCollapse.hide();
+          }
+        }
+      }
+    });
+  });
 }
 
 function initClock() {
@@ -508,3 +571,98 @@ window.addEventListener("load", () =>
     document.body.classList.remove("loading");
   }, 3000),
 );
+
+document.addEventListener("scroll", function () {
+  const sections = document.querySelectorAll("section[id]");
+  const navLinks = document.querySelectorAll(".nav-link");
+  let current = "";
+  const scrollPos = window.scrollY + 200;
+
+  sections.forEach((section) => {
+    const sectionTop = section.offsetTop;
+    const sectionBottom = sectionTop + section.offsetHeight;
+
+    if (scrollPos >= sectionTop && scrollPos < sectionBottom) {
+      current = section.getAttribute("id");
+    }
+  });
+
+  navLinks.forEach((link) => {
+    link.classList.remove("active");
+    if (link.getAttribute("href") === "#" + current) {
+      link.classList.add("active");
+    }
+  });
+});
+
+
+ (function() { const clockElement = document.getElementById('liveClock'); if (!clockElement) return;
+function updateClock() {
+    const now = new Date();
+    let hours = now.getHours();
+    const minutes = String(now.getMinutes()).padStart(2, '0');
+    const seconds = String(now.getSeconds()).padStart(2, '0');
+    const ampm = hours >= 12 ? 'PM' : 'AM';
+    
+    // Convert to 12-hour format
+    hours = hours % 12;
+    hours = hours ? hours : 12;
+    hours = String(hours).padStart(2, '0');
+    
+    clockElement.textContent = `${hours}:${minutes}:${seconds} ${ampm}`;
+}
+
+// Run immediately
+updateClock();
+
+// Update every second
+setInterval(updateClock, 1000);
+
+console.log('Clock initialized successfully');
+})();
+
+// ============ New Testimonials Slider ============
+let currentTestimonialNew = 0;
+const totalTestimonialSlides = 3;
+
+function initTestimonialsNew() {
+    updateTestimonialNew();
+    
+    // Auto slide
+    setInterval(() => {
+        nextTestimonialNew();
+    }, 5000);
+}
+
+function updateTestimonialNew() {
+    const track = document.getElementById('testimonialTrackNew');
+    const dots = document.querySelectorAll('.testimonial-dot-new');
+    
+    if (!track) return;
+    
+    track.style.transform = `translateX(-${currentTestimonialNew * 100}%)`;
+    
+    dots.forEach((dot, index) => {
+        dot.classList.toggle('active', index === currentTestimonialNew);
+    });
+}
+
+function nextTestimonialNew() {
+    currentTestimonialNew = (currentTestimonialNew + 1) % totalTestimonialSlides;
+    updateTestimonialNew();
+}
+
+function prevTestimonialNew() {
+    currentTestimonialNew = (currentTestimonialNew - 1 + totalTestimonialSlides) % totalTestimonialSlides;
+    updateTestimonialNew();
+}
+
+function goToTestimonialNew(index) {
+    currentTestimonialNew = index;
+    updateTestimonialNew();
+}
+
+// Initialize
+document.addEventListener('DOMContentLoaded', function() {
+    initTestimonialsNew();
+});

@@ -104,155 +104,132 @@
             </div>
         </div>
     </nav>
-    <!-- Hero Section -->
-    <section class="hero" id="home">
-        <div class="hero-background">
-            <div class="gradient-overlay"></div>
-            <div class="stars"></div>
+<!-- Hero Section -->
+<section class="hero-new" id="home">
+    <!-- Animated Sky Background -->
+    <div class="hero-sky">
+        <div class="sun-moon"></div>
+        <div class="clouds">
+            <div class="cloud-hero cloud-hero-1"></div>
+            <div class="cloud-hero cloud-hero-2"></div>
+            <div class="cloud-hero cloud-hero-3"></div>
         </div>
-
-        <div class="container hero-content">
-            <div class="row align-items-center min-vh-100">
-                <div class="col-lg-8 mx-auto text-center">
-                    <div class="hero-badge" data-aos="fade-down">
-                        <span class="pulse-dot"></span>
-                        #1 Premium Travel Experience
-                    </div>
-
-                    <h1 class="hero-title" data-aos="fade-up" data-aos-delay="100">
-                        Discover the World
-                        <span class="gradient-text">Beyond Your</span>
-                        <span class="typing-text" id="typingText"></span>
-                    </h1>
-
-                    <p class="hero-subtitle" data-aos="fade-up" data-aos-delay="200">
-                        Experience luxury travel like never before. From seamless booking to
-                        unforgettable journeys, AEROVA takes you there.
-                    </p>
-
-                    <div class="hero-buttons" data-aos="fade-up" data-aos-delay="300">
-                        <a href="#flight-search" class="btn btn-primary-hero">
+    </div>
+    
+    <!-- Flight Path Lines -->
+    <svg class="flight-paths" viewBox="0 0 100 100" preserveAspectRatio="none">
+        <path class="flight-path path-1" d="M-10,80 Q30,20 60,60 T110,10" />
+        <path class="flight-path path-2" d="M-10,90 Q40,40 70,70 T110,30" />
+        <path class="flight-path path-3" d="M-10,70 Q20,10 50,50 T110,20" />
+    </svg>
+    
+    <!-- Animated Plane -->
+    <div class="hero-plane">
+        <i class="fas fa-plane"></i>
+        <div class="plane-trail"></div>
+    </div>
+    
+    <div class="container hero-content-new">
+        <div class="row justify-content-center text-center">
+            <div class="col-lg-10">
+                <!-- Badge -->
+                <div class="hero-badge-new" data-aos="fade-down">
+                    <span class="badge-icon">
+                        <i class="fas fa-globe"></i>
+                    </span>
+                    <span>Explore 120+ Destinations Worldwide</span>
+                    <span class="badge-separator">•</span>
+                    <span class="badge-live">
+                        <span class="live-dot"></span>
+                        Live Flights
+                    </span>
+                </div>
+                
+                <!-- Main Title -->
+                <h1 class="hero-title-new" data-aos="fade-up" data-aos-delay="100">
+                    Your Journey to
+                    <span class="title-highlight">
+                        <span class="title-word">Paradise</span>
+                    </span>
+                    <span class="title-line"></span>
+                    Starts Here
+                </h1>
+                
+                <!-- Subtitle -->
+                <p class="hero-subtitle-new" data-aos="fade-up" data-aos-delay="200">
+                    Experience the art of travel with AEROVA — where every flight
+                    becomes an unforgettable story
+                </p>
+                
+                <!-- Quick Search -->
+                <div class="hero-quick-search" data-aos="fade-up" data-aos-delay="300">
+                    <div class="quick-search-box">
+                        <div class="quick-search-item">
+                            <i class="fas fa-plane-departure"></i>
+                            <input type="text" placeholder="From where?" id="heroFrom">
+                        </div>
+                        <div class="quick-search-divider"></div>
+                        <div class="quick-search-item">
+                            <i class="fas fa-plane-arrival"></i>
+                            <input type="text" placeholder="To where?" id="heroTo">
+                        </div>
+                        <div class="quick-search-divider"></div>
+                        <div class="quick-search-item">
+                            <i class="fas fa-calendar"></i>
+                            <input type="date" id="heroDate">
+                        </div>
+                        <button class="btn-quick-search">
                             <i class="fas fa-search"></i>
-                            Search Flights
-                        </a>
-                        <a href="#destinations" class="btn btn-outline-hero">
-                            Explore More
-                            <i class="fas fa-arrow-down"></i>
-                        </a>
+                        </button>
                     </div>
-
-                    <div class="hero-stats" data-aos="fade-up" data-aos-delay="400">
-                        <div class="stat-item">
-                            <h3 class="counter" data-target="120">0</h3>
+                </div>
+                
+                <!-- Stats -->
+<div class="hero-stats-new" data-aos="fade-up" data-aos-delay="400">
+                    <div class="stat-new">
+                        <div class="stat-icon">
+                            <i class="fas fa-map-marked-alt"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3><span class="counter" data-target="120">0</span>+</h3>
                             <span>Destinations</span>
                         </div>
-                        <div class="stat-divider"></div>
-                        <div class="stat-item">
-                            <h3 class="counter" data-target="2500">0</h3>
-                            <span>Daily Flights</span>
+                    </div>
+                    
+                    <div class="stat-new">
+                        <div class="stat-icon">
+                            <i class="fas fa-users"></i>
                         </div>
-                        <div class="stat-divider"></div>
-                        <div class="stat-item">
-                            <h3 class="counter" data-target="150">0</h3>
-                            <span>Countries</span>
+                        <div class="stat-content">
+                            <h3><span class="counter" data-target="2500">0</span>+</h3>
+                            <span>Happy Travelers</span>
                         </div>
-                        <div class="stat-divider"></div>
-                        <div class="stat-item">
-                            <h3 class="counter" data-target="5">0</h3>
-                            <span>Star Rating</span>
+                    </div>
+                    
+                    <div class="stat-new">
+                        <div class="stat-icon">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3><span class="counter" data-target="5">0</span>.0</h3>
+                            <span>Rating</span>
                         </div>
                     </div>
                 </div>
             </div>
-
-            <a href="#flight-search" class="scroll-indicator">
-                <div class="mouse">
-                    <div class="wheel"></div>
-                </div>
-                <span>Scroll Down</span>
-            </a>
         </div>
-    </section>
+    </div>
+    
+    <!-- Scroll Indicator -->
+    <div class="scroll-indicator-new" data-aos="fade-up" data-aos-delay="500">
+        <div class="scroll-line"></div>
+        <span>Scroll to explore</span>
+        <i class="fas fa-chevron-down"></i>
+    </div>
+</section>
 
-    <!-- Flight Search Section -->
-    <section class="flight-search-section" id="flight-search">
-        <div class="container">
-            <div class="search-card glass-card" data-aos="fade-up">
-                <div class="search-tabs">
-                    <button class="search-tab active" data-tab="roundtrip">
-                        <i class="fas fa-exchange-alt"></i>
-                        Round Trip
-                    </button>
-                    <button class="search-tab" data-tab="oneway">
-                        <i class="fas fa-long-arrow-alt-right"></i>
-                        One Way
-                    </button>
-                    <button class="search-tab" data-tab="multi">
-                        <i class="fas fa-globe"></i>
-                        Multi City
-                    </button>
-                </div>
-                <form class="search-form" id="flightSearchForm">
-                    <div class="row g-3">
-                        <div class="col-lg-3 col-md-6">
-                            <label class="form-label">
-                                <i class="fas fa-plane-departure"></i>
-                                From
-                            </label>
-                            <input type="text" class="form-control" id="fromInput" placeholder="Departure City"
-                                required>
-                            <div class="autocomplete-suggestions" id="fromSuggestions"></div>
-                        </div>
 
-                        <div class="col-lg-3 col-md-6">
-                            <label class="form-label">
-                                <i class="fas fa-plane-arrival"></i>
-                                To
-                            </label>
-                            <input type="text" class="form-control" id="toInput" placeholder="Arrival City" required>
-                            <div class="autocomplete-suggestions" id="toSuggestions"></div>
-                        </div>
 
-                        <div class="col-lg-2 col-md-6">
-                            <label class="form-label">
-                                <i class="fas fa-calendar"></i>
-                                Departure
-                            </label>
-                            <input type="date" class="form-control" id="departureDate" required>
-                        </div>
-
-                        <div class="col-lg-2 col-md-6">
-                            <label class="form-label">
-                                <i class="fas fa-calendar-alt"></i>
-                                Return
-                            </label>
-                            <input type="date" class="form-control" id="returnDate">
-                        </div>
-
-                        <div class="col-lg-2 col-md-6">
-                            <label class="form-label">
-                                <i class="fas fa-users"></i>
-                                Passengers
-                            </label>
-                            <select class="form-select" id="passengers">
-                                <option value="1">1 Adult</option>
-                                <option value="2">2 Adults</option>
-                                <option value="3">3 Adults</option>
-                                <option value="4">4+ Adults</option>
-                            </select>
-                        </div>
-
-                        <div class="col-12">
-                            <button type="submit" class="btn btn-search-flights">
-                                <i class="fas fa-search"></i>
-                                Search Flights
-                            </button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </section>
 
     <!-- Popular Destinations Section -->
     <section class="destinations-section" id="destinations">
@@ -480,87 +457,323 @@
         </div>
     </section>
 
-    <!-- Testimonials Section -->
-    <section class="testimonials-section" id="testimonials">
-        <div class="container">
-            <div class="section-header text-center" data-aos="fade-up">
-                <span class="section-label">Testimonials</span>
-                <h2 class="section-title">What Our Travelers Say</h2>
-                <p class="section-subtitle">Real experiences from real travelers</p>
+ <!-- Testimonials Section -->
+<section class="testimonials-section-new" id="testimonials">
+    <div class="container">
+        <div class="section-header text-center" data-aos="fade-up">
+            <span class="section-label">Testimonials</span>
+            <h2 class="section-title">What Our Travelers Say</h2>
+            <p class="section-subtitle">Real experiences from real travelers around the world</p>
+        </div>
+        
+        <div class="testimonial-slider-new" data-aos="fade-up" data-aos-delay="200">
+            <div class="testimonial-track-new" id="testimonialTrackNew">
+                <!-- Slide 1 (4 cards) -->
+                <div class="testimonial-slide-new">
+                    <div class="testimonial-card-new">
+                        <div class="testimonial-quote-icon">
+                            <i class="fas fa-quote-right"></i>
+                        </div>
+                        <div class="testimonial-stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="testimonial-text-new">"The best travel experience I've ever had. AEROVA made everything so easy and comfortable!"</p>
+                        <div class="testimonial-user">
+                          <div class="user-avatar">
+    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop&crop=faces" alt="Sarah Johnson">
+</div>
+                            <div class="user-info">
+                                <h4>Sarah Johnson</h4>
+                                <span>Frequent Traveler</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-card-new">
+                        <div class="testimonial-quote-icon">
+                            <i class="fas fa-quote-right"></i>
+                        </div>
+                        <div class="testimonial-stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="testimonial-text-new">"From booking to boarding, everything was seamless. The airport services are top-notch!"</p>
+                        <div class="testimonial-user">
+                           <div class="user-avatar">
+    <img src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=100&h=100&fit=crop&crop=faces" alt="Sophie O'Brien">
+</div>
+                            <div class="user-info">
+                                <h4>Michael Chen</h4>
+                                <span>Business Traveler</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-card-new">
+                        <div class="testimonial-quote-icon">
+                            <i class="fas fa-quote-right"></i>
+                        </div>
+                        <div class="testimonial-stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+<p class="testimonial-text-new">"The mobile boarding pass feature is revolutionary. No more paper tickets!"</p>
+                        <div class="testimonial-user">
+                       <div class="user-avatar">
+    <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=100&h=100&fit=crop&crop=faces" alt="David Wilson">
+</div>
+                            <div class="user-info">
+                                <h4>Emily Rodriguez</h4>
+                                <span>Digital Nomad</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-card-new">
+                        <div class="testimonial-quote-icon">
+                            <i class="fas fa-quote-right"></i>
+                        </div>
+                        <div class="testimonial-stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="testimonial-text-new">"AEROVA's customer support is amazing. They helped me 24/7 during my trip!"</p>
+                        <div class="testimonial-user">
+                                      <div class="user-avatar">
+    <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&h=100&fit=crop&crop=faces" alt="Ahmed Khan">
+</div>
+                            <div class="user-info">
+                                <h4>Ahmed Khan</h4>
+                                <span>Adventure Seeker</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Slide 2 (4 cards) -->
+                <div class="testimonial-slide-new">
+                    <div class="testimonial-card-new">
+                        <div class="testimonial-quote-icon">
+                            <i class="fas fa-quote-right"></i>
+                        </div>
+                        <div class="testimonial-stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="testimonial-text-new">"The flight deals are unbeatable! I saved so much money on my Europe trip."</p>
+                        <div class="testimonial-user">
+                         <div class="user-avatar">
+    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&h=100&fit=crop&crop=faces" alt="Nina Patel">
+</div>
+                            <div class="user-info">
+                                <h4>Lisa Martinez</h4>
+                                <span>Budget Traveler</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-card-new">
+                        <div class="testimonial-quote-icon">
+                            <i class="fas fa-quote-right"></i>
+                        </div>
+                        <div class="testimonial-stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="testimonial-text-new">"The airport guide feature is brilliant! I knew exactly where to go."</p>
+                        <div class="testimonial-user">
+<div class="user-avatar">
+    <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=faces" alt="James Thompson">
+</div>
+                            <div class="user-info">
+                                <h4>James Thompson</h4>
+                                <span>First Time Flyer</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-card-new">
+                        <div class="testimonial-quote-icon">
+                            <i class="fas fa-quote-right"></i>
+                        </div>
+                        <div class="testimonial-stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="testimonial-text-new">"Lost & Found service helped me recover my luggage within hours!"</p>
+                        <div class="testimonial-user">
+                          <div class="user-avatar">
+    <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=100&h=100&fit=crop&crop=faces" alt="Lisa Martinez">
+</div>
+                            <div class="user-info">
+                                <h4>Nina Patel</h4>
+                                <span>World Explorer</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-card-new">
+                        <div class="testimonial-quote-icon">
+                            <i class="fas fa-quote-right"></i>
+                        </div>
+                        <div class="testimonial-stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="testimonial-text-new">"The dark mode is stunning! Works perfectly for night flights."</p>
+                        <div class="testimonial-user">
+                        <div class="user-avatar">
+    <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&h=100&fit=crop&crop=faces" alt="Robert Brown">
+</div>
+                            <div class="user-info">
+                                <h4>David Wilson</h4>
+                                <span>Tech Enthusiast</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Slide 3 (4 cards) -->
+                <div class="testimonial-slide-new">
+                    <div class="testimonial-card-new">
+                        <div class="testimonial-quote-icon">
+                            <i class="fas fa-quote-right"></i>
+                        </div>
+                        <div class="testimonial-stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="testimonial-text-new">"Booking flights has never been easier. The interface is so intuitive!"</p>
+                        <div class="testimonial-user">
+                    <div class="user-avatar">
+    <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&h=100&fit=crop&crop=faces" alt="Ahmed Khan">
+</div>
+                            <div class="user-info">
+<h4>Sophie O'Brien</h4>
+                                <span>Travel Blogger</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-card-new">
+                        <div class="testimonial-quote-icon">
+                            <i class="fas fa-quote-right"></i>
+                        </div>
+                        <div class="testimonial-stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="testimonial-text-new">"The loyalty program rewards are fantastic. Free upgrades every time!"</p>
+                        <div class="testimonial-user">
+                            <div class="user-avatar">
+    <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=faces" alt="Emily Rodriguez">
+</div>
+                            <div class="user-info">
+                                <h4>Robert Brown</h4>
+                                <span>VIP Member</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-card-new">
+                        <div class="testimonial-quote-icon">
+                            <i class="fas fa-quote-right"></i>
+                        </div>
+                        <div class="testimonial-stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="testimonial-text-new">"The real-time flight tracking keeps me updated on my family's arrivals."</p>
+                        <div class="testimonial-user">
+                    <div class="user-avatar">
+    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=faces" alt="Michael Chen">
+</div>
+                            <div class="user-info">
+                                <h4>Carlos Garcia</h4>
+                                <span>Family Traveler</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-card-new">
+                        <div class="testimonial-quote-icon">
+                            <i class="fas fa-quote-right"></i>
+                        </div>
+                        <div class="testimonial-stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="testimonial-text-new">"AEROVA's app is a game-changer. Everything I need in one place!"</p>
+                        <div class="testimonial-user">
+<div class="user-avatar">
+    <img src="https://images.unsplash.com/photo-1463453091185-61582044d556?w=100&h=100&fit=crop&crop=faces" alt="Carlos Garcia">
+</div>
+                            <div class="user-info">
+                                <h4>Yuki Tanaka</h4>
+                                <span>Frequent Flyer</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-
-            <div class="testimonial-slider" data-aos="fade-up">
-                <div class="testimonial-track" id="testimonialTrack">
-                    <div class="testimonial-slide">
-                        <div class="testimonial-card">
-                            <div class="testimonial-avatar">
-                                <i class="fas fa-user"></i>
-                            </div>
-                            <div class="testimonial-stars">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                            </div>
-                            <p class="testimonial-text">"The best travel experience I've ever had. AEROVA made
-                                everything so easy and comfortable!"</p>
-                            <h4>Sarah Johnson</h4>
-                            <span>Frequent Traveler</span>
-                        </div>
-                    </div>
-
-                    <div class="testimonial-slide">
-                        <div class="testimonial-card">
-                            <div class="testimonial-avatar">
-                                <i class="fas fa-user"></i>
-                            </div>
-                            <div class="testimonial-stars">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                            </div>
-                            <p class="testimonial-text">"From booking to boarding, everything was seamless. The airport
-                                services are top-notch!"</p>
-                            <h4>Michael Chen</h4>
-                            <span>Business Traveler</span>
-                        </div>
-                    </div>
-
-                    <div class="testimonial-slide">
-                        <div class="testimonial-card">
-                            <div class="testimonial-avatar">
-                                <i class="fas fa-user"></i>
-                            </div>
-                            <div class="testimonial-stars">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                            </div>
-                            <p class="testimonial-text">"The mobile boarding pass feature is revolutionary. No more
-                                paper tickets!"</p>
-                            <h4>Emily Rodriguez</h4>
-                            <span>Digital Nomad</span>
-                        </div>
-                    </div>
+            
+            <!-- Controls -->
+            <div class="testimonial-controls-new">
+<button class="testimonial-btn-new" onclick="prevTestimonialNew()">
+                    <i class="fas fa-arrow-left"></i>
+                </button>
+                
+                <div class="testimonial-dots-new" id="testimonialDotsNew">
+                    <button class="testimonial-dot-new active" onclick="goToTestimonialNew(0)"></button>
+                    <button class="testimonial-dot-new" onclick="goToTestimonialNew(1)"></button>
+                    <button class="testimonial-dot-new" onclick="goToTestimonialNew(2)"></button>
                 </div>
-
-                <div class="testimonial-controls">
-                    <button class="testimonial-btn" onclick="prevTestimonial()">
-                        <i class="fas fa-chevron-left"></i>
-                    </button>
-                    <div class="testimonial-dots" id="testimonialDots"></div>
-                    <button class="testimonial-btn" onclick="nextTestimonial()">
-                        <i class="fas fa-chevron-right"></i>
-                    </button>
-                </div>
+                
+                <button class="testimonial-btn-new" onclick="nextTestimonialNew()">
+                    <i class="fas fa-arrow-right"></i>
+                </button>
             </div>
         </div>
-    </section>
+    </div>
+</section>
+
 
     <!-- Newsletter Section -->
     <section class="newsletter-section" id="contact">
