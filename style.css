@@ -221,3 +221,55 @@ BOOKING
     background:var(--primary);
     color:white;
 }
+.flight-card{
+    background:rgba(255,255,255,.55);
+    border-radius:22px;
+    padding:18px;
+    margin-bottom:18px;
+    transition:.3s;
+    border:1px solid rgba(255,255,255,.6);
+}
+
+.flight-card:hover{
+    transform:translateY(-4px);
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
+}
+
+.airline{
+    font-weight:700;
+    margin-bottom:5px;
+}
+
+.code{
+    color:var(--muted);
+    font-size:13px;
+}
+
+.time{
+    font-size:22px;
+    font-weight:700;
+}
+
+.duration{
+    color:var(--muted);
+    font-size:14px;
+}
+
+.price{
+    font-size:30px;
+    font-weight:bold;
+    color:var(--dark);
+}
+
+.select-btn{
+    border:none;
+    background:var(--dark);
+    color:white;
+    border-radius:30px;
+    padding:10px 20px;
+    transition:.3s;
+}
+
+.select-btn:hover{
+    background:var(--primary);
+}
