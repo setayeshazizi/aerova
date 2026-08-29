@@ -530,3 +530,81 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 .preview-info i {
     color: var(--primary);
 }
+/* =========================================
+   BUTTONS
+========================================= */
+
+.btn-primary-custom,
+.btn-secondary-custom {
+    border: none;
+
+    min-height: 52px;
+
+    padding: 0 25px;
+
+    border-radius: 13px;
+
+    font-weight: 700;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 10px;
+
+    transition: 0.3s ease;
+
+    cursor: pointer;
+}
+
+.btn-primary-custom {
+    color: white;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--primary),
+            var(--secondary)
+        );
+
+    box-shadow:
+        0 10px 25px rgba(91, 124, 250, 0.25);
+}
+
+.btn-primary-custom:hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 15px 30px rgba(91, 124, 250, 0.35);
+}
+
+.btn-primary-custom i {
+    transition: 0.3s ease;
+}
+
+.btn-primary-custom:hover i {
+    transform: translateX(5px);
+}
+
+.btn-secondary-custom {
+    background: var(--bg);
+    color: var(--text);
+}
+
+.btn-secondary-custom:hover {
+    transform: translateY(-2px);
+}
+
+.next-btn {
+    margin-top: 30px;
+    margin-left: auto;
+    display: flex;
+}
+
+.button-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+
+    margin-top: 40px;
+}
