@@ -382,3 +382,69 @@ a {
     font-size: 3rem;
     color: rgba(91, 124, 250, 0.12);
 }
+/* =========================================
+   INPUTS
+========================================= */
+
+.form-label {
+    font-size: 0.82rem;
+    font-weight: 700;
+    margin-bottom: 9px;
+}
+
+.form-label i {
+    color: var(--primary);
+    margin-right: 5px;
+}
+
+.custom-input {
+    min-height: 55px;
+
+    border: 1px solid var(--border);
+
+    border-radius: 14px;
+
+    background: var(--bg);
+
+    color: var(--text);
+
+    padding: 0 18px;
+
+    transition: var(--transition);
+}
+
+.custom-input:focus {
+    border-color: var(--primary);
+
+    box-shadow:
+        0 0 0 4px rgba(91, 124, 250, 0.1);
+
+    background: var(--card);
+}
+
+.input-wrapper {
+    position: relative;
+}
+
+.input-wrapper .custom-input {
+    padding-right: 45px;
+}
+
+.input-icon {
+    position: absolute;
+
+    right: 18px;
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    color: var(--primary);
+
+    pointer-events: none;
+}
+input[type="date"]::-webkit-calendar-picker-indicator {
+    cursor: pointer;
+    filter: invert(48%) sepia(97%) saturate(2234%) hue-rotate(201deg)
+            brightness(99%) contrast(93%);
+}
+
