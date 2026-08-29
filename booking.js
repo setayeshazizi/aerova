@@ -642,3 +642,25 @@ document.querySelectorAll(".custom-input").forEach(function (input) {
 loadBooking();
 
 loadTheme();
+
+/* =========================================
+   OPTIONAL: DEMO DEFAULT DATE
+========================================= */
+
+if (!departureDate.value) {
+  const tomorrow = new Date();
+
+  tomorrow.setDate(tomorrow.getDate() + 1);
+
+  departureDate.value = tomorrow.toISOString().split("T")[0];
+}
+
+const  hidde =document.querySelector("#confirmBookingBtn").addEventListener("click",function () {
+    const sectionsToHide = document.querySelectorAll(".hide-end");
+
+    sectionsToHide.forEach(section => {
+    section.classList.add("d-none");
+});
+
+
+});
