@@ -113,3 +113,10 @@ const classPrices = {
 
   Business: 650,
 };
+/* =========================================
+   SET MINIMUM DATE
+========================================= */
+
+const today = new Date().toISOString().split("T")[0];
+
+departureDate.min = today;
