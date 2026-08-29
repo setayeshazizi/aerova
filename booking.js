@@ -622,3 +622,16 @@ document.getElementById("newBookingBtn").addEventListener("click", function () {
 
   location.reload();
 });
+/* =========================================
+   INPUT ANIMATION
+========================================= */
+
+document.querySelectorAll(".custom-input").forEach(function (input) {
+  input.addEventListener("focus", function () {
+    this.parentElement?.classList.add("input-focused");
+  });
+
+  input.addEventListener("blur", function () {
+    this.parentElement?.classList.remove("input-focused");
+  });
+});
