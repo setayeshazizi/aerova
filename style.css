@@ -186,3 +186,14 @@ BOOKING
     font-weight:500;
     color:var(--text);
 }
+.search-btn{
+    border:none;
+    border-radius:16px;
+    color:white;
+    font-weight:600;
+    background:linear-gradient(135deg,var(--primary),var(--primary2));
+}
+
+.search-btn:hover{
+    transform:translateY(-2px);
+}
