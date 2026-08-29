@@ -443,3 +443,18 @@ function generateBoardingPass() {
 
   document.getElementById("boardingActions").classList.remove("d-none");
 }
+/* =========================================
+   BOOKING REFERENCE
+========================================= */
+
+function generateBookingReference() {
+  const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+
+  let result = "SP-";
+
+  for (let i = 0; i < 6; i++) {
+    result += chars.charAt(Math.floor(Math.random() * chars.length));
+  }
+
+  return result;
+}
