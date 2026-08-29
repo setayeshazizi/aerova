@@ -55,3 +55,67 @@ select {
 a {
     text-decoration: none;
 }
+
+/* =========================================
+   NAVBAR
+========================================= */
+
+.airport-navbar {
+    background: rgba(255, 255, 255, 0.78);
+    backdrop-filter: blur(18px);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    transition: var(--transition);
+}
+
+.logo {
+    font-weight: 800;
+    font-size: 1.5rem;
+    color: var(--text);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo span:last-child {
+    color: var(--primary);
+}
+
+.logo-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+    display: grid;
+    place-items: center;
+    background: linear-gradient(
+        135deg,
+        var(--primary),
+        var(--secondary)
+    );
+    color: white;
+    box-shadow: 0 8px 20px rgba(91, 124, 250, 0.25);
+}
+
+.nav-link {
+    color: var(--muted);
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+.nav-link:hover {
+    color: var(--primary);
+    transform: translateY(-2px);
+}
+
+.theme-btn {
+    border: 0;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--bg);
+    color: var(--text);
+    transition: var(--transition);
+}
+
+.theme-btn:hover {
+    transform: rotate(20deg) scale(1.08);
+}
