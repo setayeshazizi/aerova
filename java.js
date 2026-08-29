@@ -112,3 +112,28 @@ function displayFlights(data){
     });
 
 }
+displayFlights(flights);
+
+// ===============================
+// SELECT FLIGHT
+// ===============================
+
+function selectFlight(index){
+
+    const buttons = document.querySelectorAll(".select-btn");
+
+    buttons.forEach(btn=>{
+
+        btn.innerHTML="Select";
+
+        btn.style.background="#111827";
+
+    });
+
+    buttons[index].innerHTML="Selected ✓";
+
+    buttons[index].style.background="#5BA8FF";
+
+    alert(`You selected ${flights[index].airline}`);
+
+}
