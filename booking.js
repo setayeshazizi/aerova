@@ -192,3 +192,75 @@ function updateFlightPreview() {
 fromCity.addEventListener("change", updateFlightPreview);
 
 toCity.addEventListener("change", updateFlightPreview);
+
+/* =========================================
+   PASSENGER FORM
+========================================= */
+
+passengerForm.addEventListener("submit", function (event) {
+  event.preventDefault();
+
+  const firstName = document.getElementById("firstName").value.trim();
+
+  const lastName = document.getElementById("lastName").value.trim();
+
+  const email = document.getElementById("email").value.trim();
+
+  const phone = document.getElementById("phone").value.trim();
+
+  const passport = document.getElementById("passport").value.trim();
+
+  const birthDate = document.getElementById("birthDate").value;
+
+  /* Name validation */
+
+  if (firstName.length < 2 || lastName.length < 2) {
+    showToast("Please enter a valid passenger name.");
+
+    return;
+  }
+
+  /* Email validation */
+
+  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  if (!emailPattern.test(email)) {
+    showToast("Please enter a valid email address.");
+
+    return;
+  }
+
+  /* Phone validation */
+
+  if (phone.length < 7) {
+    showToast("Please enter a valid phone number.");
+
+    return;
+  }
+
+  /* Passport */
+
+  if (passport.length < 5) {
+    showToast("Please enter a valid passport number.");
+
+    return;
+  }
+
+  /* Store */
+
+  bookingData.firstName = firstName;
+
+  bookingData.lastName = lastName;
+
+  bookingData.email = email;
+
+  bookingData.phone = phone;
+
+  bookingData.passport = passport;
+
+  bookingData.birthDate = birthDate;
+
+  saveBooking();
+
+  goToStep(3);
+});
