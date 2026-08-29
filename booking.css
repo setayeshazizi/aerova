@@ -353,3 +353,32 @@ a {
         transform: translateX(0);
     }
 }
+.step-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    margin-bottom: 40px;
+}
+
+.step-number {
+    color: var(--primary);
+    font-weight: 800;
+    font-size: 0.8rem;
+}
+
+.step-header h3 {
+    margin-top: 5px;
+    font-size: 1.8rem;
+    font-weight: 800;
+}
+
+.step-header p {
+    color: var(--muted);
+    margin-top: 7px;
+}
+
+.step-icon {
+    font-size: 3rem;
+    color: rgba(91, 124, 250, 0.12);
+}
