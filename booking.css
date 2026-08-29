@@ -239,3 +239,40 @@ a {
     right: 30%;
     bottom: -100px;
 }
+.plane-animation {
+    position: absolute;
+    right: -100px;
+    top: 45%;
+    font-size: 8rem;
+    color: rgba(91, 124, 250, 0.06);
+
+    animation: planeFly 15s linear infinite;
+}
+
+@keyframes planeFly {
+
+    0% {
+        transform: translateX(0) rotate(-5deg);
+    }
+
+    50% {
+        transform: translateX(-250px) translateY(-50px) rotate(-5deg);
+    }
+
+    100% {
+        transform: translateX(-600px) translateY(20px) rotate(-5deg);
+    }
+}
+
+@keyframes heroReveal {
+
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
