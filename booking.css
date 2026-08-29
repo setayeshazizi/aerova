@@ -119,3 +119,75 @@ a {
 .theme-btn:hover {
     transform: rotate(20deg) scale(1.08);
 }
+
+/* =========================================
+   HERO
+========================================= */
+
+.booking-hero {
+    min-height: 650px;
+    position: relative;
+    overflow: hidden;
+
+    display: flex;
+    align-items: center;
+
+    background:
+        radial-gradient(
+            circle at 15% 20%,
+            rgba(91, 124, 250, 0.18),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 90% 80%,
+            rgba(124, 92, 255, 0.15),
+            transparent 30%
+        ),
+        var(--bg);
+}
+
+.hero-content {
+    max-width: 750px;
+    padding-top: 80px;
+    position: relative;
+    z-index: 2;
+    animation: heroReveal 1s ease forwards;
+}
+
+.hero-badge {
+    display: inline-flex;
+    gap: 8px;
+    align-items: center;
+
+    padding: 9px 16px;
+
+    border-radius: 50px;
+
+    background: rgba(91, 124, 250, 0.10);
+    color: var(--primary);
+
+    font-size: 0.82rem;
+    font-weight: 700;
+
+    margin-bottom: 22px;
+}
+
+.hero-content h1 {
+    font-size: clamp(3rem, 7vw, 5.5rem);
+    font-weight: 800;
+    line-height: 1.03;
+    letter-spacing: -4px;
+}
+
+.hero-content h1 span {
+    display: block;
+
+    background: linear-gradient(
+        90deg,
+        var(--primary),
+        var(--secondary)
+    );
+
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
