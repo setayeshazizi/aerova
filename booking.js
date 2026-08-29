@@ -635,3 +635,10 @@ document.querySelectorAll(".custom-input").forEach(function (input) {
     this.parentElement?.classList.remove("input-focused");
   });
 });
+/* =========================================
+   INITIALIZE
+========================================= */
+
+loadBooking();
+
+loadTheme();
