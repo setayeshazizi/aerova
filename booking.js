@@ -520,3 +520,16 @@ function formatDate(dateString) {
     year: "numeric",
   });
 }
+/* =========================================
+   TOAST
+========================================= */
+
+function showToast(message) {
+  toastMessage.textContent = message;
+
+  const toast = new bootstrap.Toast(notificationToast, {
+    delay: 3000,
+  });
+
+  toast.show();
+}
