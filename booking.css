@@ -1296,3 +1296,60 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 .action-btn i {
     margin-right: 5px;
 }
+
+/* =========================================
+   DARK MODE
+========================================= */
+
+body.dark-mode {
+    --bg: #0c1020;
+    --card: #151a2d;
+
+    --text: #f1f4ff;
+    --muted: #939bb5;
+
+    --border: #252c43;
+
+    --shadow:
+        0 25px 70px rgba(0, 0, 0, 0.35);
+}
+body.dark-mode .custom-toast{
+    color: #000000;
+}
+
+body.dark-mode .airport-navbar {
+    background: rgba(12, 16, 32, 0.78);
+    border-bottom-color: var(--border);
+}
+
+body.dark-mode .custom-input {
+    background: #101529;
+}
+
+body.dark-mode .custom-input:focus {
+    background: #151a2d;
+}
+
+body.dark-mode .route-line i {
+    background: var(--card);
+}
+
+body.dark-mode .seat.occupied {
+    background: #30364b;
+    color: #777f99;
+}
+
+body.dark-mode  #passengerForm input{
+    color: #ffffff !important;
+}
+
+body.light-mode  #passengerForm input{
+    color: #000000 !important;
+}
+body.dark-mode  #passengerForm input::placeholder {
+    color: #515253 !important;
+}
+
+body.light-mode #passengerForm input::placeholder {
+    color: #88919e !important;
+}
