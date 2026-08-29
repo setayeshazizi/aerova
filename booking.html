@@ -135,6 +135,775 @@
     </div>
 
 </section>
+<!-- ================= BOOKING SECTION ================= -->
 
+<section class="booking-section" id="booking">
+
+    <div class="container">
+
+        <!-- Section Header -->
+
+        <div class="section-heading text-center">
+
+            <span class="section-label">
+                <i class="bi bi-ticket-perforated"></i>
+                FLIGHT BOOKING
+            </span>
+
+            <h2>
+                Plan your next
+                <span>adventure</span>
+            </h2>
+
+            <p>
+                Complete the steps below to reserve your flight.
+            </p>
+
+        </div>
+
+
+        <!-- ================= PROGRESS ================= -->
+
+        <div class="booking-progress">
+
+            <div class="progress-line">
+                <div id="progressBar"></div>
+            </div>
+
+            <div class="progress-step active" data-step="1">
+                <span>1</span>
+                <small>Flight</small>
+            </div>
+
+            <div class="progress-step" data-step="2">
+                <span>2</span>
+                <small>Passenger</small>
+            </div>
+
+            <div class="progress-step" data-step="3">
+                <span>3</span>
+                <small>Seat</small>
+            </div>
+
+            <div class="progress-step" data-step="4">
+                <span>4</span>
+                <small>Confirm</small>
+            </div>
+
+        </div>
+
+
+        <!-- ================= BOOKING CARD ================= -->
+
+        <div class="booking-card">
+
+            <!-- STEP 1 -->
+
+            <div class="booking-step active" id="step1">
+
+                <div class="step-header">
+
+                    <div>
+                        <span class="step-number">01</span>
+                        <h3>Find your flight</h3>
+                        <p>Select your destination and travel date.</p>
+                    </div>
+
+                    <i class="bi bi-search step-icon"></i>
+
+                </div>
+
+
+                <form id="flightForm">
+
+                    <div class="row g-4">
+
+                        <!-- FROM -->
+
+                        <div class="col-lg-6">
+
+                            <label class="form-label">
+                                <i class="bi bi-airplane-engines"></i>
+                                From
+                            </label>
+
+                            <div class="input-wrapper">
+
+                                <select
+                                    class="form-select custom-input"
+                                    id="fromCity"
+                                    required
+                                >
+                                    <option value="">Select departure airport</option>
+                                    <option value="HER">Herat — HER</option>
+                                    <option value="KBL">Kabul — KBL</option>
+                                    <option value="DXB">Dubai — DXB</option>
+                                    <option value="IST">Istanbul — IST</option>
+                                    <option value="DEL">Delhi — DEL</option>
+                                    <option value="DOH">Doha — DOH</option>
+                                </select>
+
+                                <i class="bi bi-geo-alt input-icon"></i>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- TO -->
+
+                        <div class="col-lg-6">
+
+                            <label class="form-label">
+                                <i class="bi bi-geo-alt-fill"></i>
+                                To
+                            </label>
+
+                            <div class="input-wrapper">
+
+                                <select
+                                    class="form-select custom-input"
+                                    id="toCity"
+                                    required
+                                >
+                                    <option value="">Select destination airport</option>
+                                    <option value="KBL">Kabul — KBL</option>
+                                    <option value="HER">Herat — HER</option>
+                                    <option value="DXB">Dubai — DXB</option>
+                                    <option value="IST">Istanbul — IST</option>
+                                    <option value="DEL">Delhi — DEL</option>
+                                    <option value="DOH">Doha — DOH</option>
+                                </select>
+
+                                <i class="bi bi-geo-alt input-icon"></i>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- DATE -->
+
+                        <div class="col-lg-6">
+
+                            <label class="form-label">
+                                <i class="bi bi-calendar-event"></i>
+                                Departure Date
+                            </label>
+
+                            <input
+                                type="date"
+                                class="form-control custom-input"
+                                id="departureDate"
+                                required
+                            >
+
+                        </div>
+
+
+                        <!-- CLASS -->
+
+                        <div class="col-lg-6">
+
+                            <label class="form-label">
+                                <i class="bi bi-stars"></i>
+                                Travel Class
+                            </label>
+
+                            <select
+                                class="form-select custom-input"
+                                id="travelClass"
+                                required
+                            >
+                                <option value="">Choose class</option>
+                                <option value="Economy">Economy</option>
+                                <option value="Premium">Premium Economy</option>
+                                <option value="Business">Business</option>
+                            </select>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Flight preview -->
+
+                    <div class="flight-preview d-none" id="flightPreview">
+
+                        <div class="preview-route">
+
+                            <div>
+                                <small>DEPARTURE</small>
+                                <strong id="previewFrom">HER</strong>
+                            </div>
+
+                            <div class="route-line">
+                                <i class="bi bi-airplane-fill"></i>
+                            </div>
+
+                            <div>
+                                <small>ARRIVAL</small>
+                                <strong id="previewTo">DXB</strong>
+                            </div>
+
+                        </div>
+
+                        <div class="preview-info">
+                            <span>
+                                <i class="bi bi-clock"></i>
+                                3h 25m
+                            </span>
+
+                            <span>
+                                <i class="bi bi-wifi"></i>
+                                Wi-Fi
+                            </span>
+
+                            <span>
+                                <i class="bi bi-cup-hot"></i>
+                                Meal
+                            </span>
+                        </div>
+
+                    </div>
+
+
+                    <button
+                        type="submit"
+                        class="btn-primary-custom next-btn"
+                    >
+                        Continue
+                        <i class="bi bi-arrow-right"></i>
+                    </button>
+
+                </form>
+
+            </div>
+
+
+            <!-- STEP 2 -->
+
+            <div class="booking-step" id="step2">
+
+                <div class="step-header">
+
+                    <div>
+                        <span class="step-number">02</span>
+                        <h3>Passenger information</h3>
+                        <p>Enter the information exactly as shown on your passport.</p>
+                    </div>
+
+                    <i class="bi bi-person-vcard step-icon"></i>
+
+                </div>
+
+
+                <form id="passengerForm">
+
+                    <div class="row g-4">
+
+                        <div class="col-md-6">
+
+                            <label class="form-label">
+                                First Name
+                            </label>
+
+                            <input
+                                type="text"
+                                class="form-control custom-input"
+                                id="firstName"
+                                placeholder="Enter your name"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="col-md-6">
+
+                            <label class="form-label">
+                                Last Name
+                            </label>
+
+                            <input
+                                type="text"
+                                class="form-control custom-input"
+                                id="lastName"
+                                placeholder="Enter your Last name"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="col-md-6">
+
+                            <label class="form-label">
+                                Email Address
+                            </label>
+
+                            <input
+                                type="email"
+                                class="form-control custom-input"
+                                id="email"
+                                placeholder="Enter your Email"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="col-md-6">
+
+                            <label class="form-label">
+                                Phone Number
+                            </label>
+
+                            <input
+                                type="tel"
+                                class="form-control custom-input"
+                                id="phone"
+                                placeholder="Enter your phone number"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="col-md-6">
+
+                            <label class="form-label">
+                                Passport Number
+                            </label>
+
+                            <input
+                                type="text"
+                                class="form-control custom-input"
+                                id="passport"
+                                placeholder="Enter your Passport number"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="col-md-6">
+
+                            <label class="form-label">
+                                Date of Birth
+                            </label>
+
+                            <input
+                                type="date"
+                                class="form-control custom-input"
+                                id="birthDate"
+                                required
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="button-row">
+
+                        <button
+                            type="button"
+                            class="btn-secondary-custom"
+                            onclick="goToStep(1)"
+                        >
+                            <i class="bi bi-arrow-left"></i>
+                            Back
+                        </button>
+
+                        <button
+                            type="submit"
+                            class="btn-primary-custom"
+                        >
+                            Choose Seat
+                            <i class="bi bi-arrow-right"></i>
+                        </button>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+
+            <!-- STEP 3 -->
+
+            <div class="booking-step" id="step3">
+
+                <div class="step-header">
+
+                    <div>
+                        <span class="step-number">03</span>
+                        <h3>Choose your seat</h3>
+                        <p>Select your preferred seat on the aircraft.</p>
+                    </div>
+
+                    <i class="bi bi-grid-3x3-gap step-icon"></i>
+
+                </div>
+
+
+                <div class="seat-layout">
+
+                    <!-- Cockpit -->
+
+                    <div class="cockpit">
+                        <i class="bi bi-airplane-engines-fill"></i>
+                        <span>COCKPIT</span>
+                    </div>
+
+
+                    <div class="seat-legend">
+
+                        <span>
+                            <i class="legend-seat available"></i>
+                            Available
+                        </span>
+
+                        <span>
+                            <i class="legend-seat selected"></i>
+                            Selected
+                        </span>
+
+                        <span>
+                            <i class="legend-seat occupied"></i>
+                            Occupied
+                        </span>
+
+                    </div>
+
+
+                    <div class="aircraft">
+
+                        <div class="seat-row">
+                            <span class="row-number">1</span>
+
+                            <button class="seat available" data-seat="1A">A</button>
+                            <button class="seat available" data-seat="1B">B</button>
+
+                            <span class="aisle"></span>
+
+                            <button class="seat available" data-seat="1C">C</button>
+                            <button class="seat available" data-seat="1D">D</button>
+                        </div>
+
+
+                        <div class="seat-row">
+                            <span class="row-number">2</span>
+
+                            <button class="seat occupied" disabled>A</button>
+                            <button class="seat available" data-seat="2B">B</button>
+
+                            <span class="aisle"></span>
+
+                            <button class="seat available" data-seat="2C">C</button>
+                            <button class="seat occupied" disabled>D</button>
+                        </div>
+
+
+                        <div class="seat-row">
+                            <span class="row-number">3</span>
+
+                            <button class="seat available" data-seat="3A">A</button>
+                            <button class="seat available" data-seat="3B">B</button>
+
+                            <span class="aisle"></span>
+
+                            <button class="seat available" data-seat="3C">C</button>
+                            <button class="seat available" data-seat="3D">D</button>
+                        </div>
+
+
+                        <div class="seat-row">
+                            <span class="row-number">4</span>
+
+                            <button class="seat occupied" disabled>A</button>
+                            <button class="seat available" data-seat="4B">B</button>
+
+                            <span class="aisle"></span>
+
+                            <button class="seat available" data-seat="4C">C</button>
+                            <button class="seat available" data-seat="4D">D</button>
+                        </div>
+
+
+                        <div class="seat-row">
+                            <span class="row-number">5</span>
+
+                            <button class="seat available" data-seat="5A">A</button>
+                            <button class="seat available" data-seat="5B">B</button>
+
+                            <span class="aisle"></span>
+
+                            <button class="seat available" data-seat="5C">C</button>
+                            <button class="seat available" data-seat="5D">D</button>
+                        </div>
+
+
+                        <div class="seat-row">
+                            <span class="row-number">6</span>
+
+                            <button class="seat available" data-seat="6A">A</button>
+                            <button class="seat available" data-seat="6B">B</button>
+
+                            <span class="aisle"></span>
+
+                            <button class="seat available" data-seat="6C">C</button>
+                            <button class="seat available" data-seat="6D">D</button>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Extras -->
+
+                <div class="extras-section">
+
+                    <h4>
+                        <i class="bi bi-plus-circle"></i>
+                        Add extras
+                    </h4>
+
+                    <div class="row g-3">
+
+                        <div class="col-md-4">
+
+                            <label class="extra-card">
+
+                                <input
+                                    type="checkbox"
+                                    class="extra-option"
+                                    data-name="Extra Baggage"
+                                    data-price="35"
+                                >
+
+                                <div>
+                                    <i class="bi bi-luggage"></i>
+                                    <strong>Extra Baggage</strong>
+                                    <small>+23kg</small>
+                                </div>
+
+                                <b>+$35</b>
+
+                            </label>
+
+                        </div>
+
+
+                        <div class="col-md-4">
+
+                            <label class="extra-card">
+
+                                <input
+                                    type="checkbox"
+                                    class="extra-option"
+                                    data-name="Priority Boarding"
+                                    data-price="20"
+                                >
+
+                                <div>
+                                    <i class="bi bi-lightning-charge"></i>
+                                    <strong>Priority Boarding</strong>
+                                    <small>Board first</small>
+                                </div>
+
+                                <b>+$20</b>
+
+                            </label>
+
+                        </div>
+
+
+                        <div class="col-md-4">
+
+                            <label class="extra-card">
+
+                                <input
+                                    type="checkbox"
+                                    class="extra-option"
+                                   data-name="Airport Lounge"
+                                    data-price="45"
+                                >
+
+                                <div>
+                                    <i class="bi bi-cup-hot"></i>
+                                    <strong>Airport Lounge</strong>
+                                    <small>Relax before flight</small>
+                                </div>
+
+                                <b>+$45</b>
+
+                            </label>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="button-row">
+
+                    <button
+                        type="button"
+                        class="btn-secondary-custom"
+                        onclick="goToStep(2)"
+                    >
+                        <i class="bi bi-arrow-left"></i>
+                        Back
+                    </button>
+
+                    <button
+                        type="button"
+                        class="btn-primary-custom"
+                        id="reviewBookingBtn"
+                    >
+                        Review Booking
+                        <i class="bi bi-arrow-right"></i>
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- STEP 4 -->
+
+            <div class="booking-step" id="step4">
+
+                <div class="step-header">
+
+                    <div>
+                        <span class="step-number">04</span>
+                        <h3>Confirm your booking</h3>
+                        <p>Review your flight details before generating your pass.</p>
+                    </div>
+
+                    <i class="bi bi-check2-circle step-icon"></i>
+
+                </div>
+
+
+                <div class="booking-summary">
+
+                    <div class="summary-route">
+
+                        <div>
+                            <small>FROM</small>
+                            <strong id="summaryFrom">HER</strong>
+                            <span id="summaryFromName">Herat</span>
+                        </div>
+
+                        <div class="summary-plane">
+                            <i class="bi bi-airplane-fill"></i>
+                        </div>
+
+                        <div>
+                            <small>TO</small>
+                            <strong id="summaryTo">DXB</strong>
+                            <span id="summaryToName">Dubai</span>
+                        </div>
+
+                    </div>
+
+
+                    <div class="summary-grid">
+
+                        <div>
+                            <small>PASSENGER</small>
+                            <strong id="summaryPassenger">---</strong>
+                        </div>
+
+                        <div>
+                            <small>DATE</small>
+                            <strong id="summaryDate">---</strong>
+                        </div>
+
+                        <div>
+                            <small>CLASS</small>
+                            <strong id="summaryClass">---</strong>
+                        </div>
+
+                        <div>
+                            <small>SEAT</small>
+                            <strong id="summarySeat">---</strong>
+                        </div>
+
+                    </div>
+
+
+                    <div class="price-summary">
+
+                        <div>
+                            <span>Base fare</span>
+                            <strong id="basePrice">$250</strong>
+                        </div>
+
+                        <div>
+                            <span>Extras</span>
+                            <strong id="extrasPrice">$0</strong>
+                        </div>
+
+                        <div class="total-price">
+                            <span>Total</span>
+                            <strong id="totalPrice">$250</strong>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="secure-note">
+
+                    <i class="bi bi-shield-check"></i>
+
+                    <div>
+                        <strong>Secure booking</strong>
+                        <p>
+                            Your booking information is stored securely
+                            in your browser.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="button-row">
+
+                    <button
+                        type="button"
+                        class="btn-secondary-custom"
+                        onclick="goToStep(3)"
+                    >
+                        <i class="bi bi-arrow-left"></i>
+                        Back
+                    </button>
+
+                    <button
+                        type="button"
+                        class="btn-primary-custom"
+                        id="confirmBookingBtn"
+                    >
+                        Confirm & Get Boarding Pass
+                        <i class="bi bi-check2"></i>
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
 
 </body>
