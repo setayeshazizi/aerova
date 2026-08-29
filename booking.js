@@ -264,3 +264,29 @@ passengerForm.addEventListener("submit", function (event) {
 
   goToStep(3);
 });
+
+/* =========================================
+   SEAT SELECTION
+========================================= */
+
+seats.forEach(function (seat) {
+  seat.addEventListener("click", function () {
+    /* Remove previous selection */
+
+    seats.forEach(function (item) {
+      item.classList.remove("selected");
+    });
+
+    /* Select current */
+
+    seat.classList.add("selected");
+
+    selectedSeat = seat.dataset.seat;
+
+    bookingData.seat = selectedSeat;
+
+    showToast(`Seat ${selectedSeat} selected.`);
+
+    saveBooking();
+  });
+});
