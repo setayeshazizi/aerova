@@ -33,3 +33,36 @@ let bookingData = {
 
   bookingReference: "",
 };
+/* =========================================
+   DOM ELEMENTS
+========================================= */
+
+const flightForm = document.getElementById("flightForm");
+
+const passengerForm = document.getElementById("passengerForm");
+
+const fromCity = document.getElementById("fromCity");
+
+const toCity = document.getElementById("toCity");
+
+const departureDate = document.getElementById("departureDate");
+
+const travelClass = document.getElementById("travelClass");
+
+const flightPreview = document.getElementById("flightPreview");
+
+const progressBar = document.getElementById("progressBar");
+
+const progressSteps = document.querySelectorAll(".progress-step");
+
+const bookingSteps = document.querySelectorAll(".booking-step");
+
+const seats = document.querySelectorAll(".seat.available");
+
+const extras = document.querySelectorAll(".extra-option");
+
+const themeToggle = document.getElementById("themeToggle");
+
+const notificationToast = document.getElementById("notificationToast");
+
+const toastMessage = document.getElementById("toastMessage");
