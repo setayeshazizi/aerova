@@ -89,3 +89,100 @@ NAVBAR
     color:white;
     transform:translateY(-3px);
 }
+.hero{
+    margin-top:20px;
+    background:linear-gradient(135deg,#edf7ff,#d6ebff);
+    border-radius:28px;
+    padding:45px;
+    overflow:hidden;
+}
+
+.date{
+    color:var(--muted);
+    font-size:14px;
+}
+
+.hero h1{
+    font-size:48px;
+    font-weight:300;
+    margin:10px 0;
+    line-height:1.2;
+}
+
+.hero-text{
+    color:var(--muted);
+    max-width:420px;
+}
+
+.plane{
+    animation:float 4s ease-in-out infinite;
+}
+
+@keyframes float{
+
+    0%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-10px);
+    }
+
+    100%{
+        transform:translateY(0);
+    }
+}
+
+/* ==========================
+AI SWITCH
+========================== */
+
+.hero-switch{
+    margin-top:25px;
+}
+
+.hero-switch button{
+    border:none;
+    padding:10px 20px;
+    border-radius:25px;
+    background:white;
+}
+
+.hero-switch .active{
+    background:var(--primary);
+    color:white;
+}
+
+/* ==========================
+BOOKING
+========================== */
+
+.booking{
+    margin-top:22px;
+    background:rgba(255,255,255,.45);
+    border-radius:24px;
+    padding:22px;
+}
+
+.booking label{
+    font-size:13px;
+    color:var(--muted);
+    margin-bottom:6px;
+}
+
+.form-control{
+    border:none;
+    border-radius:16px;
+    background:rgba(255,255,255,.8);
+    padding:12px;
+}
+
+.form-control:focus{
+    box-shadow:none;
+    border:1px solid var(--primary);
+}
+
+.trip-type label{
+    font-weight:500;
+    color:var(--text);
+}
