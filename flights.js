@@ -1,5 +1,5 @@
 /* ==========================================================================
-   SkyCrest Airlines — Flights page logic (Vanilla JavaScript only)
+   AEROVA Airlines — Flights page logic (Vanilla JavaScript only)
    Sections:
    1. Theme toggle          5. Sorting
    2. Sample flight data    6. View details modal
