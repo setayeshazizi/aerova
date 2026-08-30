@@ -66,20 +66,20 @@ Note: Authentication is implemented on the front end and is intended for demonst
 ---
 
 
-✈️ Flight Explorer
+## Flight Explorer
 Find the perfect flight with an intuitive flight search interface.
-🔍 Search & Filter
-Users can filter flights by:
+- Search & Filter
+- Users can filter flights by:
 Destination
 Price
 Departure time
 Airline
-📊 Sorting
+  Sorting
 Flights can be sorted by:
-💰 Cheapest
-⚡ Fastest
-🕐 Earliest departure
-📋 Flight Details
+   Cheapest
+  Fastest
+   Earliest departure
+  Flight Details
 Each flight card can display:
 Airline
 Flight number
@@ -88,24 +88,27 @@ Arrival
 Duration
 Price
 Flight status
-📡 Flight Status
+  Flight Status
 Users can check the current status of their selected flight.
 
 
-⸻
+---
 
 
-🎫 Booking System
+## Booking System
 AEROVA provides a multi-step booking experience designed to simulate a real airline booking flow.
 Booking Flow
 Flight Selection
       ↓
+      
 Passenger Information
       ↓
+      
 Seat Selection
       ↓
+      
 Extras & Confirmation
-💺 Seat Selection
+- Seat Selection
 Interactive aircraft seat map with different seat states:
 🟢 Available
 🔵 Selected
@@ -113,50 +116,49 @@ Interactive aircraft seat map with different seat states:
 Users can visually select their preferred seat before completing their booking.
 
 
-⸻
+---
 
 
-🧳 Travel Extras
+## Travel Extras
 Passengers can customize their journey with additional services:
-🧳 Extra baggage
-⚡ Priority boarding
-🛋️ Airport lounge access
+- Extra baggage
+- Priority boarding
+- Airport lounge access
 Because apparently flying wasn’t complicated enough already. 😭✈️
 
 
-⸻
+---
 
-
-🎫 Digital Boarding Pass
+## Digital Boarding Pass
 After booking, users can access a digital boarding pass.
 Includes
-👤 Passenger information
-✈️ Flight information
-💺 Seat number
-🎫 Booking reference
-📱 QR-style barcode
-🖨️ Print-ready layout
-📋 Copy booking code
+- Passenger information
+- Flight information
+  - Seat number
+- Booking reference
+  - QR-style barcode
+- Print-ready layout
+  - Copy booking code
 Your boarding pass is basically your “I have successfully spent money and now I’m going somewhere” certificate.
 
 
-⸻
+---
 
 
-🗺️ Airport Guide
+## Airport Guide
 Navigate the airport without walking around like you’re looking for a hidden treasure.
 Features
-🏢 Interactive terminal map
-🚪 Gate information
-🍔 Restaurant search
-🛍️ Shops & services
-🔍 Service search
-📊 Category filtering
-ℹ️ Operating hours
-💡 Airport tips
+- Interactive terminal map
+- Gate information
+  - Restaurant search
+- Shops & services
+  - Service search
+- Category filtering
+  - Operating hours
+- Airport tips
 
 
-⸻
+---
 
 
 🧳 Lost & Found
