@@ -111,8 +111,11 @@ Extras & Confirmation
 - Seat Selection
 Interactive aircraft seat map with different seat states:
 🟢 Available
+
 🔵 Selected
+
 🔴 Occupied
+
 Users can visually select their preferred seat before completing their booking.
 
 
@@ -124,7 +127,7 @@ Passengers can customize their journey with additional services:
 - Extra baggage
 - Priority boarding
 - Airport lounge access
-Because apparently flying wasn’t complicated enough already. 😭✈️
+Because apparently flying wasn’t complicated enough already. 
 
 
 ---
@@ -161,94 +164,66 @@ Features
 ---
 
 
-🧳 Lost & Found
+## Lost & Found
 Lost something at the airport?
 AEROVA provides a simple Lost & Found management interface.
-📝 Report Lost Items
-Users can submit:
+ Report Lost Items
+- Users can submit:
 Item name
 Category
 Description
 Location
 Date
 Contact information
-🔍 Search Found Items
+ Search Found Items
 Users can:
 Search found items
 Filter results
 Check item details
-📊 Status Tracking
-Items can have statuses such as:
-📝 Reported
+ Status Tracking
+- Items can have statuses such as:
+   Reported
    ↓
-🔍 Searching
+  
+ Searching
+ 
    ↓
-✅ Found
-💾 LocalStorage
+   
+ Found
+ 
+LocalStorage
+
 Lost & Found reports can be stored locally using the browser’s LocalStorage API.
 
 
-⸻
-🧳 Lost & Found Report & search lost items lost-found.html
+---
+
+ Lost & Found Report & search lost items lost-found.html
 
 
 ⸻
 
 
-🛠️ Tech Stack
-Technology Purpose
-🧱 HTML5 Structure & semantic markup
-🎨 CSS3 Styling, animations & themes
-🧩 Bootstrap 5 Responsive layout & UI components
-⚡ JavaScript ES6+ Logic & interactivity
-⭐ Font Awesome 6 Icons
-🔷 Bootstrap Icons Additional icons
-🔤 Google Fonts Typography
-🎬 AOS Scroll animations
-💾 LocalStorage API Client-side data persistence
-🎨 Canvas API Particle background
-Typography
-AEROVA uses a combination of:
+## Tech Stack
+### Technology Purpose
+- HTML5 Structure & semantic markup
+ - CSS3 Styling, animations & themes
+-Bootstrap 5 Responsive layout & UI components
+- JavaScript ES6+ Logic & interactivity
+- Font Awesome 6 Icons
+  - Bootstrap Icons Additional icons
+- Google Fonts Typography
+  - AOS Scroll animations
+- LocalStorage API Client-side data persistence
+  - Canvas API Particle background
+### Typography
+- AEROVA uses a combination of:
 Plus Jakarta Sans
 Playfair Display
 to create a modern combination of clean UI typography and premium travel branding.
 
 
-⸻
-
-
-📁 Project Structure
-AEROVA/
-│
-├── 📄 index.html
-├── 📄 login.html
-├── 📄 flights.html
-├── 📄 booking.html
-├── 📄 airport-guide.html
-├── 📄 lost-found.html
-│
-├── 📁 css/
-│   ├── style.css
-│   ├── responsive.css
-│   └── animations.css
-│
-├── 📁 js/
-│   ├── main.js
-│   ├── auth.js
-│   ├── flights.js
-│   ├── booking.js
-│   ├── airport-guide.js
-│   └── lost-found.js
-│
-├── 📁 assets/
-│   ├── 📁 images/
-│   ├── 📁 icons/
-│   └── 📁 fonts/
-│
-└── 📄 README.md
-
-
-⸻
+---
 
 
 🚀 Quick Start
@@ -387,48 +362,7 @@ AEROVA could be extended with:
 Basically…
 AEROVA 2.0 is waiting for us. 🚀
 
-
-⸻
-
-
-🌍 User Experience Flow
-        ✈️ AEROVA
-            │
-            ▼
-       🏠 Homepage
-            │
-      ┌─────┴─────┐
-      ▼           ▼
-  🔐 Login     ✈️ Explore Flights
-      │           │
-      └─────┬─────┘
-            ▼
-
-📄 Pages
-Page Description File
-🏠 Home Hero, flight search, destinations, services & testimonials index.html
-🔐 Login / Register Authentication & validation login.html
-✈️ Flights Search, filter, sort & flight information flights.html
-🎫 Booking Multi-step booking & seat selection booking.html
-🗺️ Airport Guide Airport map, services & information airport-guide.html
-
-🎫 Booking
-            │
-            ▼
-       💺 Seat Selection
-            │
-            ▼
-        🧳 Extras
-            │
-            ▼
-       🎫 Boarding Pass
-            │
-            ▼
-       🌍 Happy Journey!
-
-
-⸻
-
+---
 
 🤝 Contributing
 Contributions, suggestions, and improvements are welcome.
@@ -469,14 +403,6 @@ If you like the project:
 💡 Suggest features
 🤝 Contribute
 Every star gives the developer +5 confidence and absolutely no measurable performance improvement. 😂
-
-
-⸻
-
-
-👨‍💻 Author
-AEROVA — Airport & Travel Experience Platform
-Built with ❤️, ☕, JavaScript, and an unreasonable number of CSS animations.
 
 
 ⸻
