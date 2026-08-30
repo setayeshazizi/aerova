@@ -230,10 +230,14 @@ to create a modern combination of clean UI typography and premium travel brandin
 
 ## Quick Start
 Option 1 — Clone the Repository
+
 Open your terminal and run:
-git clone https://github.com/your-username/aerova.git
+
+git clone https://github.com/setayeshazizi/aerova.git
+
 Then enter the project directory:
 cd aerova
+
 Open index.html in your browser.
 
 
