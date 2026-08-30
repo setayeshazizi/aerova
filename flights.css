@@ -126,169 +126,174 @@ select:focus-visible {
 /* ---------- Navbar ---------- */
 /* ============ Navigation ============ */
 #mainNav {
-    padding: 1rem 0;
-    background: var(--bg-primary);
-    transition: var(--transition);
-    z-index: 1000;
-    border-bottom: 1px solid var(--border-color);
+  padding: 1rem 0;
+  background: var(--bg-primary);
+  transition: var(--transition);
+  z-index: 1000;
+  border-bottom: 1px solid var(--border-color);
 }
 
 #mainNav.scrolled {
-    background: var(--bg-primary);
-    box-shadow: var(--shadow-md);
-    padding: 0.5rem 0;
+  box-shadow: var(--shadow-md);
+  padding: 0.5rem 0;
 }
 
 .navbar-brand {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    font-weight: 800;
-    font-size: 1.5rem;
-    color: var(--text-primary) !important;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-weight: 800;
+  font-size: 1.5rem;
+  color: var(--text-primary) !important;
 }
 
 .brand-icon {
-    width: 40px;
-    height: 40px;
-    background: var(--gradient-primary);
-    border-radius: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #ffffff;
-    font-size: 1.2rem;
-    animation: brandFloat 3s ease-in-out infinite;
+  width: 40px;
+  height: 40px;
+  background: var(--gradient-primary);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  font-size: 1.2rem;
+  animation: brandFloat 3s ease-in-out infinite;
 }
 
 @keyframes brandFloat {
-    0%, 100% { transform: translateY(0) rotate(-5deg); }
-    50% { transform: translateY(-5px) rotate(5deg); }
+  0%,
+  100% {
+    transform: translateY(0) rotate(-5deg);
+  }
+
+  50% {
+    transform: translateY(-5px) rotate(5deg);
+  }
 }
 
 .navbar-nav .nav-link {
-    color: var(--text-secondary);
-    font-weight: 500;
-    padding: 0.5rem 1rem !important;
-    position: relative;
-    transition: var(--transition);
+  color: var(--text-secondary);
+  font-weight: 500;
+  padding: 0.5rem 1rem !important;
+  position: relative;
+  transition: var(--transition);
 }
 
 .navbar-nav .nav-link::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    width: 0;
-    height: 2px;
-    background: var(--gradient-primary);
-    transition: var(--transition);
-    transform: translateX(-50%);
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: var(--gradient-primary);
+  transition: var(--transition);
+  transform: translateX(-50%);
 }
 
 .navbar-nav .nav-link:hover,
 .navbar-nav .nav-link.active {
-    color: var(--text-primary);
+  color: var(--text-primary);
 }
 
 .navbar-nav .nav-link:hover::after,
 .navbar-nav .nav-link.active::after {
-    width: 100%;
+  width: 100%;
 }
 
 .nav-actions {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
 }
 
 .theme-toggle {
-    width: 40px;
-    height: 40px;
-    border: 2px solid var(--border-color);
-    border-radius: 50%;
-    background: transparent;
-    color: var(--text-primary);
-    cursor: pointer;
-    transition: var(--transition);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.1rem;
+  width: 40px;
+  height: 40px;
+  border: 2px solid var(--border-color);
+  border-radius: 50%;
+  background: transparent;
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
 }
 
 .theme-toggle:hover {
-    border-color: var(--accent-primary);
-    box-shadow: var(--shadow-glow);
-    transform: rotate(180deg);
+  border-color: var(--accent-primary);
+  box-shadow: var(--shadow-glow);
+  transform: rotate(180deg);
 }
 
 .theme-toggle .fa-sun {
-    display: none;
+  display: none;
 }
 
 [data-theme="light"] .theme-toggle .fa-moon {
-    display: none;
+  display: none;
 }
 
 [data-theme="light"] .theme-toggle .fa-sun {
-    display: block;
-    color: #f59e0b;
+  display: block;
+  color: #f59e0b;
 }
 
 .live-clock {
-    font-size: 0.85rem;
-    font-weight: 600;
-    color: var(--text-secondary);
-    padding: 0.5rem 1rem;
-    border: 1px solid var(--border-color);
-    border-radius: 20px;
-    letter-spacing: 0.05rem;
-    white-space: nowrap;
-    min-width: 110px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    font-variant-numeric: tabular-nums;
-    flex-shrink: 0;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--border-color);
+  border-radius: 20px;
+  letter-spacing: 0.05rem;
+  white-space: nowrap;
+  min-width: 110px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-variant-numeric: tabular-nums;
+  flex-shrink: 0;
 }
 
 .btn-login {
-    background: var(--gradient-primary);
-    color: #ffffff;
-    padding: 0.6rem 1.5rem;
-    border-radius: 25px;
-    font-weight: 600;
-    border: none;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    transition: var(--transition);
-    text-decoration: none;
+  background: var(--gradient-primary);
+  color: #ffffff;
+  padding: 0.6rem 1.5rem;
+  border-radius: 25px;
+  font-weight: 600;
+  border: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: var(--transition);
+  text-decoration: none;
 }
 
 .btn-login:hover {
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-glow);
-    color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-glow);
+  color: #ffffff;
 }
 
 .custom-toggler {
-    border: none;
-    background: transparent;
-    width: 40px;
-    height: 40px;
-    position: relative;
-    cursor: pointer;
+  border: none;
+  background: transparent;
+  width: 40px;
+  height: 40px;
+  position: relative;
+  cursor: pointer;
 }
 
 .custom-toggler span {
-    display: block;
-    width: 25px;
-    height: 2px;
-    background: var(--text-primary);
-    margin: 5px auto;
-    transition: var(--transition);
+  display: block;
+  width: 25px;
+  height: 2px;
+  background: var(--text-primary);
+  margin: 5px auto;
+  transition: var(--transition);
 }
 
 /* ---------- Hero ---------- */

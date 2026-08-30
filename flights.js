@@ -1,3 +1,104 @@
+  AEROVA - Navigation & Clock */
+
+// Live Clock
+function initAerovaClock() {
+  const clock = document.getElementById("liveClock");
+  if (!clock) return;
+
+  const update = () => {
+    const now = new Date();
+    let hours = now.getHours();
+    const minutes = String(now.getMinutes()).padStart(2, "0");
+    const seconds = String(now.getSeconds()).padStart(2, "0");
+    const ampm = hours >= 12 ? "PM" : "AM";
+
+    hours = hours % 12;
+    hours = hours ? hours : 12;
+    hours = String(hours).padStart(2, "0");
+
+    clock.textContent = `${hours}:${minutes}:${seconds} ${ampm}`;
+  };
+
+  update();
+  setInterval(update, 1000);
+}
+
+// Navigation Scroll
+window.addEventListener("scroll", function () {
+  const nav = document.getElementById("mainNav");
+  if (nav) {
+    if (window.scrollY > 100) {
+      nav.classList.add("scrolled");
+    } else {
+      nav.classList.remove("scrolled");
+    }
+  }
+});
+
+// Theme Toggle
+function toggleThemeAerova() {
+  const html = document.documentElement;
+  const currentTheme = html.getAttribute("data-theme");
+  const newTheme = currentTheme === "light" ? "dark" : "light";
+  html.setAttribute("data-theme", newTheme);
+  localStorage.setItem("aerova-theme", newTheme);
+}
+
+// Initialize
+document.addEventListener("DOMContentLoaded", function () {
+  initAerovaClock();
+
+  // Load theme
+  const savedTheme = localStorage.getItem("aerova-theme");
+  if (savedTheme) {
+    document.documentElement.setAttribute("data-theme", savedTheme);
+  }
+
+  // AOS
+  if (typeof AOS !== "undefined") {
+    AOS.init({ duration: 1000, once: true });
+  }
+});
+// ============ Theme ============
+function initTheme() {
+  const saved = localStorage.getItem("aerova-theme");
+  const defaultTheme = saved || "dark";
+  applyTheme(defaultTheme, false);
+}
+function toggleTheme() {
+  const html = document.documentElement;
+  const current = html.getAttribute("data-theme");
+  const next = current === "light" ? "dark" : "light";
+  applyTheme(next, true);
+  localStorage.setItem("aerova-theme", next);
+}
+function setTheme(theme, notify = true) {
+  applyTheme(theme, notify);
+}
+function applyTheme(theme, notify = true) {
+  currentTheme = theme === "light" ? "light" : "dark";
+  // Set data-theme attribute
+  document.documentElement.setAttribute("data-theme", currentTheme);
+
+  // Update icon visibility
+  const moonIcon = document.getElementById("moonIcon");
+  const sunIcon = document.getElementById("sunIcon");
+
+  if (moonIcon && sunIcon) {
+    if (currentTheme === "light") {
+      moonIcon.style.display = "none";
+      sunIcon.style.display = "block";
+    } else {
+      moonIcon.style.display = "block";
+      sunIcon.style.display = "none";
+    }
+  }
+
+  if (notify) showToast(`Theme switched to ${currentTheme} mode`);
+}
+
+
+
 /* ------------------------------------------------------------------
    1. THEME TOGGLE (saved in localStorage)
 ------------------------------------------------------------------ */

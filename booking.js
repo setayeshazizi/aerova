@@ -1,3 +1,11 @@
+/* =========================================
+   AIRPORT BOOKING SYSTEM
+========================================= */
+
+/* =========================================
+   GLOBAL VARIABLES
+========================================= */
+
 let currentStep = 1;
 
 let selectedSeat = null;
@@ -25,8 +33,9 @@ let bookingData = {
 
   bookingReference: "",
 };
-/*
-   DOM ELEMENTS */
+/* =========================================
+   DOM ELEMENTS
+========================================= */
 
 const flightForm = document.getElementById("flightForm");
 
@@ -58,7 +67,9 @@ const notificationToast = document.getElementById("notificationToast");
 
 const toastMessage = document.getElementById("toastMessage");
 
-/*CITY DATA */
+/* =========================================
+   CITY DATA
+========================================= */
 
 const cityData = {
   HER: {
@@ -91,8 +102,9 @@ const cityData = {
     name: "Doha",
   },
 };
-/*
-   CLASS PRICES */
+/* =========================================
+   CLASS PRICES
+========================================= */
 
 const classPrices = {
   Economy: 250,
@@ -101,13 +113,16 @@ const classPrices = {
 
   Business: 650,
 };
-/*
-   SET MINIMUM DATE */
+/* =========================================
+   SET MINIMUM DATE
+========================================= */
 
 const today = new Date().toISOString().split("T")[0];
 
 departureDate.min = today;
-/*FLIGHT FORM */
+/* =========================================
+   FLIGHT FORM
+========================================= */
 
 flightForm.addEventListener("submit", function (event) {
   event.preventDefault();
@@ -158,8 +173,9 @@ flightForm.addEventListener("submit", function (event) {
   goToStep(2);
 });
 
-/*
-   FLIGHT PREVIEW */
+/* =========================================
+   FLIGHT PREVIEW
+========================================= */
 
 function updateFlightPreview() {
   if (fromCity.value && toCity.value) {
@@ -177,8 +193,9 @@ fromCity.addEventListener("change", updateFlightPreview);
 
 toCity.addEventListener("change", updateFlightPreview);
 
-/*
-   PASSENGER FORM */
+/* =========================================
+   PASSENGER FORM
+========================================= */
 
 passengerForm.addEventListener("submit", function (event) {
   event.preventDefault();
@@ -248,8 +265,9 @@ passengerForm.addEventListener("submit", function (event) {
   goToStep(3);
 });
 
-/*
-   SEAT SELECTION */
+/* =========================================
+   SEAT SELECTION
+========================================= */
 
 seats.forEach(function (seat) {
   seat.addEventListener("click", function () {
@@ -273,8 +291,9 @@ seats.forEach(function (seat) {
   });
 });
 
-/*
-   EXTRAS */
+/* =========================================
+   EXTRAS
+========================================= */
 
 extras.forEach(function (extra) {
   extra.addEventListener("change", calculateExtras);
@@ -305,8 +324,9 @@ function calculateExtras() {
 
   saveBooking();
 }
-/*
-   REVIEW BOOKING */
+/* =========================================
+   REVIEW BOOKING
+========================================= */
 
 document
   .getElementById("reviewBookingBtn")
@@ -322,8 +342,9 @@ document
     goToStep(4);
   });
 
-/*
-   UPDATE SUMMARY */
+  /* =========================================
+   UPDATE SUMMARY
+========================================= */
 
 function updateSummary() {
   const from = cityData[bookingData.from];
@@ -359,8 +380,9 @@ function updateSummary() {
     `$${bookingData.totalPrice}`;
 }
 
-/*
-   CONFIRM BOOKING */
+/* =========================================
+   CONFIRM BOOKING
+========================================= */
 
 document
   .getElementById("confirmBookingBtn")
@@ -386,8 +408,9 @@ document
     showToast("Booking confirmed successfully!");
   });
 
-/*
-   GENERATE BOARDING PASS */
+  /* =========================================
+   GENERATE BOARDING PASS
+========================================= */
 
 function generateBoardingPass() {
   const from = cityData[bookingData.from];
@@ -420,8 +443,9 @@ function generateBoardingPass() {
 
   document.getElementById("boardingActions").classList.remove("d-none");
 }
-/*
-   BOOKING REFERENCE */
+/* =========================================
+   BOOKING REFERENCE
+========================================= */
 
 function generateBookingReference() {
   const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
@@ -434,8 +458,9 @@ function generateBookingReference() {
 
   return result;
 }
-/*
-   STEP NAVIGATION */
+/* =========================================
+   STEP NAVIGATION
+========================================= */
 
 function goToStep(step) {
   currentStep = step;
@@ -478,8 +503,9 @@ function goToStep(step) {
     behavior: "smooth",
   });
 }
-/*
-   DATE FORMAT */
+/* =========================================
+   DATE FORMAT
+========================================= */
 
 function formatDate(dateString) {
   if (!dateString) {
@@ -494,8 +520,9 @@ function formatDate(dateString) {
     year: "numeric",
   });
 }
-/*
-   TOAST */
+/* =========================================
+   TOAST
+========================================= */
 
 function showToast(message) {
   toastMessage.textContent = message;
@@ -506,14 +533,16 @@ function showToast(message) {
 
   toast.show();
 }
-/*
-   LOCAL STORAGE */
+/* =========================================
+   LOCAL STORAGE
+========================================= */
 
 function saveBooking() {
   localStorage.setItem("skyPortBooking", JSON.stringify(bookingData));
 }
-/*
-   LOAD SAVED BOOKING */
+/* =========================================
+   LOAD SAVED BOOKING
+========================================= */
 
 function loadBooking() {
   const saved = localStorage.getItem("skyPortBooking");
@@ -530,8 +559,9 @@ function loadBooking() {
     console.log("Unable to load saved booking.");
   }
 }
-/*
-   THEME */
+/* =========================================
+   THEME
+========================================= */
 
 themeToggle.addEventListener("click", function () {
   document.body.classList.toggle("dark-mode");
@@ -545,8 +575,9 @@ themeToggle.addEventListener("click", function () {
     : `<i class="bi bi-moon-stars-fill"></i>`;
 });
 
-/*
-   LOAD THEME */
+/* =========================================
+   LOAD THEME
+========================================= */
 
 function loadTheme() {
   const savedTheme = localStorage.getItem("skyPortTheme");
@@ -557,14 +588,17 @@ function loadTheme() {
     themeToggle.innerHTML = `<i class="bi bi-sun-fill"></i>`;
   }
 }
-/*
-   PRINT BOARDING PASS */
+/* =========================================
+   PRINT BOARDING PASS
+========================================= */
 
 document.getElementById("printPassBtn").addEventListener("click", function () {
   window.print();
+  
 });
-/*
-   COPY BOOKING CODE */
+/* =========================================
+   COPY BOOKING CODE
+========================================= */
 
 document
   .getElementById("copyCodeBtn")
@@ -579,16 +613,18 @@ document
       showToast("Could not copy the code.");
     }
   });
-/*
-   NEW BOOKING */
+/* =========================================
+   NEW BOOKING
+========================================= */
 
 document.getElementById("newBookingBtn").addEventListener("click", function () {
   localStorage.removeItem("skyPortBooking");
 
   location.reload();
 });
-/*
-   INPUT ANIMATION */
+/* =========================================
+   INPUT ANIMATION
+========================================= */
 
 document.querySelectorAll(".custom-input").forEach(function (input) {
   input.addEventListener("focus", function () {
@@ -599,15 +635,17 @@ document.querySelectorAll(".custom-input").forEach(function (input) {
     this.parentElement?.classList.remove("input-focused");
   });
 });
-/*
-   INITIALIZE */
+/* =========================================
+   INITIALIZE
+========================================= */
 
 loadBooking();
 
 loadTheme();
 
-/*
-   OPTIONAL: DEMO DEFAULT DATE */
+/* =========================================
+   OPTIONAL: DEMO DEFAULT DATE
+========================================= */
 
 if (!departureDate.value) {
   const tomorrow = new Date();
@@ -617,112 +655,12 @@ if (!departureDate.value) {
   departureDate.value = tomorrow.toISOString().split("T")[0];
 }
 
-const hidde = document
-  .querySelector("#confirmBookingBtn")
-  .addEventListener("click", function () {
+const  hidde =document.querySelector("#confirmBookingBtn").addEventListener("click",function () {
     const sectionsToHide = document.querySelectorAll(".hide-end");
 
-    sectionsToHide.forEach((section) => {
-      section.classList.add("d-none");
-    });
-  });
-
-/*
-   AEROVA - Navigation & Clock */
-
-// Live Clock
-function initAerovaClock() {
-  const clock = document.getElementById("liveClock");
-  if (!clock) return;
-
-  const update = () => {
-    const now = new Date();
-    let hours = now.getHours();
-    const minutes = String(now.getMinutes()).padStart(2, "0");
-    const seconds = String(now.getSeconds()).padStart(2, "0");
-    const ampm = hours >= 12 ? "PM" : "AM";
-
-    hours = hours % 12;
-    hours = hours ? hours : 12;
-    hours = String(hours).padStart(2, "0");
-
-    clock.textContent = `${hours}:${minutes}:${seconds} ${ampm}`;
-  };
-
-  update();
-  setInterval(update, 1000);
-}
-
-// Navigation Scroll
-window.addEventListener("scroll", function () {
-  const nav = document.getElementById("mainNav");
-  if (nav) {
-    if (window.scrollY > 100) {
-      nav.classList.add("scrolled");
-    } else {
-      nav.classList.remove("scrolled");
-    }
-  }
+    sectionsToHide.forEach(section => {
+    section.classList.add("d-none");
 });
 
-// Theme Toggle
-function toggleThemeAerova() {
-  const html = document.documentElement;
-  const currentTheme = html.getAttribute("data-theme");
-  const newTheme = currentTheme === "light" ? "dark" : "light";
-  html.setAttribute("data-theme", newTheme);
-  localStorage.setItem("aerova-theme", newTheme);
-}
 
-// Initialize
-document.addEventListener("DOMContentLoaded", function () {
-  initAerovaClock();
-
-  // Load theme
-  const savedTheme = localStorage.getItem("aerova-theme");
-  if (savedTheme) {
-    document.documentElement.setAttribute("data-theme", savedTheme);
-  }
-
-  // AOS
-  if (typeof AOS !== "undefined") {
-    AOS.init({ duration: 1000, once: true });
-  }
 });
-// ============ Theme ============
-function initTheme() {
-  const saved = localStorage.getItem("aerova-theme");
-  const defaultTheme = saved || "dark";
-  applyTheme(defaultTheme, false);
-}
-function toggleTheme() {
-  const html = document.documentElement;
-  const current = html.getAttribute("data-theme");
-  const next = current === "light" ? "dark" : "light";
-  applyTheme(next, true);
-  localStorage.setItem("aerova-theme", next);
-}
-function setTheme(theme, notify = true) {
-  applyTheme(theme, notify);
-}
-function applyTheme(theme, notify = true) {
-  currentTheme = theme === "light" ? "light" : "dark";
-  // Set data-theme attribute
-  document.documentElement.setAttribute("data-theme", currentTheme);
-
-  // Update icon visibility
-  const moonIcon = document.getElementById("moonIcon");
-  const sunIcon = document.getElementById("sunIcon");
-
-  if (moonIcon && sunIcon) {
-    if (currentTheme === "light") {
-      moonIcon.style.display = "none";
-      sunIcon.style.display = "block";
-    } else {
-      moonIcon.style.display = "block";
-      sunIcon.style.display = "none";
-    }
-  }
-
-  if (notify) showToast(`Theme switched to ${currentTheme} mode`);
-}
