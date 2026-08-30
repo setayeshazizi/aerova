@@ -184,9 +184,11 @@ Check item details
  Status Tracking
 - Items can have statuses such as:
    Reported
+  
    ↓
   
  Searching
+ 
    ↓
    
  Found
