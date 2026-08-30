@@ -185,13 +185,13 @@ Check item details
 - Items can have statuses such as:
    Reported
   
-   ↓
+       ↓
   
- Searching
+    Searching
  
-   ↓
+      ↓
    
- Found
+    Found
  
 LocalStorage
 
@@ -298,6 +298,7 @@ Basically, enough JavaScript to make the browser question its life choices.
 
 ## Responsive Design
 AEROVA is designed to work across different screen sizes:
+
 📱 Mobile
 
     ↓
