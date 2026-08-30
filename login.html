@@ -192,12 +192,15 @@
                             <div class="error-message" id="confirmPasswordError"></div>
                         </div>
 
-                        <div class="form-options">
+                        <div class="form-options"
+                            style="display: flex; flex-direction: column; align-items: flex-start; gap: 5px;">
                             <label class="checkbox-container">
                                 <input type="checkbox" id="termsCheck" required>
                                 <span class="checkmark"></span>
                                 I agree to the <a href="#">Terms & Conditions</a>
                             </label>
+                            <div class="error-message" id="termsError"
+                                style="color: #ef4444; font-size: 0.85rem; margin-top: 5px; display: none;"></div>
                         </div>
 
                         <button type="submit" class="btn btn-auth">
@@ -235,9 +238,6 @@
             </div>
         </div>
     </div>
-
-    <!-- Toast Notification -->
-    <div id="toast" class="toast-notification"></div>
 
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
