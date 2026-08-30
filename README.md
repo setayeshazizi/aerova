@@ -1,11 +1,10 @@
 # AEROVA — Airport & Travel Website
-Your Gateway to the World 🌍
+Your Gateway to the World 
+
 A premium, modern, and interactive airport & travel experience platform built with HTML, CSS, Bootstrap, and JavaScript.
 AEROVA is a front-end airport and travel website designed to provide users with a smooth and visually engaging experience for exploring flights, booking seats, managing boarding passes, finding airport services, and reporting lost items.
 
-
-⸻
-
+---
 
 ## Features
  Design & User Experience
@@ -21,23 +20,30 @@ Theme preference saved using LocalStorage
 Real-time clock displayed in the navigation bar
 
 Interactive hover effects
+
  Particles Backgroun
+ 
 Animated canvas-based particle background
+
 AOS Animations
+
 Smooth scroll-triggered animations
+
  3D Flip Cards
+ 
 Interactive destination cards with 3D effects
+
 Fully Responsive
 
-
 Mobile-first design
-Optimized for desktop, tablet, and mobile
-🎯 Splash Screen
 
+Optimized for desktop, tablet, and mobile
+
+Splash Screen
 
 Branded introduction animation
-☁️ Airport-Themed Preloader
 
+Airport-Themed Preloader
 
 Cloud & runway inspired loading animation
 
