@@ -2950,3 +2950,191 @@ border-radius: 50%;
     }
 }
 
+
+   
+        /* Hero Section */
+        .flights-hero {
+            position: relative;
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            padding-top: 120px;
+            padding-bottom: 150px;
+            background: linear-gradient(180deg, #0a0e17 0%, #1a2332 100%);
+        }
+        
+        [data-theme="light"] .flights-hero {
+            background: linear-gradient(180deg, #bfdbfe 0%, #dbeafe 100%);
+        }
+        
+        .flights-hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=1920&q=70');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.15;
+        }
+        
+        .flights-hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(180deg, rgba(10, 14, 23, 0.5) 0%, rgba(10, 14, 23, 0.3) 50%, var(--bg-primary) 100%);
+        }
+        
+        .flights-hero-content {
+            position: relative;
+            z-index: 3;
+        }
+        
+        /* Search Panel */
+        .flights-search-wrap {
+            position: relative;
+            z-index: 5;
+            margin-top: -100px;
+        }
+        
+        /* Flight Cards */
+        .flight-card-aerova {
+            background: var(--bg-glass);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .flight-card-aerova::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--gradient-primary);
+            opacity: 0;
+            transition: var(--transition);
+        }
+        
+        .flight-card-aerova:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--accent-primary);
+        }
+        
+        .flight-card-aerova:hover::before {
+            opacity: 1;
+        }
+        
+        .airline-logo-circle {
+            width: 50px;
+            height: 50px;
+            background: var(--gradient-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ffffff;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+        
+        /* Flight Status Board */
+        .status-board-aerova {
+            background: var(--bg-glass);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--border-color);
+            border-radius: 25px;
+            padding: 2rem;
+            box-shadow: var(--shadow-md);
+        }
+        
+        /* Destination Cards */
+        .dest-card-aerova {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            min-height: 350px;
+            display: flex;
+            align-items: flex-end;
+            border: 1px solid var(--border-color);
+            transition: var(--transition);
+            cursor: pointer;
+        }
+        
+        .dest-card-aerova:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .dest-card-aerova img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+        
+        .dest-card-aerova:hover img {
+            transform: scale(1.1);
+        }
+        
+        .dest-overlay-aerova {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(180deg, transparent 0%, rgba(10, 14, 23, 0.8) 60%, rgba(10, 14, 23, 0.95) 100%);
+        }
+        
+        /* Filter Panel */
+        .filter-panel-aerova {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 1.5rem;
+            position: sticky;
+            top: 100px;
+        }
+        
+        /* Responsive */
+        @media (max-width: 991px) {
+            .flights-hero {
+                min-height: 50vh;
+                padding-top: 100px;
+                padding-bottom: 120px;
+            }
+            
+            .flights-search-wrap {
+                margin-top: -80px;
+            }
+            
+            .filter-panel-aerova {
+                position: static;
+            }
+        }
+        
+        @media (max-width: 767px) {
+            .flights-hero {
+                min-height: 40vh;
+                padding-top: 80px;
+                padding-bottom: 100px;
+            }
+            
+            .flights-search-wrap {
+                margin-top: -60px;
+            }
+        }

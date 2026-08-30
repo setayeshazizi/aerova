@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Airport Guide | AEROVA</title>
+
+  <!-- Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap"
+    rel="stylesheet">
+
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+  <!-- AOS Animation -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+  <!-- Airport Guide CSS -->
+  <link rel="stylesheet" href="airport.css">
+</head>
+
+<body>
+
+  <!-- Particles Background -->
+  <canvas id="particles-canvas"></canvas>
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg fixed-top" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">
+        <div class="brand-icon">
+          <i class="fas fa-plane"></i>
+        </div>
+        <span class="brand-text">AEROVA</span>
+      </a>
+
+      <button class="navbar-toggler custom-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav mx-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="flights.html">Flights</a></li>
+          <li class="nav-item"><a class="nav-link" href="booking.html">Booking</a></li>
+          <li class="nav-item"><a class="nav-link active" href="airport-guide.html">Airport Guide</a></li>
+          <li class="nav-item"><a class="nav-link" href="lost-found.html">Lost & Found</a></li>
+        </ul>
+
+        <div class="nav-actions">
+          <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()">
+            <i class="fas fa-moon"></i>
+            <i class="fas fa-sun"></i>
+          </button>
+          <div class="live-clock" id="liveClock">00:00:00</div>
+          <a href="login.html" class="btn btn-login">
+            <span>Login</span>
+            <i class="fas fa-arrow-right"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="guide-hero">
+      <div class="guide-hero-bg"></div>
+      <div class="guide-hero-overlay"></div>
+
+      <div class="container guide-hero-content">
+        <div class="row">
+          <div class="col-lg-8">
+            <div class="hero-badge-guide" data-aos="fade-down">
+              <span class="badge-icon-guide">
+                <i class="fas fa-map-marked-alt"></i>
+              </span>
+              <span>Airport Navigation Made Easy</span>
+            </div>
+
+            <h1 class="hero-title-guide" data-aos="fade-up" data-aos-delay="100">
+              Your Airport
+              <span class="gradient-text-guide">Survival Guide</span>
+            </h1>
+            <p class="hero-subtitle-guide" data-aos="fade-up" data-aos-delay="200">
+              Everything you need to know — from gates and security to dining and lounges
+            </p>
+
+            <div class="hero-stats-guide" data-aos="fade-up" data-aos-delay="300">
+              <div class="stat-item-guide">
+                <h3><span class="counter-guide" data-target="45">0</span>+</h3>
+                <span>Gates</span>
+              </div>
+              <div class="stat-divider-guide"></div>
+              <div class="stat-item-guide">
+                <h3><span class="counter-guide" data-target="25">0</span>+</h3>
+                <span>Restaurants</span>
+              </div>
+              <div class="stat-divider-guide"></div>
+              <div class="stat-item-guide">
+                <h3><span class="counter-guide" data-target="60">0</span>+</h3>
+                <span>Shops</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Search & Filter Section -->
+    <section class="guide-search-section">
+      <div class="container">
+        <div class="guide-search-card" data-aos="fade-up">
+          <div class="row g-3 align-items-end">
+            <div class="col-lg-6">
+              <label class="form-label-guide">
+                <i class="fas fa-search"></i>
+                Search Airport Services
+              </label>
+              <input class="form-control-guide" id="guideSearch" type="text"
+                placeholder="Search gates, restaurants, shops, restrooms...">
+            </div>
+
+            <div class="col-lg-3">
+              <label class="form-label-guide">
+                <i class="fas fa-filter"></i>
+                Category
+              </label>
+              <select class="form-select-guide" id="categoryFilter">
+                <option value="all">All Categories</option>
+                <option value="gates">Gates</option>
+                <option value="security">Security</option>
+                <option value="baggage">Baggage Claim</option>
+                <option value="restaurants">Restaurants</option>
+                <option value="shops">Shops</option>
+                <option value="restrooms">Restrooms</option>
+                <option value="lounges">Lounges</option>
+              </select>
+            </div>
+
+            <div class="col-lg-3">
+              <button class="btn-guide-search" id="guideSearchBtn">
+                <i class="fas fa-search"></i>
+                Find
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Airport Map Section -->
+    <section class="guide-map-section">
+      <div class="container">
+        <div class="section-header-guide text-center" data-aos="fade-up">
+          <span class="section-label-guide">Airport Map</span>
+          <h2 class="section-title-guide">Navigate With Confidence</h2>
+          <p class="section-subtitle-guide">Interactive map of all terminals and facilities</p>
+        </div>
+
+        <div class="row g-4">
+          <!-- Terminal Map -->
+          <div class="col-lg-8">
+            <div class="map-card" data-aos="fade-up">
+              <div class="map-placeholder">
+                <i class="fas fa-map"></i>
+                <h3>Interactive Airport Map</h3>
+                <p>Click on a section to explore</p>
+
+                <div class="map-zones">
+                  <div class="map-zone zone-a" data-zone="A">
+                    <span>Terminal A</span>
+                    <small>Gates 1-15</small>
+                  </div>
+                  <div class="map-zone zone-b" data-zone="B">
+                    <span>Terminal B</span>
+                    <small>Gates 16-30</small>
+                  </div>
+                  <div class="map-zone zone-c" data-zone="C">
+                    <span>Terminal C</span>
+                    <small>Gates 31-45</small>
+                  </div>
+                  <div class="map-zone zone-security">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>Security</span>
+                  </div>
+                  <div class="map-zone zone-baggage">
+                    <i class="fas fa-suitcase"></i>
+                    <span>Baggage Claim</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Quick Info -->
+          <div class="col-lg-4">
+            <div class="info-card" data-aos="fade-up" data-aos-delay="100">
+              <h3><i class="fas fa-clock"></i> Operating Hours</h3>
+              <ul class="info-list">
+                <li>
+                  <span>Security Checkpoint</span>
+                  <strong>24/7</strong>
+                </li>
+                <li>
+                  <span>Check-in Counters</span>
+                  <strong>03:00 - 23:00</strong>
+                </li>
+                <li>
+                  <span>Duty Free Shops</span>
+                  <strong>06:00 - 22:00</strong>
+                </li>
+                <li>
+                  <span>Restaurants</span>
+                  <strong>05:00 - 23:00</strong>
+                </li>
+                <li>
+                  <span>Lounges</span>
+                  <strong>04:00 - 00:00</strong>
+                </li>
+              </ul>
+            </div>
+
+            <div class="info-card mt-4" data-aos="fade-up" data-aos-delay="200">
+              <h3><i class="fas fa-info-circle"></i> Quick Tips</h3>
+              <ul class="tips-list">
+                <li>
+                  <i class="fas fa-check-circle"></i>
+                  Arrive 3 hours before international flights
+                </li>
+                <li>
+                  <i class="fas fa-check-circle"></i>
+                  Keep your passport and boarding pass ready
+                </li>
+                <li>
+                  <i class="fas fa-check-circle"></i>
+                  Download your boarding pass offline
+                </li>
+                <li>
+                  <i class="fas fa-check-circle"></i>
+                  Use the AEROVA app for real-time updates
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Grid -->
+    <section class="guide-services-section">
+      <div class="container">
+        <div class="section-header-guide text-center" data-aos="fade-up">
+          <span class="section-label-guide">Airport Services</span>
+          <h2 class="section-title-guide">Everything You Need</h2>
+          <p class="section-subtitle-guide">Discover all the services available at your fingertips</p>
+        </div>
+
+        <div class="row g-4" id="servicesGrid">
+          <!-- Services will be dynamically loaded -->
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4 col-md-6">
+          <div class="footer-brand">
+            <i class="fas fa-plane"></i>
+            <h3>AEROVA</h3>
+          </div>
+          <p>Your gateway to the world. Experience travel like never before.</p>
+          <div class="social-links">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+
+        <div class="col-lg-2 col-md-6">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="flights.html">Flights</a></li>
+            <li><a href="booking.html">Booking</a></li>
+            <li><a href="airport-guide.html">Airport Guide</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+          <h4>Contact Us</h4>
+          <ul>
+            <li><i class="fas fa-phone"></i> +1 234 567 890</li>
+            <li><i class="fas fa-envelope"></i> info@aerova.com</li>
+            <li><i class="fas fa-map-marker-alt"></i> 123 Airport Road</li>
+          </ul>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+          <h4>Support</h4>
+          <ul>
+            <li><a href="#">FAQ</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms of Service</a></li>
+            <li><a href="#">Help Center</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 AEROVA. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="airport-guide.js"></script>
+</body>
+
+</html>

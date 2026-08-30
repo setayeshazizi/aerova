@@ -1,12 +1,3 @@
-/* ==========================================================================
-   AEROVA Airlines — Flights page logic (Vanilla JavaScript only)
-   Sections:
-   1. Theme toggle          5. Sorting
-   2. Sample flight data    6. View details modal
-   3. Search form logic     7. Flight status board
-   4. Filters               8. Scroll reveal + particles
-   ========================================================================== */
-
 /* ------------------------------------------------------------------
    1. THEME TOGGLE (saved in localStorage)
 ------------------------------------------------------------------ */
