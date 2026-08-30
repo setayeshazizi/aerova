@@ -251,7 +251,7 @@ And congratulations
 You are officially operating an airport from your browser.
 
 
-⸻
+---
 
 
 ## Project Goals
@@ -271,7 +271,7 @@ Theme switching
 UI animations
 
 
-⸻
+---
 
 
 ## JavaScript Concepts Used
@@ -299,12 +299,16 @@ Basically, enough JavaScript to make the browser question its life choices.
 ## Responsive Design
 AEROVA is designed to work across different screen sizes:
 📱 Mobile
+
     ↓
 📲 Tablet
+
     ↓
 💻 Laptop
+
     ↓
 🖥️ Desktop
+
 The layout adapts using Bootstrap’s responsive grid system combined with custom CSS media queries.
 
 
@@ -336,13 +340,4 @@ AEROVA 2.0 is waiting for us.
 This project is created for educational and portfolio purposes.
 Feel free to explore, modify, and improve it.
 
-
-
-
-
-✈️ Final Destination
-AEROVA isn’t just about getting from A to B.
-It’s about making the journey feel premium before you even reach the airport. 🌍✈️
-Thanks for visiting AEROVA.
-Have a safe flight! 🛫
 
