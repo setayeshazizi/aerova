@@ -1097,19 +1097,24 @@ body.loading {
 }
 
 .btn-destination {
-  background: #ffffff;
-  color: var(--accent-primary);
-  padding: 0.6rem 1.5rem;
-  border-radius: 25px;
-  font-weight: 600;
-  border: none;
-  transition: var(--transition);
+    background: #ffffff;
+    color: var(--accent-primary);
+    padding: 0.6rem 1.5rem;
+    border-radius: 25px;
+    font-weight: 600;
+    border: 2px solid #ffffff;
+    transition: var(--transition);
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
 }
 
 .btn-destination:hover {
-  transform: scale(1.05);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-  color: var(--accent-primary);
+    background: transparent;
+    color: #ffffff;
+    border-color: #ffffff;
+    transform: scale(1.05);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
 }
 
 /* Services Section */
