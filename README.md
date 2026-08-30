@@ -7,63 +7,63 @@ AEROVA is a front-end airport and travel website designed to provide users with 
 ---
 
 ## Features
- Design & User Experience
+- Design & User Experience
  
- Dark / Light Mode
+ - Dark / Light Mode
  
- Switch between dark and light themes
+ - Switch between dark and light themes
  
-Theme preference saved using LocalStorage
+- Theme preference saved using LocalStorage
 
- Live Clock
+ - Live Clock
  
-Real-time clock displayed in the navigation bar
+- Real-time clock displayed in the navigation bar
 
-Interactive hover effects
+- Interactive hover effects
 
- Particles Backgroun
+- Particles Backgroun
  
-Animated canvas-based particle background
+- Animated canvas-based particle background
 
-AOS Animations
+- AOS Animations
 
-Smooth scroll-triggered animations
+- Smooth scroll-triggered animations
 
- 3D Flip Cards
+ - 3D Flip Cards
  
-Interactive destination cards with 3D effects
+- Interactive destination cards with 3D effects
 
-Fully Responsive
+- Fully Responsive
 
-Mobile-first design
+- Mobile-first design
 
-Optimized for desktop, tablet, and mobile
+- Optimized for desktop, tablet, and mobile
 
-Splash Screen
+- Splash Screen
 
-Branded introduction animation
+- Branded introduction animation
 
-Airport-Themed Preloader
+- Airport-Themed Preloader
 
-Cloud & runway inspired loading animation
-
-
-⸻
+- Cloud & runway inspired loading animation
 
 
-🔐 Authentication
+---
+
+
+## Authentication
 AEROVA includes a complete front-end authentication experience.
 Features
-👤 Register / Login
+- Register / Login
 Real-time form validation
-👁️ Show / Hide password
-💾 LocalStorage session persistence
-🛡️ Protected pages with authentication guards
-🚪 Logout functionality
+- Show / Hide password
+  - LocalStorage session persistence
+- Protected pages with authentication guards
+  - Logout functionality
 Note: Authentication is implemented on the front end and is intended for demonstration purposes.
 
 
-⸻
+---
 
 
 ✈️ Flight Explorer
